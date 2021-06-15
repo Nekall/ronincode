@@ -1,0 +1,36 @@
+.card-article-img-container img{
+  width: 200px;
+}
+
+.card-article{
+  display: flex;
+  border: 1px solid yellow;
+  border-radius: 1em;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.card-article-txt-container{
+  color: #fff;
+
+  a{
+    color: #fff;
+  }
+
+  h2{
+
+  }
+}
+
+.card-article-img-container{
+  margin-right: 2em;
+}
+
+$red: #F20C28;
+$pink: #FC0DA2;
+$magenta: #D600E6;
+$violet: #AB0DFC;
+$blue: #650CF2;
+$yellow: #FCEE0D;
+$dark-gradient: linear-gradient(0.25turn, #30243B, #19031C);
+$chat-gradient: linearGradient(#B8428B, $blue);
