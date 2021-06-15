@@ -1,6 +1,7 @@
 import React from 'react';
 import BtnLangage from "components/BtnLangage";
-import img_article from 'assets/images/background-retrowave-web.jpg';
+
+import img_article from 'assets/images/image-test.png';
 import avatar from 'assets/images/avatar.jpg';
 
 
@@ -11,13 +12,17 @@ const CardArticle = () => {
         <BtnLangage />
         <h3><a href="/" className="title-article">Le guide du débutant : quelles différences entre&nbsp;UX/UI ?</a></h3>
         <div className="article-avatar">
-          <img src={avatar} alt="" />
+          <a href="/" className="article-avatar-img-container">
+            <img src={avatar} alt="" />
+            <div className="retro-filter"></div>
+          </a>
           <h4>Black Widow</h4>
           <span className="date">26/06/2021</span>
         </div>
         <div className="card-article-img-container">
           <a href="/">
             <img src={img_article} alt="Ligne de code sur un écran" />
+            <div className="retro-filter"></div>
           </a>
         </div>
         <div className="card-article-txt-container">
@@ -25,26 +30,6 @@ const CardArticle = () => {
         </div>
         <a href="/" className="read_more">Lire la suite</a>
       </div>
-      
-      <div className="card-article">
-        <BtnLangage />
-        <h3><a href="/" className="title-article">Le titre est juste ici</a></h3>
-        <div className="article-avatar">
-          <img src={avatar} alt="" />
-          <h4>Black Widow</h4>
-          <span className="date">26/06/2021</span>
-        </div>
-        <div className="card-article-img-container">
-          <a href="/">
-            <img src={img_article} alt="Ligne de code sur un écran" />
-          </a>
-        </div>
-        <div className="card-article-txt-container">
-          <p className="Lead_paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et molestiae tenetur dolor quibusdam sit nam, minima harum totam iste perspiciatis nostrum necessitatibus deserunt cum tempora magni! Delectus velit explicabo sapiente!</p>
-        </div>
-        <a href="/" className="read_more">Lire la suite</a>
-      </div>
-      
     </>
   );
 };
