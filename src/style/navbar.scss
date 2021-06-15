@@ -1,0 +1,41 @@
+.navbar{
+  display: flex;
+  width: 100%;
+  margin: auto;
+  padding: 1em 0;
+  font-size: 1.5em;
+  border-bottom: 1px solid #fca4db;
+}
+.brand-nav{
+  padding: 0 2em;
+  
+  img{
+    height: 100px;
+  }
+}
+
+.sign_content{
+  display: flex;
+  margin-left: auto;
+  padding-right: 2em;
+  list-style: none;
+
+  img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 50%;
+    left: 50%;
+  }
+
+  li a{
+    position: relative;
+    display: block;
+    width: 180px;
+  }
+
+  .sign_in{
+    margin-left: 1em;
+  }
+}

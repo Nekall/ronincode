@@ -1,31 +1,34 @@
-@font-face {
-  font-family: 'Avenir Next';
-  src: url('../assets/fonts/AvenirNextLTPro-Regular.otf');
-}
-
 body{
-  font-family: 'Avenir Next';
+  background: linear-gradient(0.25turn, #30243b, #19031c);
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+*{
   margin: 0;
-}
-
-.logo-react {
-  width: 35px;
-  margin-right: 25px;
+  padding: 0;
 }
 
 
-.navbar {
-  background-color: grey;
-  padding: 10px;
+.hackerman{
+  height: 500px;
 }
 
-nav a{
-  color: black;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 0px 5px 0px 5px;
+.longpage{
+  display: block;
+  height: 2000px;
+  width: 200px;
 }
 
-nav a:hover{
-  color: rgba(0, 0, 0, 0.5);
-}
+
+/*
+#F20C28
+#FC0DA2
+#D600E6
+#AB0DFC
+#650CF2
+*/
