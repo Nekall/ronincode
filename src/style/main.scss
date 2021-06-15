@@ -4,6 +4,7 @@
 @import "footer.scss";
 @import "hero.scss";
 @import "navbar.scss";
+@import "fonts.scss";
 
 .hackerman{
   height: 500px;
@@ -15,3 +16,7 @@
   width: 200px;
 }
 
+a,p{
+  font-family: 'Oswald';
+  font-weight: 300;
+}
