@@ -3,11 +3,41 @@
   overflow: hidden;
   height: 750px;
 
-  img{
+  .hero-background{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    top: 50%;
-    left: 50%;
+    position: absolute;
+  }
+
+  .hero-2{
+    position: absolute;
+    height: 530px;
+    margin: auto;
+    object-fit: contain;
+    width: 100%;
+    right: 130px;
+  }
+
+  .hero-3{
+    position: absolute;
+    height: 450px;
+    margin: auto;
+    object-fit: contain;
+    width: 100%;
+    margin-top: 315px;
+  }
+
+  .hero-txt{
+    color: #fff;
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    margin-top: 115px;
+    text-align: center;
+    font-size: 3.5em;
+    left: 143px;
+    font-family: 'Belshaw';
+    font-weight: normal;
   }
 }
