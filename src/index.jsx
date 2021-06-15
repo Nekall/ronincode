@@ -5,14 +5,20 @@ import Hero from "components/Hero";
 import CardGroupArticle from "components/CardGroupArticle";
 import Footer from "components/Footer";
 import "style/main.scss";
+import { store } from 'reduxx/store';
+import { Provider } from 'react-redux'
+
+
 
 const App = () => (
   
   <>
-    <Navbar />
-    <Hero />
-    <CardGroupArticle />
-    <Footer />
+    <Provider store={store}>
+      <Navbar />
+      <Hero />
+      <CardGroupArticle />
+      <Footer />
+    </Provider>
   </>
 );
 
