@@ -1,6 +1,5 @@
 import React from 'react';
 import BtnLangage from "components/BtnLangage";
-import "style/article.scss";
 import img_article from 'assets/images/background-retrowave-web.jpg';
 
 

@@ -1,18 +1,9 @@
-body{
-  background: linear-gradient(0.25turn, #30243b, #19031c);
-}
-
-#root{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-*{
-  margin: 0;
-  padding: 0;
-}
-
+@import "libs/reset.scss";
+@import "libs/colors.scss";
+@import "article.scss";
+@import "footer.scss";
+@import "hero.scss";
+@import "navbar.scss";
 
 .hackerman{
   height: 500px;
@@ -24,11 +15,3 @@ body{
   width: 200px;
 }
 
-
-/*
-#F20C28
-#FC0DA2
-#D600E6
-#AB0DFC
-#650CF2
-*/

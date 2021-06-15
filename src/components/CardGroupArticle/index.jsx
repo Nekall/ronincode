@@ -1,6 +1,5 @@
 import React from 'react';
 import CardArticle from 'components/CardArticle';
-import "style/article.scss";
 
 const CardGroupArticle = () => {
   return (
