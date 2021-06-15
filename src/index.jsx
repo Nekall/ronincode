@@ -1,39 +1,20 @@
 import React from "react";
-import ReactDOM from 'react-dom';
-import './style/main.scss';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from 'pages/Home'
-import About from 'pages/About'
-import Documentation from 'pages/Documentation'
+import { render } from "react-dom";
+import Navbar from "components/Navbar";
+import Hero from "components/Hero";
+import Footer from "components/Footer";
+import "style/main.scss";
+import "style/navbar.scss";
+import "style/hero.scss";
+import "style/footer.scss";
 
-//custum import;
-//import Name from 'components/Name'
-import Navbar from 'components/Navbar';
+const App = () => (
+  
+  <>
+    <Navbar />
+    <Hero />
+    <Footer />
+  </>
+);
 
-
-const App = () => {
-
-
-  return (
-    <div>
-      <Router>
-        <Navbar />
-        <main>
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/documentation">
-              <Documentation />
-            </Route>
-          </Switch>
-        </main>
-      </Router>
-    </div>
-  )
-};
-
-ReactDOM.render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));
