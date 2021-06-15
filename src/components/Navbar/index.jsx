@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
-import reactLogo from 'assets/images/react.svg';
+import React from 'react';
+import Logo from "components/Logo";
+import Sign from "components/Sign";
 
 const Navbar = () => (
-  <nav className="navbar" >
-    <img className="logo-react" src={reactLogo} alt="Logo React" />
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    <Link to="/documentation">Documentation</Link>
-  </nav>
+
+    <nav className="navbar">
+      <Logo />
+      <Sign />
+    </nav>
 );
 
 export default Navbar;
