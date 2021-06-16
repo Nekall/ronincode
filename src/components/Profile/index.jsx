@@ -1,7 +1,7 @@
 import React from 'react';
 import avatar from 'assets/images/avatar.jpg';
 import BtnLangage from 'components/BtnLangage';
-import CardPostMini from 'components/CardPostMini';
+import CardPostCompact from 'components/CardPostCompact';
 
 const Profile = () => (
   <>
@@ -43,9 +43,9 @@ const Profile = () => (
       </div>
 
       <div>
-        <CardPostMini />
-        <CardPostMini />
-        <CardPostMini />
+        <CardPostCompact />
+        <CardPostCompact />
+        <CardPostCompact />
       </div>
 
     </div>
