@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import { LOG_OUT, LOG_SUCCESS, LOG_FAILURE } from './LogTypes'
 
 // const cookie = Cookies.get('id');

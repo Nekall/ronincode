@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux' 
 import { LogFailure, LogSuccess } from 'reduxx/Log/LogActions';
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 
 import './style.css'
 
@@ -43,6 +43,7 @@ const Signup = () => {
         dispatch(LogSuccess(dataFetch, true))
         console.log(dataFetch)
         history.push("/");
+        alert("You signed up")
       }
     })
 
@@ -50,7 +51,7 @@ const Signup = () => {
 
   return (
     <form onSubmit={handleFetch} >
-      <h1>Bienvenue chez Ronin Code</h1>
+      <h1 className="titleForm">Créer son compte</h1>
       <input type="username" value={username}  placeholder="Entrez votre pseudo" onChange={(e) => setUsername(e.target.value)}></input>
       <input type="email" value={email} placeholder="Entrez votre email" onChange={(e) => setEmail(e.target.value)}></input>
       <input type="password" value={password} placeholder="Entrez votre mot de passe" onChange={(e) => setPassword(e.target.value)}></input>
