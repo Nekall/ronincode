@@ -60,3 +60,45 @@
   }
 
 }
+
+.date{
+
+  li{
+    display: flex;
+    background: $violet;
+    width: 500px;
+    margin: 1em auto;
+  }
+
+  .dm-container{
+    text-align: center;
+    background: $pink;
+    padding: .7em;
+  }
+
+  .day{
+    font-size: 2em;
+  }
+  .mounth{
+
+  }
+
+  .txt-container{
+    padding: .5em 1em;
+  }
+
+  .title{
+    font-size: 1.2em;
+
+    a{
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+.cardGroupCompact{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
+}

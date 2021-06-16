@@ -11,7 +11,7 @@ const Navbar = () => (
         <li><a href="/signup">S'inscrire</a></li>
         <li><a href="/signin">Se connecter</a></li>
         <li><a href="/users/sign_out">Se déconnecter</a></li>
-        <li><a href="/users/1">Profil</a></li>
+        <li><a href="/users/2">Profil</a></li>
       </ul>
       {/* <Sign /> */}
     </nav>
