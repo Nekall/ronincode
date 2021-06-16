@@ -5,11 +5,12 @@ import img_post from 'assets/images/image-test.png';
 import avatar from 'assets/images/avatar.jpg';
 
 
-const CardPost = () => (
-
+const CardPost = (article) => {
+ console.log(article.data.id)
+return(
   <div className="card-post">
     <BtnLangage />
-    <h3 className="post-title"><a href="/">Le guide du débutant : quelles différences entre&nbsp;UX/UI ?</a></h3>
+    <h3 className="post-title"><a href="/">{article.data.title}</a></h3>
     <div className="post-author-date">
       <a href="/" className="post-avatar-container">
         <img src={avatar} alt="" />
@@ -25,11 +26,11 @@ const CardPost = () => (
       </a>
     </div>
     <div className="card-post-txt-container">
-      <p className="Lead_paragraph">Vous vous êtes déjà retrouvés face à un site internet avec des milliers d’informations sans trouver réponse à votre question ? À une application mobile qui bugue ? Une interface avec des visuels entrecoupés ?... Ou bien vous vous êtes déjà surpris à rester un bon moment à admirer le design d’une application web ou mobile ? Félicitations, vous avez vécu une expérience utilisateur réussie ! Mais que se cache-t-il derrière cette expérience ? Qu’est-ce que l’UX/UI, précisément ? Nous allons le découvrir à travers cet article !</p>
+      <p className="Lead_paragraph">{article.data.lead}</p>
     </div>
-    <a href="/" className="read_more">Lire la suite</a>
+    <a href={`/articles/${article.data.id}`} className="read_more">Lire la suite</a>
   </div>
   
-);
+)};
 
 export default CardPost;
