@@ -2,7 +2,8 @@ import React from "react";
 import { render } from "react-dom";
 import Navbar from "components/Navbar";
 import Hero from "components/Hero";
-import CardGroupArticle from "components/CardGroupArticle";
+import HeroMini from "components/HeroMini";
+import CardGroupPost from "components/CardGroupPost";
 import Footer from "components/Footer";
 import "style/main.scss";
 import { store } from 'reduxx/store';
@@ -15,8 +16,9 @@ const App = () => (
   <>
     <Provider store={store}>
       <Navbar />
-      <Hero />
-      <CardGroupArticle />
+      {/* <Hero /> */}
+      <HeroMini />
+      <CardGroupPost />
       <Footer />
     </Provider>
   </>

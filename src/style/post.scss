@@ -1,8 +1,8 @@
-.card-article-img-container img{
+.card-post-img-container img{
   width: 200px;
 }
 
-.card-article{
+.card-post{
   border: 2px solid #ffffb3b3;
   border-radius: 5px;
   padding: 2em;
@@ -28,7 +28,7 @@
   }
 }
 
-.card-article-txt-container{
+.card-post-txt-container{
   color: #fff;
   
   a{
@@ -40,7 +40,7 @@
   }
 }
 
-.card-article-img-container{
+.card-post-img-container{
   width: 100%;
   height: 450px;
   margin: 1.5em 0 2.5em 0;
@@ -60,7 +60,7 @@
   }
 }
 
-.article-avatar{
+.post-avatar{
   display: flex;
   color: #fff;
 
@@ -83,7 +83,7 @@
   text-decoration: none;
 }
 
-.article-avatar{
+.post-avatar{
   
   h4{
     font-family: 'Oswald';
@@ -118,7 +118,7 @@
   opacity: .35;
 }
 
-.article-avatar-img-container{
+.post-avatar-img-container{
   position: relative;
   display: block;
   width: 35px;
