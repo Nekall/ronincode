@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import Navbar from "components/Navbar";
 import Home from 'pages/Home';
 import Signup from 'pages/Signup';
+import Signin from 'pages/Signin';
 import Articles from 'pages/Articles';
 import Footer from "components/Footer";
 import "style/main.scss";
@@ -26,6 +27,9 @@ const App = () => (
             </Route>
             <Route path="/signup" exact>
               <Signup />
+            </Route>
+            <Route path="/signin" exact>
+              <Signin />
             </Route>
             <Route path="/articles" exact>
               <Articles />
