@@ -1,0 +1,106 @@
+.card-postCompact{
+  border: 2px solid #ffffb3b3;
+  border-radius: 5px;
+  padding: 1.5em;
+  max-width: 780px;
+  margin: 2em auto;
+  box-shadow: 0px 0px 20px #7f8000;
+
+  .card-content{
+    display: flex;
+  }
+
+  .post-title{
+    font-size: 2em;
+    font-weight: normal;
+    border-top: 1px solid #fff;
+    padding-bottom: .4em;
+    
+    a{
+      font-family: 'Belshaw' !important;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  
+  .card-post-txt-container{
+    color: #fff;
+    
+    a{
+      color: #fff;
+    }
+    
+  }
+  
+  .post-avatar-container{
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    margin-right: .8em;
+    
+    img{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card-post-img-container{
+    width: 280px;
+    height: 200px;
+    flex: none;
+    margin-right: 2em;
+    
+    a{
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    img{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .post-author-date{
+    display: flex;
+    color: #fff;
+
+    .post-username{
+      font-family: 'Oswald';
+      font-weight: 300;
+      align-self: center;
+    }
+    
+    .date{
+      color: #fff;
+      font-family: 'Oswald';
+      display: block;
+      text-align: right;
+      flex-grow: 1;
+      font-size: .8em;
+      align-self: center;
+    }
+  }
+
+  .Lead_paragraph{
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  .read_more{
+    font-size: 1.2em;
+    text-decoration: none;
+    font-family: 'Oswald';
+    text-align: right;
+    display: block;
+  }
+
+}
