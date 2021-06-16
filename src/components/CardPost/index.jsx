@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import BtnLangage from "components/BtnLangage";
 
 import img_post from 'assets/images/image-test.png';
@@ -6,7 +6,24 @@ import avatar from 'assets/images/avatar.jpg';
 
 
 const CardPost = (article) => {
- console.log(article.data.id)
+
+  const [User, setUser] = useState([])
+
+  useEffect(() => {
+
+    fetch(`http://localhost:3000/users/${article.data.user_id}`,{
+      method:'GET',
+    })
+    .then((response) => response.json())
+    .then((dataUser) => {
+      setUser(dataUser);
+
+      })
+    .catch(err => console.error(err));
+
+  }, [article])
+
+ console.log(article.data.user_id)
 return(
   <div className="card-post">
     <BtnLangage />
@@ -16,8 +33,8 @@ return(
         <img src={avatar} alt="" />
         <div className="retro-filter"></div>
       </a>
-      <h4 className="post-username">Black Widow</h4>
-      <span className="date">26/06/2021</span>
+      <h4 className="post-username">{User.username} </h4>
+      <span className="date">{article.data.created_at.substring(0, 10)}</span>
     </div>
     <div className="card-post-img-container">
       <a href="/">
