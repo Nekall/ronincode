@@ -1,14 +1,14 @@
 import React from 'react'
 import Hero from "components/Hero";
-import CardGroupArticle from "components/CardGroupArticle";
+// import Profile from "components/Profile";
 
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero />
-      <CardGroupArticle />
-    </div>
+      {/* <Profile /> */}
+    </>
   )
 
 }

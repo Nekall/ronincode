@@ -41,3 +41,44 @@
     font-weight: normal;
   }
 }
+
+
+.heroMini{
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+
+  .hero-background{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
+
+  .hero-txt-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // background: #00ff3873;
+  }
+
+  .hero-txt{
+    color: #fff;
+    object-fit: contain;
+    width: 844px;
+    font-family: 'Belshaw';
+    font-weight: normal;
+    // background: #ff000073;
+    margin: auto;
+
+    h2{
+      margin-top: 150px;
+      font-size: 3.5em;
+    }
+    
+    h3{
+      font-size: 2em;
+      
+    }
+  }
+}

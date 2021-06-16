@@ -1,0 +1,60 @@
+.profile-container{
+  max-width: 1200px;
+  margin: auto;
+  padding: 2em;
+  color: #fff;
+  background: #00800061;
+
+  .infos-container{
+    display: flex;
+
+    .avatar-container{
+      width: 175px;
+      height: 175px;
+      flex: none;
+      border: 10px solid #fff;
+  
+      .avatar-content{
+        position: absolute;
+        width: 175px;
+        height: 175px;
+        object-fit: cover;
+        
+        .avatar{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    } 
+
+    .txt-container{
+      padding-left: 2em;
+
+      .contact{
+        display: flex;
+       
+        .username{
+          font-size: 2em;
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+.mentoring-section{
+  display: flex;
+
+  ul{
+    flex: 1;
+    list-style-type: none;
+
+    a{
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+}
