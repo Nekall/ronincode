@@ -19,7 +19,7 @@ const App = () => (
     <Provider store={store}>
       <Router>
         <Navbar />
-        <main>
+        {/* <main> */}
           <Switch>
             <Route path="/" exact>
               <Home />
@@ -31,7 +31,7 @@ const App = () => (
               <Articles />
             </Route>
           </Switch>
-        </main>
+        {/* </main> */}
         <Footer />
       </Router>
     </Provider>
