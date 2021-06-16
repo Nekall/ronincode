@@ -9,13 +9,13 @@ const CardPost = () => (
 
   <div className="card-post">
     <BtnLangage />
-    <h3><a href="/" className="title-post">Le guide du débutant : quelles différences entre&nbsp;UX/UI ?</a></h3>
-    <div className="post-avatar">
-      <a href="/" className="post-avatar-img-container">
+    <h3 className="post-title"><a href="/">Le guide du débutant : quelles différences entre&nbsp;UX/UI ?</a></h3>
+    <div className="post-author-date">
+      <a href="/" className="post-avatar-container">
         <img src={avatar} alt="" />
         <div className="retro-filter"></div>
       </a>
-      <h4>Black Widow</h4>
+      <h4 className="post-username">Black Widow</h4>
       <span className="date">26/06/2021</span>
     </div>
     <div className="card-post-img-container">
