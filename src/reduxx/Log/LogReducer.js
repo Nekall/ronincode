@@ -1,14 +1,14 @@
 import Cookies from 'js-cookie'
 import { LOG_OUT, LOG_SUCCESS, LOG_FAILURE } from './LogTypes'
 
-const cookie = Cookies.get('id');
+// const cookie = Cookies.get('id');
 
 const initialState = {
-  logged: cookie ? true : false,
+  // logged: cookie ? true : false,
   data: [],
   error: '',
-  token : Cookies.get('token'),
-  userID : Cookies.get('id'),
+  // token : Cookies.get('token'),
+  // userID : Cookies.get('id'),
 }
 
 const LogReducer = (state = initialState, action) => {
@@ -23,8 +23,8 @@ const LogReducer = (state = initialState, action) => {
           ...state,
           data : action.data,
           logged : action.logged,
-          token : action.data.jwt,
-          userID : action.data.user.id,
+          // token : action.data.jwt,
+          // userID : action.data.user.id,
         }
       case LOG_FAILURE:
         return {
