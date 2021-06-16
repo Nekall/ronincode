@@ -1,3 +1,18 @@
+.temp{
+
+  a{
+    color: #fff;
+    text-decoration: none;
+  }
+  ul{
+    flex: 1;
+    text-align: end;
+    margin-right: 2em;
+    list-style-type: none;
+  }
+}
+
+
 .navbar{
   display: flex;
   width: 100%;
