@@ -27,6 +27,32 @@ const Profile = () => (
         </div>
       </div>
 
+      <div className="date">
+        <ul>
+          Prochain rendez-vous
+          <li>
+            <div className="dm-container">
+              <div className="day">20</div>
+              <div className="month">septembre</div>
+            </div>
+            <div className="txt-container">
+              <div className="title">14h30 : Mentorat - Mentor : <a href="/">Day101</a></div>
+              <BtnLangage />
+            </div>
+          </li>
+          <li>
+            <div className="dm-container">
+              <div className="day">20</div>
+              <div className="month">septembre</div>
+            </div>
+            <div className="txt-container">
+              <div className="title">14h30 : Mentorat - Mentor : <a href="/">Day101</a></div>
+              <BtnLangage />
+            </div>
+          </li>
+        </ul>
+      </div>
+
       <div className="mentoring-section">
         <ul>
           <div className="title">Mentors</div>
@@ -42,7 +68,7 @@ const Profile = () => (
         </ul>
       </div>
 
-      <div>
+      <div className="cardGroupCompact">
         <CardPostCompact />
         <CardPostCompact />
         <CardPostCompact />
