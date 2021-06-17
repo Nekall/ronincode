@@ -6,6 +6,7 @@ import Signup from 'pages/Signup';
 import Signin from 'pages/Signin';
 import Articles from 'pages/Articles';
 import UserProfile from 'pages/UserProfile';
+import CreateArticle from 'pages/CreateArticle';
 import Message from 'pages/Message';
 import Footer from "components/Footer";
 import "style/main.scss";
@@ -28,6 +29,9 @@ const App = () => (
             </Route>
             <Route path="/signin" exact>
               <Signin />
+            </Route>
+            <Route path="/new_article" exact>
+              <CreateArticle />
             </Route>
             <Route path="/articles" exact>
               <Articles />
