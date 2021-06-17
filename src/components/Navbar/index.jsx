@@ -35,6 +35,7 @@ const Navbar = () => {
       <ul >
         {logged ? 
           <>
+            <li><a href="/new_article">Créer un Article</a></li>
             <li>
               <Link to="/signup">
                 <img src={calendar} alt="Agenda" className="icon"/>

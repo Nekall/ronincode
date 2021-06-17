@@ -19,7 +19,7 @@ const Signup = () => {
     }
   }
 
-  const url = "http://localhost:3000/users/sign_in"
+  const url = "https://ronincode.herokuapp.com/users/sign_in"
 
   const handleFetch = (e) => {
     e.preventDefault();
