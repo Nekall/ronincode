@@ -47,8 +47,8 @@ const Signup = () => {
   return (
     <form onSubmit={handleFetch} >
       <h1 className="titleForm">Se connecter</h1>
-      <input type="email" value={email} placeholder="Entrez votre email" onChange={(e) => setEmail(e.target.value)}></input>
-      <input type="password" value={password} placeholder="Entrez votre mot de passe" onChange={(e) => setPassword(e.target.value)}></input>
+      <input type="email" value={email} required placeholder="Entrez votre email" onChange={(e) => setEmail(e.target.value)}></input>
+      <input type="password" value={password} required placeholder="Entrez votre mot de passe" onChange={(e) => setPassword(e.target.value)}></input>
       <button >Valider</button>
     </form>
   )
