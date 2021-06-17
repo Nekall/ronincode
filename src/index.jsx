@@ -50,16 +50,14 @@ const App = () => {
             <Route path="/message" exact>
               <Message />
             </Route>
-<<<<<<< HEAD
             <Route path="/articles/:articleSlug">
               <ShowArticle />
             </Route>
             <Route path="/editarticles/:articleSlug">
               <EditArticle />
-=======
+            </Route>
             <Route path={`/users/${id}/edit`}exact>
               <EditProfile />
->>>>>>> 52b878d948c41ac6e2022f23b8d8aa6639cfecea
             </Route>
           </Switch>
         <Footer />
