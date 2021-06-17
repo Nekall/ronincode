@@ -11,7 +11,6 @@ const CreateArticle = () => {
     const token = Cookies.get('token')
 
     const history = useHistory()
-    console.log(token)
 
     const inputData = {
       resource: {
@@ -38,13 +37,17 @@ const CreateArticle = () => {
         body : JSON.stringify(inputData)
       })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data.id)
-        alert("Article crée")
-        history.push(`/article/${data.id}`)
-      })
+      .then(data => {
+        if(data === undefined){
+          alert("error")
+         } else {
+            console.log(data.id)
+            alert("Article crée")
+            history.push(`/articles/${data.id}`)
+          }
+        })
+      } 
 
-    }
     
     return (
       <div className = "NewArticle">

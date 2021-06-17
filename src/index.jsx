@@ -7,6 +7,8 @@ import Signin from 'pages/Signin';
 import Articles from 'pages/Articles';
 import UserProfile from 'pages/UserProfile';
 import CreateArticle from 'pages/CreateArticle';
+import ShowArticle from 'pages/ShowArticle';
+import EditArticle from 'pages/EditArticle';
 import Message from 'pages/Message';
 import Footer from "components/Footer";
 import "style/main.scss";
@@ -41,6 +43,12 @@ const App = () => (
             </Route>
             <Route path="/message" exact>
               <Message />
+            </Route>
+            <Route path="/articles/:articleSlug">
+              <ShowArticle />
+            </Route>
+            <Route path="/editarticles/:articleSlug">
+              <EditArticle />
             </Route>
           </Switch>
         <Footer />
