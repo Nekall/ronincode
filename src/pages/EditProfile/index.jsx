@@ -7,7 +7,7 @@ const EditProfile = () => {
   const token = Cookies.get('token')
   const [userinfo, setUserinfo] = useState('')
   let [isUpdate, setIsUpdate] = useState(1)
-  
+
 
   const [data, setData] = useState({
     username: userinfo.username,
@@ -31,8 +31,8 @@ const EditProfile = () => {
     bateau();
     fetch(`http://localhost:3000/users/${id}`, {
         method: 'PUT',
-        headers: { 
-          'Authorization': `${token}`, 
+        headers: {
+          'Authorization': `${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({user: data})
@@ -40,7 +40,7 @@ const EditProfile = () => {
       .then(response => response.json())
       .then(data => {console.log(data);
       });
-      
+
   };
 
   function bateau()  {
@@ -51,7 +51,7 @@ const EditProfile = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/users/${id}`,{ 
+    fetch(`http://localhost:3000/users/${id}`,{
       method:'GET',
     })
     .then((response) => response.json())
@@ -73,24 +73,24 @@ const EditProfile = () => {
       <p>{userinfo.lastname}</p>
 
       <form onSubmit={updateFetch}>
-          <label htmlFor="username"> Username :
-            <input type="text" name="username" onChange={handleChange}/>
-          </label>
-          <label htmlFor="email"> Email:
-            <input type="text" name="email" onChange={handleChange}/>
-          </label>
-          <label htmlFor="firstname"> Firstname :
-            <input type="text" name="firstname" onChange={handleChange}/>
-          </label>
-          <label htmlFor="lastname"> Lastname :
-            <input type="text" name="lastname" onChange={handleChange}/>
-          </label>
-          <label htmlFor="password"> Password :
-            <input type="text" name="password" onChange={handleChange}/>
-          </label>
-          <input type="submit" value="update" />
-        </form>
-          </div>
+        <label htmlFor="username"> Username :
+          <input type="text" name="username" onChange={handleChange}/>
+        </label>
+        <label htmlFor="email"> Email:
+          <input type="text" name="email" onChange={handleChange}/>
+        </label>
+        <label htmlFor="firstname"> Firstname :
+          <input type="text" name="firstname" onChange={handleChange}/>
+        </label>
+        <label htmlFor="lastname"> Lastname :
+          <input type="text" name="lastname" onChange={handleChange}/>
+        </label>
+        <label htmlFor="password"> Password :
+          <input type="text" name="password" onChange={handleChange}/>
+        </label>
+        <input type="submit" value="update" />
+      </form>
+    </div>
   );
 };
 
