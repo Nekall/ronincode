@@ -7,6 +7,7 @@ import './style.css'
 const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const dispatch = useDispatch()
   const history = useHistory()
   const inputData = {
@@ -19,33 +20,59 @@ const Signup = () => {
   const handleFetch = (e) => {
     e.preventDefault();
 
-    fetch("https://ronincode.herokuapp.com/users", {
-      method: 'POST',
-      headers: {
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(inputData)
-    })
-    .then(data => {
-      if(data.error !== undefined){
-        dispatch(LogFailure(data.error, false))
-        alert(data.error)
-      } else {
-        dispatch(LogSuccess(data, true))
-        history.push("/");
-        alert(data.message)
-      }
-    })
+    if (password !== confirmPassword) {
+        alert("Les mots de passe ne correspondent pas");
+    } else {
+      fetch("https://ronincode.herokuapp.com/users", {
+        method: 'POST',
+        headers: {
+          "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(inputData)
+      })
+      .then(data => {
+        if(data.error !== undefined){
+          dispatch(LogFailure(data.error, false))
+          alert(data.error)
+        } else {
+          dispatch(LogSuccess(data, true))
+          history.push("/");
+          alert(data.message)
+        }
+      })
+    }
   }
 
 
   return (
-    <form onSubmit={handleFetch} >
-      <h1 className="title-form">Créer un compte</h1>
-      <input type="email" value={email} required placeholder="Email" onChange={(e) => setEmail(e.target.value)}></input>
-      <input type="password" value={password} required placeholder="Mot de passe" onChange={(e) => setPassword(e.target.value)}></input>
-      <button >Valider</button>
-    </form>
+    <div>
+      <div className="login-box">
+        <h2>Créer un compte</h2>
+        <form onSubmit={handleFetch}>
+          <div className="user-box">
+            <label className="label-form-log">Email</label>
+            <input type="email" value={email} required onChange={(e) => setEmail(e.target.value)}></input>
+          </div>
+
+          <div className="user-box">
+            <label className="label-form-log">Mot de passe</label>
+            <input type="password" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)}></input>
+          </div>
+
+          <div className="user-box">
+            <label className="label-form-log">Confirmation du mot de passe</label>
+            <input type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
+          </div>
+          <button>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Connexion
+          </button>
+        </form>
+      </div>
+    </div>
   )
 }
 

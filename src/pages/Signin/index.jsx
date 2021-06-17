@@ -40,20 +40,34 @@ const Signin = () => {
         dispatch(LogSuccess(dataFetch, true))
         Cookies.set('id', dataFetch.id)
         history.push("/");
-        alert(dataFetch.message)
       }
     })
   }
 
   return (
-    <form onSubmit={handleFetch} >
-      <h1 className="title-form">Se connecter</h1>
-      <input type="email" value={email} required placeholder="Email" onChange={(e) => setEmail(e.target.value)}></input>
-      <input type="password" value={password} required placeholder="Mot de passe" onChange={(e) => setPassword(e.target.value)}></input>
-      <button >Connexion</button>
-    </form>
+    <div>
+      <div className="login-box">
+        <h2>Se connecter</h2>
+        <form onSubmit={handleFetch}>
+          <div className="user-box">
+            <label className="label-form-log">Username</label>
+            <input type="email" value={email} required onChange={(e) => setEmail(e.target.value)}></input>
+          </div>
+          <div className="user-box">
+            <label className="label-form-log">Password</label>
+            <input type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
+          </div>
+          <button>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Connexion
+          </button>
+        </form>
+      </div>
+    </div>
   )
-
 }
 
 export default Signin
