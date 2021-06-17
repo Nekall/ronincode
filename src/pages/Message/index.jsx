@@ -9,7 +9,7 @@ const Message = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/Messages`,{
+    fetch(`http://localhost:3000/privatemessagings/1/messages`,{
       method:'GET',
     })
     .then((response) => response.json())

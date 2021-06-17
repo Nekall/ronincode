@@ -5,6 +5,7 @@ import Home from 'pages/Home';
 import Signup from 'pages/Signup';
 import Signin from 'pages/Signin';
 import Articles from 'pages/Articles';
+import Message from 'pages/Message';
 import Footer from "components/Footer";
 import "style/main.scss";
 import { store } from 'reduxx/store';
@@ -33,6 +34,9 @@ const App = () => (
             </Route>
             <Route path="/articles" exact>
               <Articles />
+            </Route>
+            <Route path="/message" exact>
+              <Message />
             </Route>
           </Switch>
         {/* </main> */}
