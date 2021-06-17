@@ -1,5 +1,5 @@
 import React from 'react';
-import brand_logo from 'assets/images/ronincode-logo-20210617-4.png';
+import brand_logo from 'assets/images/ronincode-logo.png';
 
 const Logo = () => (
 
