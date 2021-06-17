@@ -9,7 +9,7 @@ const Message = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/privatemessagings/1/messages`,{
+    fetch(`https://ronincode.herokuapp.com/privatemessagings/1/messages`,{
       method:'GET',
     })
     .then((response) => response.json())

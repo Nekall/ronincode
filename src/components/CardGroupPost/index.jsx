@@ -10,7 +10,7 @@ const CardGroupPost = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/resources`,{
+    fetch(`https://ronincode.herokuapp.com/resources`,{
       method:'GET',
     })
     .then((response) => response.json())
