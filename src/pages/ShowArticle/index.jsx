@@ -6,9 +6,6 @@ import { useHistory } from 'react-router-dom'
 
 
 const ShowArticle = () => { 
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [lead, setLead] = useState('')
     const { articleSlug } = useParams();
     const [article, setArticle] = useState([])
     const history = useHistory()
