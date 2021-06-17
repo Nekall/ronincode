@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux' 
 import { LogFailure, LogSuccess } from 'reduxx/Log/LogActions';
-// import Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 
 import './style.css'
 
@@ -12,11 +12,9 @@ const Signup = () => {
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
   const history = useHistory()
+  let token;
 
-
-
-
-  const data = {
+  const inputData = {
     user: {
       username: username,
       email: email,
@@ -34,27 +32,37 @@ const Signup = () => {
       headers: {
         "Content-Type" : "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(inputData)
     })
-    .then((dataFetch) => {
-      if(dataFetch.status === "error"){
-        dispatch(LogFailure(dataFetch.message, false))
+    .then((response) => {
+      console.log(response)
+      token = response.headers.get('Authorization');
+      Cookies.set('token', token);
+      console.log(Cookies.get('token'));
+      return response.json();
+    })
+    .then(data => {
+      if(data.error !== undefined){
+        dispatch(LogFailure(data.error, false))
+        alert(data.error)
+
       } else {
-        dispatch(LogSuccess(dataFetch, true))
-        console.log(dataFetch)
+        dispatch(LogSuccess(data, true))
+        console.log(data)
+        Cookies.set('id', data.id)
         history.push("/");
-        alert("You signed up")
+        alert(data.message)
       }
     })
-
-  } 
+  }
+ 
 
   return (
     <form onSubmit={handleFetch} >
       <h1 className="titleForm">Créer son compte</h1>
-      <input type="username" value={username}  placeholder="Entrez votre pseudo" onChange={(e) => setUsername(e.target.value)}></input>
-      <input type="email" value={email} placeholder="Entrez votre email" onChange={(e) => setEmail(e.target.value)}></input>
-      <input type="password" value={password} placeholder="Entrez votre mot de passe" onChange={(e) => setPassword(e.target.value)}></input>
+      <input type="username" value={username} required placeholder="Entrez votre pseudo" onChange={(e) => setUsername(e.target.value)}></input>
+      <input type="email" value={email} required placeholder="Entrez votre email" onChange={(e) => setEmail(e.target.value)}></input>
+      <input type="password" value={password} required placeholder="Entrez votre mot de passe" onChange={(e) => setPassword(e.target.value)}></input>
       <button >Valider</button>
     </form>
   )
