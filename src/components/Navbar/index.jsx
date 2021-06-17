@@ -31,9 +31,9 @@ const Navbar = () => {
           <h2>Publications</h2>
         </Link>
       </div>
-      
+
       <ul >
-        {logged ? 
+        {logged ?
           <>
             <li><a href="/new_article">Créer un Article</a></li>
             <li>

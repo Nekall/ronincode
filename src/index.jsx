@@ -9,15 +9,21 @@ import UserProfile from 'pages/UserProfile';
 import CreateArticle from 'pages/CreateArticle';
 import ShowArticle from 'pages/ShowArticle';
 import EditArticle from 'pages/EditArticle';
+import EditProfile from 'pages/EditProfile';
 import Message from 'pages/Message';
 import Footer from "components/Footer";
 import "style/main.scss";
 import { store } from 'reduxx/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
-const App = () => (
-  
+const App = () => {
+
+
+
+  const id = Cookies.get('id')
+  return(
   <>
     <Provider store={store}>
       <Router>
@@ -38,23 +44,29 @@ const App = () => (
             <Route path="/articles" exact>
               <Articles />
             </Route>
-            <Route path="/users/2" exact>
+            <Route path={`/users/${id}`} exact>
               <UserProfile />
             </Route>
             <Route path="/message" exact>
               <Message />
             </Route>
+<<<<<<< HEAD
             <Route path="/articles/:articleSlug">
               <ShowArticle />
             </Route>
             <Route path="/editarticles/:articleSlug">
               <EditArticle />
+=======
+            <Route path={`/users/${id}/edit`}exact>
+              <EditProfile />
+>>>>>>> 52b878d948c41ac6e2022f23b8d8aa6639cfecea
             </Route>
           </Switch>
         <Footer />
       </Router>
     </Provider>
   </>
-);
+  )
+};
 
 render(<App />, document.getElementById("root"));
