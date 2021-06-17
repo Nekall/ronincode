@@ -1,7 +1,7 @@
 import React from 'react';
 import img_hero from 'assets/images/tokyo.png';
 import img_hackerman from 'assets/images/hackerman.png';
-import img_logo from 'assets/images/ronincode-logo-20210610-3.png';
+import img_logo from 'assets/images/ronincode-logo-20210617-4.png';
 
 const HeroMini = () => (
   <div className="heroMini">

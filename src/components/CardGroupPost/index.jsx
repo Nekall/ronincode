@@ -23,17 +23,15 @@ const CardGroupPost = () => {
   }, [])
 
 
-
-
   return(
 
-    <div>{Articles && Articles.map((article) =>
-      <div className="card-post-container">
-        <CardPost data={article}/>
-        
-      </div>
-    )}
-    </div>
+    <div className="card-post-container">
+      {Articles && Articles.map((article) =>
+        <div>
+          <CardPost data={article}/>
+        </div>
+      )}
+    </div> 
   )
   
 };
