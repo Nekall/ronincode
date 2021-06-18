@@ -35,6 +35,7 @@ const Signin = () => {
     .then((dataFetch) => {
       if(dataFetch.status === "error"){
         dispatch(LogFailure(dataFetch.message, false))
+        alert(data.error)
       } else {
         dispatch(LogSuccess(dataFetch, true))
         Cookies.set('id', dataFetch.id)

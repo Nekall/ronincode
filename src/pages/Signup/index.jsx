@@ -37,7 +37,6 @@ const Signup = () => {
         } else {
           dispatch(LogSuccess(data, true))
           history.push("/");
-          alert(data.message)
         }
       })
     }
