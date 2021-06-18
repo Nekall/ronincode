@@ -1,0 +1,72 @@
+
+.Appointment{
+  width: 80%;
+  margin:auto;
+  display: flex;
+}
+
+.ContentAppointment{
+  display: flex;
+}
+
+.Appointment h1 {
+  color:white;
+  margin: 1em;
+}
+
+.Appointment h3 {
+  color:white;
+  margin: 1.5em;
+}
+
+.Appointment p {
+  color:white;
+  margin: 1.5em;
+}
+
+.Appointment input, textarea, button {
+  color:black;
+  margin: 1em;
+}
+
+button{
+  cursor: pointer;
+}
+
+
+.AppointmentLead {
+  height: 150px;
+  font-family: arial;
+}
+
+
+.form{
+  display: flex;
+}
+
+.FirstColumn{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 1em;
+}
+
+.SecondColumn{
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.Technologies {
+  padding: 1em;
+  border:1px;
+}
+
+.Technologies h2, label {
+  color: white;
+}
+
+.Options{
+  display: flex;
+  flex-wrap: wrap;
+}

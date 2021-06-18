@@ -36,8 +36,9 @@ const Navbar = () => {
         {logged ?
           <>
             <li><a href="/new_article">Créer un Article</a></li>
+            <li><a href="/new_rendezvous">Créer un RDV</a></li>
             <li>
-              <Link to="/signup">
+              <Link to="/">
                 <img src={calendar} alt="Agenda" className="icon"/>
               </Link>
             </li>

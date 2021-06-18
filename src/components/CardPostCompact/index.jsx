@@ -11,7 +11,7 @@ const CardPostCompact = (article) => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/users/${article.data.user_id}`,{
+    fetch(`https://ronincode.herokuapp.com/users/${article.data.user_id}`,{
       method:'GET',
     })
     .then((response) => response.json())

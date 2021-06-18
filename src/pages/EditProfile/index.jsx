@@ -29,7 +29,7 @@ const EditProfile = () => {
   const updateFetch = (e) => {
     e.preventDefault();
     bateau();
-    fetch(`http://localhost:3000/users/${id}`, {
+    fetch(`https://ronincode.herokuapp.com/users/${id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `${token}`,
@@ -51,7 +51,7 @@ const EditProfile = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/users/${id}`,{
+    fetch(`https://ronincode.herokuapp.com/users/${id}`,{
       method:'GET',
     })
     .then((response) => response.json())
