@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import Cookies from 'js-cookie';
+import {useHistory} from 'react-router-dom'
 
 const EditProfile = () => {
 
   const id = Cookies.get('id')
   const token = Cookies.get('token')
   const [userinfo, setUserinfo] = useState('')
-  let [isUpdate, setIsUpdate] = useState(1)
+  const history = useHistory();
 
 
   const [data, setData] = useState({
@@ -22,14 +23,14 @@ const EditProfile = () => {
       ...data,
       [e.target.name]: e.target.value
     })
-    console.log(data);
+    
   };
 
 
   const updateFetch = (e) => {
     e.preventDefault();
-    bateau();
-    fetch(`http://localhost:3000/users/${id}`, {
+    
+    fetch(`https://ronincode.herokuapp.com/users/${id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `${token}`,
@@ -38,29 +39,29 @@ const EditProfile = () => {
         body: JSON.stringify({user: data})
       })
       .then(response => response.json())
-      .then(data => {console.log(data);
-      });
-
+      
+       
+      // e.target.reset();
+      history.push(`/users/${id}`);
   };
 
-  function bateau()  {
-    console.log(isUpdate);
-    setIsUpdate(isUpdate + 1)
-    console.log(isUpdate);
-  }
+ 
 
-  useEffect(() => {
 
-    fetch(`http://localhost:3000/users/${id}`,{
+  const getFetch = () => {
+    fetch(`https://ronincode.herokuapp.com/users/${id}`,{
       method:'GET',
     })
     .then((response) => response.json())
     .then((dataUser) => {
       setUserinfo(dataUser);
-
       })
     .catch(err => console.error(err));
 
+  }
+
+  useEffect(() => {
+    getFetch();
   }, [])
 
   return (
@@ -74,19 +75,19 @@ const EditProfile = () => {
 
       <form onSubmit={updateFetch}>
         <label htmlFor="username"> Username :
-          <input type="text" name="username" onChange={handleChange}/>
+          <input type="text" name="username"  onChange={handleChange}/>
         </label>
         <label htmlFor="email"> Email:
-          <input type="text" name="email" onChange={handleChange}/>
+          <input type="text" name="email"  onChange={handleChange}/>
         </label>
         <label htmlFor="firstname"> Firstname :
-          <input type="text" name="firstname" onChange={handleChange}/>
+          <input type="text" name="firstname"  onChange={handleChange}/>
         </label>
         <label htmlFor="lastname"> Lastname :
-          <input type="text" name="lastname" onChange={handleChange}/>
+          <input type="text" name="lastname"  onChange={handleChange}/>
         </label>
         <label htmlFor="password"> Password :
-          <input type="text" name="password" onChange={handleChange}/>
+          <input type="text" name="password"  onChange={handleChange}/>
         </label>
         <input type="submit" value="update" />
       </form>

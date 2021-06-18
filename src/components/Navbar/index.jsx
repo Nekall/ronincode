@@ -14,6 +14,9 @@ const Navbar = () => {
 
   const { logged } = useSelector(state => state);
 
+
+  const id = Cookies.get('id')
+
   const handleClick = (e) => {
     e.preventDefault();
     Cookies.remove('token');
@@ -47,7 +50,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/users/2">
+              <Link to={`/users/${id}`}>
                 <img src={profile} alt="Mon profil" className="icon"/>
               </Link>
             </li>

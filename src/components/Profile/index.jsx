@@ -2,43 +2,29 @@ import React, {useState, useEffect} from 'react';
 import avatar from 'assets/images/avatar.jpg';
 import BtnLangage from 'components/BtnLangage';
 import CardPostCompact from 'components/CardPostCompact';
-
+import Cookies from 'js-cookie';
+import { useParams } from 'react-router-dom';
 const Profile = () => {
 
-
+  const id = Cookies.get('id')
   const [User, setUser] = useState([])
+  const {userId} = useParams();
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/users/1`,{ 
+    fetch(`https://ronincode.herokuapp.com/users/${id}`,{ 
       method:'GET',
     })
     .then((response) => response.json())
     .then((dataUser) => {
       setUser(dataUser);
-
+      
       })
     .catch(err => console.error(err));
 
   }, [])
-
-  const [Articles, setArticles] = useState([])
-
-
-  useEffect(() => {
-
-    fetch(`http://localhost:3000/resources`,{
-      method:'GET',
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      setArticles(data);
-
-      })
-    .catch(err => console.error(err));
-
-  }, [])
-
+  console.log(`userID: ${userId}`);
+  
   return(
     <>
       <div className="profile-container">
@@ -53,9 +39,10 @@ const Profile = () => {
 
           <div className="txt-container">
             <div className="contact">
-              <div className="username">{User.username}</div>
+              <div className="username">{User.username} ({User.firstname} {User.lastname})</div>
               <a href="/" className="btn-message">Prendre RDV</a>
               <a href="/" className="btn-message">Message</a>
+              <a href={`/users/${id}/edit`} className="btn-message">Edit Profile</a>
             </div>
 
             <BtnLangage />
@@ -104,10 +91,11 @@ const Profile = () => {
           </ul>
         </div>
         <div className="cardGroupCompact">
-          {Articles && Articles.map((article) =>
+          {User.resources && User.resources.map((article) => {
               <div>
                 <CardPostCompact data={article}/>
               </div>
+          }  
           )}
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import BtnLangage from "components/BtnLangage";
 
 import img_post from 'assets/images/image-test.png';
@@ -6,23 +6,8 @@ import avatar from 'assets/images/avatar.jpg';
 
 
 const CardPostCompact = (article) => {
-
-  const [User, setUser] = useState([])
-
-  useEffect(() => {
-
-    fetch(`http://localhost:3000/users/${article.data.user_id}`,{
-      method:'GET',
-    })
-    .then((response) => response.json())
-    .then((dataUser) => {
-      setUser(dataUser);
-
-      })
-    .catch(err => console.error(err));
-
-  }, [article])
-
+  console.log(article.data.title);
+  
 
   return(
     <div className="card-postCompact">
@@ -38,7 +23,7 @@ const CardPostCompact = (article) => {
         <div className="txt-content">
           <BtnLangage />
           <div className="post-author-date">
-            <h4 className="post-username">{User.username}</h4>
+            <h4 className="post-username">{article.data.title}</h4>
             <span className="date">{article.data.created_at.substring(0, 10)}</span>
           </div>
           <h3 className="post-title"><a href="/">{article.data.title}</a></h3>
