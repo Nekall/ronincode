@@ -12,7 +12,9 @@ const Profile = () => {
 
   useEffect(() => {
 
+
     fetch(`https://ronincode.herokuapp.com/users/${id}`,{ 
+
       method:'GET',
     })
     .then((response) => response.json())
@@ -23,8 +25,7 @@ const Profile = () => {
     .catch(err => console.error(err));
 
   }, [])
-  console.log(`userID: ${userId}`);
-  
+
   return(
     <>
       <div className="profile-container">

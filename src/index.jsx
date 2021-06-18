@@ -7,7 +7,9 @@ import Signin from 'pages/Signin';
 import Articles from 'pages/Articles';
 import UserProfile from 'pages/UserProfile';
 import CreateArticle from 'pages/CreateArticle';
+import CreateAppointment from 'pages/CreateAppointment';
 import ShowArticle from 'pages/ShowArticle';
+import ShowAppointment from 'pages/ShowAppointment';
 import EditArticle from 'pages/EditArticle';
 import EditProfile from 'pages/EditProfile';
 import Message from 'pages/Message';
@@ -40,6 +42,12 @@ const App = () => {
             </Route>
             <Route path="/new_article" exact>
               <CreateArticle />
+            </Route>
+            <Route path="/new_rendezvous" exact>
+              <CreateAppointment />
+            </Route>
+            <Route path="/rendezvous/:appointmentSlug">
+              <ShowAppointment />
             </Route>
             <Route path="/articles" exact>
               <Articles />

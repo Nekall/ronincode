@@ -6,8 +6,24 @@ import avatar from 'assets/images/avatar.jpg';
 
 
 const CardPostCompact = (article) => {
-  console.log(article.data.title);
-  
+
+  const [User, setUser] = useState([])
+
+  useEffect(() => {
+
+    fetch(`https://ronincode.herokuapp.com/users/${article.data.user_id}`,{
+      method:'GET',
+    })
+    .then((response) => response.json())
+    .then((dataUser) => {
+      setUser(dataUser);
+
+      })
+    .catch(err => console.error(err));
+
+  }, [article])
+
+
 
   return(
     <div className="card-postCompact">

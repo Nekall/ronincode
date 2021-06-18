@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { LogFailure, LogSuccess } from 'reduxx/Log/LogActions';
 import Cookies from 'js-cookie'
-import './style.css'
 
 const Signin = () => {
   const [email, setEmail] = useState('')

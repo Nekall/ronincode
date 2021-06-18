@@ -29,7 +29,7 @@ const EditProfile = () => {
 
   const updateFetch = (e) => {
     e.preventDefault();
-    
+
     fetch(`https://ronincode.herokuapp.com/users/${id}`, {
         method: 'PUT',
         headers: {
@@ -48,7 +48,9 @@ const EditProfile = () => {
  
 
 
+
   const getFetch = () => {
+
     fetch(`https://ronincode.herokuapp.com/users/${id}`,{
       method:'GET',
     })
