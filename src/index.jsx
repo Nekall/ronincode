@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
+// import NavbarOld from "components/NavbarOld";
 import Navbar from "components/Navbar";
 import Home from 'pages/Home';
 import Signup from 'pages/Signup';
@@ -27,6 +28,7 @@ const App = () => {
   <>
     <Provider store={store}>
       <Router>
+        {/* <NavbarOld /> */}
         <Navbar />
           <Switch>
             <Route path="/" exact>
