@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import BtnLangage from "components/BtnLangage";
 
 import img_post from 'assets/images/image-test.png';
