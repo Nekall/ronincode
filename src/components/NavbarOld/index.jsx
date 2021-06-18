@@ -23,7 +23,7 @@ const NavbarOld = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbarOld">
       <Logo />
       <div className="publications">
         <Link to="/articles">

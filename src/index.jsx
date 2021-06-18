@@ -21,8 +21,6 @@ import Cookies from 'js-cookie';
 
 const App = () => {
 
-
-
   const id = Cookies.get('id')
   return(
   <>

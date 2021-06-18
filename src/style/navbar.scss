@@ -29,11 +29,24 @@ a {
 
 /* <nav> */
 .navbar {
-  height: var(--nav-size);
-  background-color: var(--bg);
-  padding: 0 1rem;
-  border-bottom: var(--border);
+  display: flex;
+  padding: 0 2em;
+  border-bottom: 1px solid #fca4db;
   z-index: 1;
+
+  .brand-nav{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    img{
+      height: 50px;
+      margin: .8em 0;
+    }
+  }
+  .middle-bar{
+    flex:1;
+  }
 }
 
 /* <ul> */
@@ -42,11 +55,12 @@ a {
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  align-self: center;
 }
 
 /* <li> */
 .nav-item {
-  width: calc(var(--nav-size) * 0.8);
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
