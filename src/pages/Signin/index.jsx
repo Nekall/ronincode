@@ -7,6 +7,7 @@ import Cookies from 'js-cookie'
 const Signin = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const dispatch = useDispatch()
   const history = useHistory()
   let token;
@@ -32,14 +33,15 @@ const Signin = () => {
       Cookies.set('token', token);
       return response.json();
     })
-    .then((dataFetch) => {
-      if(dataFetch.status === "error"){
-        dispatch(LogFailure(dataFetch.message, false))
-        alert(data.error)
-      } else {
-        dispatch(LogSuccess(dataFetch, true))
-        Cookies.set('id', dataFetch.id)
+    .then((data) => {
+      if(data.id){
+        dispatch(LogSuccess(data, true))
+        Cookies.set('id', data.id)
         history.push("/");
+      } else {
+        dispatch(LogFailure(data.message, false))
+        Cookies.remove('token');
+        setError(data.message + 'Vérifiez votre adresse mail et votre mot de passe.') //a ajouter dans le render
       }
     })
   }
@@ -50,12 +52,13 @@ const Signin = () => {
         <h2>Se connecter</h2>
         <form onSubmit={handleFetch}>
           <div className="user-box">
-            <label className="label-form-log">Username</label>
+            <label className="label-form-log">Email</label>
             <input type="email" value={email} required onChange={(e) => setEmail(e.target.value)}></input>
           </div>
           <div className="user-box">
-            <label className="label-form-log">Password</label>
+            <label className="label-form-log">Mot de passe</label>
             <input type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
+          <div className="error-message">{error}</div>
           </div>
           <button>
             <span></span>

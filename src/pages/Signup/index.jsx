@@ -32,12 +32,12 @@ const Signup = () => {
         body: JSON.stringify(inputData)
       })
       .then(data => {
-        if(data.error !== undefined){
-          dispatch(LogFailure(data.error, false))
-          alert(data.error)
-        } else {
+        if(data.ok){
           dispatch(LogSuccess(data, true))
           history.push("/");
+        } else {
+          dispatch(LogFailure(data.error, false))
+          setError('Un compte est déjà lié à cette adresse.')
         }
       })
     }
