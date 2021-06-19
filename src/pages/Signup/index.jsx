@@ -8,6 +8,7 @@ const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [error, setError] = useState('')
   const dispatch = useDispatch()
   const history = useHistory()
   const inputData = {
@@ -21,7 +22,7 @@ const Signup = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-        alert("Les mots de passe ne correspondent pas");
+        setError('Les mots de passe ne correspondent pas.')
     } else {
       fetch("https://ronincode.herokuapp.com/users", {
         method: 'POST',
@@ -61,6 +62,7 @@ const Signup = () => {
           <div className="user-box">
             <label className="label-form-log">Confirmation du mot de passe</label>
             <input type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
+            <div className="error-message">{error}</div>
           </div>
           <button>
             <span></span>
