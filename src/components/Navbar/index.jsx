@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const { logged } = useSelector(state => state);
+  const logged = useSelector(state => state.logReducer.logged);
 
   const logOff = () => {
     Cookies.remove('token');
@@ -33,8 +33,8 @@ const Navbar = () => {
               <Link to="/nouvel-article">Créer un Article</Link>
             </li>
             <li>
-              <Link to="/creer-un-rendez-vous">Créer un RDV</Link><
-            /li>
+              <Link to="/creer-un-rendez-vous">Créer un RDV</Link>
+            </li>
             <li>
               <Link to="/">
                 <img src={calendar} alt="Agenda" className="icon"/>
