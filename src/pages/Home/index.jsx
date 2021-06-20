@@ -1,13 +1,23 @@
 import React from 'react'
 import Hero from "components/Hero";
-// import Profile from "components/Profile";
+import { useDispatch } from 'react-redux'
+import { FetchWithBody } from 'services/Fetch';
+import { useSelector } from "react-redux";
 
 
 const Home = () => {
+  const dispatch = useDispatch()
+  const alldata = useSelector(state => state.fetchReducer.alldata);
+
+  if(alldata == undefined){
+    dispatch(FetchWithBody("https://ronincode.herokuapp.com/resources", "get"))
+  }
+
+
   return (
     <>
       <Hero />
-      {/* <Profile /> */}
+      <h1>Il y a actuellement {alldata.length} articles chargés sur cette page</h1>
     </>
   )
 
