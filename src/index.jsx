@@ -4,7 +4,7 @@ import Navbar from "components/Navbar";
 import Home from 'pages/Home';
 import Signup from 'pages/Signup';
 import Signin from 'pages/Signin';
-import Articles from 'pages/Articles';
+import Blog from 'pages/Blog';
 import UserProfile from 'pages/UserProfile';
 import CreateArticle from 'pages/CreateArticle';
 import CreateAppointment from 'pages/CreateAppointment';
@@ -18,14 +18,8 @@ import "style/main.scss";
 import { store } from 'reduxx/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
-const App = () => {
-
-
-
-  const id = Cookies.get('id')
-  return(
+const App = () => (
   <>
     <Provider store={store}>
       <Router>
@@ -34,45 +28,44 @@ const App = () => {
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/signup" exact>
+            <Route path="/inscription">
               <Signup />
             </Route>
-            <Route path="/signin" exact>
+            <Route path="/se-connecter">
               <Signin />
             </Route>
-            <Route path="/new_article" exact>
+            <Route path="/blog" exact>
+              <Blog />
+            </Route>
+            <Route path="/nouvel-article">
               <CreateArticle />
             </Route>
-            <Route path="/new_rendezvous" exact>
+            <Route path="/creer-un-rendez-vous">
               <CreateAppointment />
             </Route>
             <Route path="/rendezvous/:appointmentSlug">
               <ShowAppointment />
             </Route>
-            <Route path="/articles" exact>
-              <Articles />
-            </Route>
-            <Route path={`/users/${id}`} exact>
+            <Route path="/profile">
               <UserProfile />
             </Route>
-            <Route path="/message" exact>
+            <Route path={`/profile/edit`} exact>
+              <EditProfile />
+            </Route>
+            <Route path="/messages" exact>
               <Message />
             </Route>
-            <Route path="/articles/:articleSlug">
+            <Route path="/blog/:articleSlug" exact>
               <ShowArticle />
             </Route>
-            <Route path="/editarticles/:articleSlug">
+            <Route path="/blog/edit/:articleSlug" exact>
               <EditArticle />
-            </Route>
-            <Route path={`/users/${id}/edit`}exact>
-              <EditProfile />
             </Route>
           </Switch>
         <Footer />
       </Router>
     </Provider>
   </>
-  )
-};
+);
 
 render(<App />, document.getElementById("root"));
