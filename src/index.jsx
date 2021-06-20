@@ -15,7 +15,7 @@ import EditProfile from 'pages/EditProfile';
 import Message from 'pages/Message';
 import Footer from "components/Footer";
 import "style/main.scss";
-import { store } from 'reduxx/store';
+import { store } from 'store/index';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 

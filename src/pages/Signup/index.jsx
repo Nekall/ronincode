@@ -1,7 +1,7 @@
 import React, { useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { LogFailure, LogSuccess } from 'reduxx/Log/LogActions';
+import { LogFailure, LogSuccess } from 'store/Log/LogActions';
 import '../../style/pages/sign.scss'
 
 const Signup = () => {
