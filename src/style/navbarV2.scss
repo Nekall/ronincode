@@ -1,3 +1,9 @@
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
 :root {
   --bg:  #242526;
   --bg-accent: #484a4d;
@@ -8,28 +14,39 @@
   --speed: 500ms; 
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;;
+}
+
+/* Top Navigation Bar */
+
+/* <nav> */
 .navbar {
-  height: var(--nav-size);
-  background-color: var(--bg);
-  padding: 0 1rem;
-  border-bottom: var(--border);
+  display: flex;
+  padding: 0 2em;
+  border-bottom: 1px solid #fca4db;
+  z-index: 1;
 
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
-  
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+  .brand-nav{
+    align-items: center;
+    justify-content: center;
+    display: flex;
 
-  a {
-    color: var(--text-color);
-    text-decoration: none;;
+    img{
+      height: 50px;
+      margin: .8em 0;
+    }
   }
-
+  .middle-bar{
+    flex:1;
+  }
 }
 
 /* <ul> */
@@ -38,11 +55,12 @@
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  align-self: center;
 }
 
 /* <li> */
 .nav-item {
-  width: calc(var(--nav-size) * 0.8);
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +71,7 @@
   --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: #484a4d;
+  // background-color: #484a4d;
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
