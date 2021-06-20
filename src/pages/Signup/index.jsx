@@ -69,7 +69,7 @@ const Signup = () => {
             <span></span>
             <span></span>
             <span></span>
-            Connexion
+            Inscription
           </button>
         </form>
       </div>
