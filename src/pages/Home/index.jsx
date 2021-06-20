@@ -9,7 +9,7 @@ const Home = () => {
   const dispatch = useDispatch()
   const alldata = useSelector(state => state.fetchReducer.alldata);
 
-  if(alldata == undefined){
+  if(alldata === undefined || alldata === null){
     dispatch(FetchWithBody("https://ronincode.herokuapp.com/resources", "get"))
   }
 
@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <h1>Il y a actuellement {alldata.length} articles chargés sur cette page</h1>
+      {alldata? <h1>Il y a actuellement {alldata.length} articles chargés sur cette page</h1> : '' }
     </>
   )
 
