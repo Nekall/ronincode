@@ -13,6 +13,7 @@ import ShowArticle from 'pages/ShowArticle';
 import ShowAppointment from 'pages/ShowAppointment';
 import EditArticle from 'pages/EditArticle';
 import EditProfile from 'pages/EditProfile';
+import Team from 'pages/Team';
 import Message from 'pages/Message';
 import Footer from "components/Footer";
 import "style/main.scss";
@@ -62,6 +63,9 @@ const App = () => (
             </Route>
             <Route path="/blog/edit/:articleSlug" exact>
               <EditArticle />
+            </Route>
+            <Route path="/team" exact>
+              <Team />
             </Route>
           </Switch>
         <Footer />
