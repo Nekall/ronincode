@@ -1,23 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
 import BtnLangage from 'components/BtnLangage';
 import CardPostCompact from 'components/CardPostCompact';
+import ModalCreateConversation from 'components/ModalCreateConversation';
+import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
 //import { useParams } from 'react-router-dom';
 
 const Profile = () => {
-  const [userData, setUserData] = useState([]);
   //let {userId} = useParams();
   let id = Cookies.get('id');
+  const {data: UserData, doFetch: fetchUser } = useFetch();
+
+  const FetchDataUser = () => {
+    fetchUser(`users/${id}`);
+  };
 
   useEffect(() => {
-    fetch(`https://ronincode.herokuapp.com/users/${id}`,{
-      method:'GET',
-    })
-    .then((response) => response.json())
-    .then((data) => {setUserData(data)})
-    .catch(err => console.error(err));
+    FetchDataUser();
   }, [])
 
   return(
@@ -32,9 +33,13 @@ const Profile = () => {
           </div>
           <div className="txt-container">
             <div className="contact">
-              <div className="username">{userData.username} ({userData.firstname} {userData.lastname})</div>
+              <div className="username">{UserData.username} ({UserData.firstname} {UserData.lastname})</div>
               <Link to="/" className="btn-message">Prendre RDV</Link>
-              <Link to="/" className="btn-message">Message</Link>
+              <Link to="/conversations" className="btn-message">Mes Conversations</Link>
+              <div>
+                <button>Crée une conversation avec {UserData.email}</button>
+                <ModalCreateConversation value={id} />
+              </div>
               <Link to={`/users/${id}/edit`} className="btn-message">Edit Profile</Link>
             </div>
             <BtnLangage />
@@ -81,7 +86,7 @@ const Profile = () => {
           </ul>
         </div>
         <div className="cardGroupCompact">
-          {userData.resources ? <CardPostCompact data={userData.resources} username={userData.username}/> : "Aucun article nn'a été trouvé"}
+          {UserData.resources ? <CardPostCompact data={UserData.resources} username={UserData.username}/> : "Aucun article n'a été trouvé"}
         </div>
       </div>
     </>
