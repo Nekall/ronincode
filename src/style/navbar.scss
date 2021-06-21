@@ -14,6 +14,19 @@
   padding: 0 1.5em;
   border-bottom: 1px solid #fca4db;
   justify-content: space-between;
+  display: flex;
+  z-index: 1;
+
+  .brand-nav{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    img{
+      height: 50px;
+      margin: .8em 0;
+    }
+  }
 
   .btn-blog{
     align-self: center;
