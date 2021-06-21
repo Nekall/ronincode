@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useSelector } from "react-redux";
 
-const Navbar = () => {
+const NavbarV1 = () => {
   const logged = useSelector(state => state.logReducer.logged);
 
   const logOff = () => {
@@ -65,4 +65,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarV1;
