@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
 import BtnLangage from 'components/BtnLangage';
@@ -10,7 +11,9 @@ import Cookies from 'js-cookie';
 
 const Profile = () => {
   //let {userId} = useParams();
-  let id = Cookies.get('id');
+  let user_id = Cookies.get('id');
+  let id = parseInt(user_id);
+  const logged = useSelector((state) => state.ready);
   const {data: UserData, doFetch: fetchUser } = useFetch();
 
   const FetchDataUser = () => {
@@ -36,10 +39,14 @@ const Profile = () => {
               <div className="username">{UserData.username} ({UserData.firstname} {UserData.lastname})</div>
               <Link to="/" className="btn-message">Prendre RDV</Link>
               <Link to="/conversations" className="btn-message">Mes Conversations</Link>
-              <div>
-                <button>Crée une conversation avec {UserData.email}</button>
-                <ModalCreateConversation value={id} />
-              </div>
+              {logged && logged.id !== id ? 
+                <div>
+                  <button>Crée une conversation avec {UserData.email}</button>
+                  <ModalCreateConversation value={id} />
+                </div>
+                :
+                ""
+              }
               <Link to={`/users/${id}/edit`} className="btn-message">Edit Profile</Link>
             </div>
             <BtnLangage />
