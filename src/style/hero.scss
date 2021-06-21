@@ -13,7 +13,7 @@
   .hero-2{
     position: absolute;
     height: 530px;
-    margin: auto;
+    margin: 20px ​auto 0 aut;
     object-fit: contain;
     width: 100%;
     right: 130px;
@@ -28,12 +28,23 @@
     margin-top: 315px;
   }
 
+  .hero-txt-header{
+    color: #fff;
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    text-align: center;
+    font-size: 3.5em;
+    font-family: 'Belshaw';
+    font-weight: normal;
+    margin-top: 10px;
+  }
   .hero-txt{
     color: #fff;
     position: absolute;
     object-fit: contain;
     width: 100%;
-    margin-top: 115px;
+    margin-top: 147px;
     text-align: center;
     font-size: 3.5em;
     left: 143px;
