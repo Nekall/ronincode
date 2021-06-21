@@ -1,20 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { ReactComponent as BellIcon } from '../../assets/images/icons/bell.svg';
-import { ReactComponent as MessengerIcon } from '../../assets/images/icons/messenger.svg';
+import { ReactComponent as MessagesIcon } from '../../assets/images/icons/messages.svg';
 import { ReactComponent as CaretIcon } from '../../assets/images/icons/caret.svg';
-import { ReactComponent as PlusIcon } from '../../assets/images/icons/plus.svg';
-import { ReactComponent as CogIcon } from '../../assets/images/icons/cog.svg';
-import { ReactComponent as ChevronIcon } from '../../assets/images/icons/chevron.svg';
-import { ReactComponent as ArrowIcon } from '../../assets/images/icons/arrow.svg';
-import { ReactComponent as BoltIcon } from '../../assets/images/icons/bolt.svg';
+import { ReactComponent as UserIcon } from '../../assets/images/icons/user.svg';
+import { ReactComponent as AgendaIcon } from '../../assets/images/icons/agenda.svg';
+import Logo from "components/Logo";
 
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <NavItem icon={<PlusIcon />} />
-      <NavItem icon={<BellIcon />} />
-      <NavItem icon={<MessengerIcon />} />
+      <NavItem icon={<AgendaIcon />} />
+      <NavItem icon={<MessagesIcon />} />
+      <NavItem icon={<UserIcon />} />
 
       <NavItem icon={<CaretIcon />}>
         <DropdownMenu></DropdownMenu>
@@ -26,6 +24,8 @@ const Navbar = () => {
 function NavbarContainer(props) {
   return (
     <nav className="navbar">
+      <Logo />
+      <Link to="#" className="btn-blog">BLOG</Link>
       <ul className="navbar-nav">{props.children}</ul>
     </nav>
   );
@@ -36,9 +36,9 @@ function NavItem(props) {
 
   return (
     <li className="nav-item">
-      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+      <Link to="#" className="icon-button" onClick={() => setOpen(!open)}>
         {props.icon}
-      </a>
+      </Link>
 
       {open && props.children}
     </li>
@@ -71,7 +71,6 @@ function DropdownMenu() {
 
   return (
     <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
-
       <CSSTransition
         in={activeMenu === 'main'}
         timeout={500}
@@ -79,54 +78,22 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem>My Profile</DropdownItem>
           <DropdownItem
-            leftIcon={<CogIcon />}
-            rightIcon={<ChevronIcon />}
-            goToMenu="settings">
-            Settings
+            leftIcon="🦧">
+            Tableau de bord
           </DropdownItem>
           <DropdownItem
-            leftIcon="🦧"
-            rightIcon={<ChevronIcon />}
-            goToMenu="animals">
-            Animals
+            leftIcon="🦧">
+            Prendre RDV
           </DropdownItem>
-
-        </div>
-      </CSSTransition>
-
-      <CSSTransition
-        in={activeMenu === 'settings'}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}>
-        <div className="menu">
-          <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
-            <h2>My Tutorial</h2>
+          <DropdownItem
+            leftIcon="🦧">
+            Créer un article
           </DropdownItem>
-          <DropdownItem leftIcon={<BoltIcon />}>HTML</DropdownItem>
-          <DropdownItem leftIcon={<BoltIcon />}>CSS</DropdownItem>
-          <DropdownItem leftIcon={<BoltIcon />}>JavaScript</DropdownItem>
-          <DropdownItem leftIcon={<BoltIcon />}>Awesome!</DropdownItem>
-        </div>
-      </CSSTransition>
-
-      <CSSTransition
-        in={activeMenu === 'animals'}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}>
-        <div className="menu">
-          <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
-            <h2>Animals</h2>
+          <DropdownItem
+            leftIcon="🦧">
+            Se déconnecter
           </DropdownItem>
-          <DropdownItem leftIcon="🦘">Kangaroo</DropdownItem>
-          <DropdownItem leftIcon="🐸">Frog</DropdownItem>
-          <DropdownItem leftIcon="🦋">Horse?</DropdownItem>
-          <DropdownItem leftIcon="🦔">Hedgehog</DropdownItem>
         </div>
       </CSSTransition>
     </div>
