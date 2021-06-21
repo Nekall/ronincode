@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
 import BtnLangage from 'components/BtnLangage';
 import CardPostCompact from 'components/CardPostCompact';
@@ -32,9 +33,9 @@ const Profile = () => {
           <div className="txt-container">
             <div className="contact">
               <div className="username">{userData.username} ({userData.firstname} {userData.lastname})</div>
-              <a href="/" className="btn-message">Prendre RDV</a>
-              <a href="/" className="btn-message">Message</a>
-              <a href={`/users/${id}/edit`} className="btn-message">Edit Profile</a>
+              <Link to="/" className="btn-message">Prendre RDV</Link>
+              <Link to="/" className="btn-message">Message</Link>
+              <Link to={`/users/${id}/edit`} className="btn-message">Edit Profile</Link>
             </div>
             <BtnLangage />
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, dignissimos fugit nisi nesciunt inventore enim, nostrum nulla excepturi cum tempore accusantium necessitatibus ducimus autem animi temporibus quasi iure tenetur quos!</p>
@@ -49,7 +50,7 @@ const Profile = () => {
                 <div className="month">septembre</div>
               </div>
               <div className="txt-container">
-                <div className="title">14h30 : Mentorat - Mentor : <a href="/">Day101</a></div>
+                <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
                 <BtnLangage />
               </div>
             </li>
@@ -59,7 +60,7 @@ const Profile = () => {
                 <div className="month">septembre</div>
               </div>
               <div className="txt-container">
-                <div className="title">14h30 : Mentorat - Mentor : <a href="/">Day101</a></div>
+                <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
                 <BtnLangage />
               </div>
             </li>
@@ -68,15 +69,15 @@ const Profile = () => {
         <div className="mentoring-section">
           <ul>
             <div className="title">Mentors</div>
-            <li><a href="/">Item 1</a></li>
-            <li><a href="/">Item 2</a></li>
-            <li><a href="/">Item 3</a></li>
+            <li><Link to="/">Item 1</Link></li>
+            <li><Link to="/">Item 2</Link></li>
+            <li><Link to="/">Item 3</Link></li>
           </ul>
           <ul>
           <div className="title">Disciples</div>
-            <li><a href="/">Item 1</a></li>
-            <li><a href="/">Item 2</a></li>
-            <li><a href="/">Item 3</a></li>
+            <li><Link to="/">Item 1</Link></li>
+            <li><Link to="/">Item 2</Link></li>
+            <li><Link to="/">Item 3</Link></li>
           </ul>
         </div>
         <div className="cardGroupCompact">

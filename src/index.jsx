@@ -13,6 +13,7 @@ import ShowAppointment from 'pages/ShowAppointment';
 import EditArticle from 'pages/EditArticle';
 import EditProfile from 'pages/EditProfile';
 import Message from 'pages/Message';
+import PrivateMessaging from 'pages/PrivateMessaging';
 import Footer from "components/Footer";
 import "style/main.scss";
 import { store } from 'store/index';
@@ -43,7 +44,7 @@ const App = () => (
             <Route path="/creer-un-rendez-vous">
               <CreateAppointment />
             </Route>
-            <Route path="/rendezvous/:appointmentSlug">
+            <Route path="/rendez-vous/:appointmentSlug">
               <ShowAppointment />
             </Route>
             <Route path="/profile">
@@ -52,8 +53,11 @@ const App = () => (
             <Route path={`/profile/edit`} exact>
               <EditProfile />
             </Route>
-            <Route path="/messages" exact>
+            <Route path="/conversations/:conversationId/messages" exact>
               <Message />
+            </Route>
+            <Route path="/conversations" exact>
+              <PrivateMessaging />
             </Route>
             <Route path="/blog/:articleSlug" exact>
               <ShowArticle />

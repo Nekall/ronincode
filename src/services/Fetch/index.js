@@ -1,4 +1,4 @@
-import { FetchNewsRequest, FetchNewsSuccess, FetchNewsFailure, SetAllData } from "store/FetchGlobal/FetchActions";
+import { FetchNewsRequest, FetchNewsSuccess, FetchNewsFailure, SetAllData, SetAllUser } from "store/FetchGlobal/FetchActions";
 import { LogOut, LogSuccess, LogFailure } from "store/Log/LogActions";
 import Cookies from "js-cookie";
 
@@ -27,7 +27,7 @@ export const Fetch = (finalUrl, methodChoice) => {
   };
 };
 
-export const FetchWithBearer = (finalUrl, methodChoice) => {
+export const FetchWithBearer = (finalUrl, methodChoice, multipleData) => {
   return (dispatch) => {
     console.log("start FetchWithBearer");
     dispatch(FetchNewsRequest(true));
@@ -43,8 +43,13 @@ export const FetchWithBearer = (finalUrl, methodChoice) => {
         if (element.status === "error") {
           dispatch(FetchNewsFailure(false, element.message));
         } else {
-          dispatch(FetchNewsSuccess(true));
-          dispatch(SetAllData(element));
+          if (multipleData === 1) {
+            dispatch(FetchNewsSuccess(true));
+            dispatch(SetAllUser(element));
+          } else if (multipleData === 2) {
+            dispatch(FetchNewsSuccess(true));
+            dispatch(SetAllData(element));
+          }
           console.log("end fetch");
         }
       });

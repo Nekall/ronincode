@@ -41,7 +41,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/messages">
+              <Link to="/conversations/messages">
+                <img src={message} alt="Messages" className="icon"/>
+              </Link>
+            </li>
+            <li>
+              <Link to="/conversations">
                 <img src={message} alt="Messages" className="icon"/>
               </Link>
             </li>

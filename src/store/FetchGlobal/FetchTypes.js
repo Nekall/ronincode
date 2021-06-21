@@ -1,9 +1,5 @@
 export const FETCH_NEWS_REQUEST = 'FETCH_NEWS_REQUEST';
 export const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS';
 export const FETCH_NEWS_FAILURE = 'FETCH_NEWS_FAILURE';
-export const METHOD_GET = 'METHOD_GET';
-export const METHOD_POST = 'METHOD_POST';
-export const METHOD_PUT = 'METHOD_PUT';
-export const METHOD_DELETE = 'METHOD_DELETE';
-export const STARTING_URL = 'STARTING_URL';
 export const ALL_DATA = "ALL_DATA";
+export const ALL_USER = "ALL_USER";

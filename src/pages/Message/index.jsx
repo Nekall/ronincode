@@ -1,36 +1,29 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { FetchWithBearer } from 'services/Fetch';
 
 const Message = () => {
+  const dispatch = useDispatch();
+  const { conversationId } = useParams();
+  const Messages = useSelector(state => state.fetchReducer.alldata);
 
-
-
-  const [Messages, setMessages] = useState([])
-
+  const allMessages = () => {
+    dispatch(FetchWithBearer(`https://ronincode.herokuapp.com/privatemessagings/${conversationId}/messages`, "GET", 2));
+  };
 
   useEffect(() => {
-
-    fetch(`https://ronincode.herokuapp.com/privatemessagings/1/messages`,{
-      method:'GET',
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      setMessages(data);
-
-      })
-    .catch(err => console.error(err));
-
+    allMessages();
   }, [])
 
+  console.log(conversationId);
   return(
     <div>
       <h1> Messages </h1>
-      <div>{Messages.map((message) =>
+      <div>{Messages && Messages.map((message) =>
         <div>
           <p key={message.id}> Body: {message.body} </p>
-         
-          
         </div>
-      
       )}
       </div>
     </div>
