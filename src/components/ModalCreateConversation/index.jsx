@@ -37,13 +37,7 @@ const ModalCreateConversation = (props) => {
             <label className="label-form-log">Vôtre message</label>
             <input type="text" value={content} required onChange={(e) => setContent(e.target.value)}></input>
           </div>
-          <button>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Envoyé le message
-          </button>
+          <input type="submit" value="Envoyer" />
         </form>
     </div>
   )
