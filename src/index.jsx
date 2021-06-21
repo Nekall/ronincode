@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
+import Navbar from "components/Navbar";
 import NavbarV1 from "components/NavbarV1";
 import Home from 'pages/Home'
 import Signup from 'pages/Signup';
@@ -23,7 +24,7 @@ const App = () => (
   <>
     <Provider store={store}>
       <Router>
-        <NavbarV1 />
+        <Navbar />
           <Switch>
             <Route path="/" exact>
               <Home />
