@@ -7,14 +7,15 @@ const Message = () => {
   const senderId = Cookies.get('id');
   let idSender = parseInt(senderId);
   const { conversationId } = useParams();
-  const { data: dataMessage, doFetch: findMessage } = useFetch();
-  const { doFetch: createFetchMessage } = useFetch("POST", sendDataMessage);
   const [content, setContent] = useState('')
-
+  
   const sendDataMessage = {
     body: content,
     user_id: idSender,
   }
+  
+  const { data: dataMessage, doFetch: findMessage } = useFetch();
+  const { doFetch: createFetchMessage } = useFetch("POST", sendDataMessage);
 
   const allMessages = () => {
     findMessage(`privatemessagings/${conversationId}/messages`);

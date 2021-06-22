@@ -33,12 +33,12 @@ const ModalCreateConversation = (props) => {
   return (
     <div>
       <form onSubmit={createMessage}>
-          <div className="user-box">
-            <label className="label-form-log">Vôtre message</label>
-            <input type="text" value={content} required onChange={(e) => setContent(e.target.value)}></input>
-          </div>
-          <input type="submit" value="Envoyer" />
-        </form>
+        <div className="user-box">
+          <label className="label-form-log">Vôtre message</label>
+          <input type="text" value={content} required onChange={(e) => setContent(e.target.value)}></input>
+        </div>
+        <input type="submit" value="Envoyer" />
+      </form>
     </div>
   )
 }
