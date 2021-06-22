@@ -85,14 +85,14 @@ function DropdownMenu() {
   }
 
   const { doFetch: discoFetch } = useFetch("DELETE");
-  let id = Cookies.get('id');
-  function disconnect(){
-    discoFetch('users/sign_out')
-    Cookies.remove('token');
-    Cookies.remove('id');
-    window.location.href = '/';
-    return false;
-  }
+    let id = Cookies.get('id');
+    function disconnect(){
+      discoFetch('users/sign_out')
+      Cookies.remove('token');
+      Cookies.remove('id');
+      window.location.href = '/';
+      return false;
+    }
 
   return (
     <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>

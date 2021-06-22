@@ -1,11 +1,19 @@
 @import "../libs/colors.scss";
 
+
+.Sign {
+  padding: 10em;
+  margin: 10em;
+}
+
+
 .login-box {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 400px;
   padding: 40px;
+  margin: 4em;
   transform: translate(-50%, -50%);
   background-image: url(../../assets/images/background-retrowave-web.jpg);
   background-position: right;
@@ -160,3 +168,5 @@
   color: rgb(255, 65, 0);
   padding-bottom: 25px;
 }
+
+

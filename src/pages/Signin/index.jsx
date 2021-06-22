@@ -47,7 +47,7 @@ const Signin = () => {
   }
 
   return (
-    <div>
+    <div className = "Sign">
       <div className="login-box">
         <h2>Se connecter</h2>
         <form onSubmit={handleFetch}>

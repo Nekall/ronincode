@@ -8,11 +8,7 @@ footer {
   border-top: 1px solid #fca4db;
   border-radius: 5px;
   
-  
-  .Footer {
-    display: flex;
-    flex-wrap: wrap;
-  }
+
 
   .Colums {
     background: $chat-gradient;
@@ -73,14 +69,4 @@ footer {
   }
 }
 
-@media (min-width: 500px) {
-  .Footer{
-    display: block;
-  }
-}
 
-@media (min-width: 800px) {
-  .Footer{
-    grid-template-columns: 1fr 1fr;
-  }
-}
