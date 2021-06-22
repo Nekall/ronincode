@@ -26,12 +26,12 @@ const CardGroupPostCompact = () => {
   return(
 
     <div className="card-postCompact-container">
-      {Articles && Articles.map((article) =>
-        <CardPostCompact data={article}/>
+      {Articles && Articles.map((article, index) =>
+        <CardPostCompact key={index} data={article}/>
       )}
-    </div> 
+    </div>
   )
-  
+
 };
 
 export default CardGroupPostCompact;
