@@ -10,7 +10,7 @@ const useFetch = (method = "GET", payload) => {
     const options = {
       method,
       headers: {
-        Authorization: `Bearer ${cookie}`,
+        Authorization: `${cookie}`,
         "Content-Type": "application/json; charset=utf-8",
       },
     };
@@ -34,5 +34,3 @@ const useFetch = (method = "GET", payload) => {
 }
 
 export default useFetch;
-
-

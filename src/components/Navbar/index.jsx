@@ -9,11 +9,11 @@ import { ReactComponent as LogoutIcon } from '../../assets/images/icons/logout.s
 import { ReactComponent as BlogIcon } from '../../assets/images/icons/open-book.svg';
 import { ReactComponent as WriteIcon } from '../../assets/images/icons/edit.svg';
 import { ReactComponent as AddRDVIcon } from '../../assets/images/icons/add.svg';
+import useFetch from '../../Hooks/useFetch';
 import Logo from 'components/Logo';
 import Cookies from 'js-cookie';
 
 const Navbar = () => {
-
   const logged = useSelector(state => state.logReducer.logged);
   return (
     <NavbarContainer>
@@ -46,13 +46,11 @@ function NavbarContainer(props) {
 
 function NavItem(props) {
   const [open, setOpen] = useState(false);
-
   return (
     <li className="nav-item">
       <Link to={props.linkTo || "#"} className="icon-button" onClick={() => setOpen(!open)}>
         {props.icon}
       </Link>
-
       {open && props.children}
     </li>
   );
@@ -62,7 +60,6 @@ function DropdownMenu() {
   const [activeMenu, setActiveMenu] = useState('main');
   const [menuHeight, setMenuHeight] = useState(null);
   const dropdownRef = useRef(null);
-
   useEffect(() => {
     setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
   }, [])
@@ -82,7 +79,10 @@ function DropdownMenu() {
     );
   }
 
+  const { doFetch: discoFetch } = useFetch("DELETE");
+  let id = Cookies.get('id');
   function disconnect(){
+    discoFetch('users/sign_out')
     Cookies.remove('token');
     Cookies.remove('id');
     window.location.href = '/';
@@ -98,7 +98,7 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem linkTo="/profile"
+          <DropdownItem linkTo={`/profile/${id}`}
             leftIcon={<UserIcon />}>
             Tableau de bord
           </DropdownItem>
