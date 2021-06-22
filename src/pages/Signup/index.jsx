@@ -37,7 +37,7 @@ const Signup = () => {
           history.push("/");
         } else {
           dispatch(LogFailure(data.error, false))
-          setError('Un compte est déjà lié à cette adresse.')
+          setError('Désolé, une erreur est survenue.')
         }
       })
     }
