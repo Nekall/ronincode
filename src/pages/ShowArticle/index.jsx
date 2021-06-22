@@ -1,14 +1,16 @@
 import React, { useEffect, useState} from 'react'
-import './style.css'
+
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom'
-
+import Cookies from 'js-cookie';
 
 
 const ShowArticle = () => { 
     const { articleSlug } = useParams();
     const [article, setArticle] = useState([])
     const history = useHistory()
+
+    const id = Cookies.get('id');
 
     const ArticleFetch = () => {
       const url = `https://ronincode.herokuapp.com/resources/${articleSlug}`
@@ -41,30 +43,24 @@ const ShowArticle = () => {
       return (
         <div className = "Article">
           <div className="ContentArticle" >
-            <div className="FirstColumn">
+            
+            <div className="Column1">
               <h1>{article.title}</h1>
               <h3>{article.lead}</h3>
               <p>{article.content}</p>
+              
             </div>
-            <div className="SecondColumn">
-              <div className="Technologies">
-                <h2>Technologies</h2>
-                <div className="Options">
-                  <div>
-                    <label>JS</label>
-                    <input type="radio" id="male" name="gender" value="male"></input>
-                  </div>
-                  <div>
-                    <label>React</label>
-                    <input type="radio" id="male" name="gender" value="male"></input>
-                  </div>
-                  <div>
-                    <label>HTML</label>
-                    <input type="radio" id="male" name="gender" value="male"></input>
-                  </div>
+            <div className="Column2">
+              <h2>Technologies</h2>
+              <div className="Techno">{article.technologies && article.technologies.map((techno) =>
+                <div className="Option">
+                  <p>{techno.name} {techno.img}</p>
+                  
                 </div>
-                  <button onClick={goEdit}>Modifier l'article</button>
-              </div>
+                 
+              )}</div>
+              {article.user_id == id ? <button onClick={goEdit}>Modifier l'article</button>:""}
+              
             </div>
           </div>
         </div>
