@@ -9,6 +9,7 @@ import { ReactComponent as LogoutIcon } from '../../assets/images/icons/logout.s
 import { ReactComponent as BlogIcon } from '../../assets/images/icons/open-book.svg';
 import { ReactComponent as WriteIcon } from '../../assets/images/icons/edit.svg';
 import { ReactComponent as AddRDVIcon } from '../../assets/images/icons/add.svg';
+import { ReactComponent as AgendaIcon } from '../../assets/images/icons/agenda.svg';
 import useFetch from '../../Hooks/useFetch';
 import Logo from 'components/Logo';
 import Cookies from 'js-cookie';
@@ -31,7 +32,7 @@ const Navbar = () => {
         </>
       :
       <>
-      <Link className="btn-blog" to="/inscription">S'inscrire</Link>
+      <Link className="btn-blog" to="/inscription">S'inscrire / </Link>
       <Link className="btn-blog" to="/se-connecter">Se Connecter</Link>
       </>
       }
@@ -43,7 +44,9 @@ function NavbarContainer(props) {
   return (
     <nav className="navbar">
       <Logo />
-      <Link to={props.linkTo || "/blog"} className="btn-blog">BLOG</Link>
+      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">TROUVER UN MENTOR</div></Link>
+      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">DEVENIR MENTOR</div></Link>
+      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">BLOG</div></Link>
       <ul className="navbar-nav">{props.children}</ul>
     </nav>
   );
@@ -109,13 +112,19 @@ function DropdownMenu() {
           </DropdownItem>
           <DropdownItem linkTo="/creer-un-rendez-vous"
             leftIcon={<AddRDVIcon />}>
-            Créer un rendez-vous
+            Créer un RDV
+          </DropdownItem>
+          <DropdownItem linkTo="/"
+            leftIcon={<AgendaIcon />}>
+            Mes RDV
           </DropdownItem>
           <DropdownItem linkTo="/nouvel-article"
             leftIcon={<WriteIcon />}>
             Écrire un article
           </DropdownItem>
-          <Link to="" onClick={()=>disconnect()}>Se deconnecter</Link>
+          <DropdownItem
+            leftIcon={<LogoutIcon />}> <Link to="" onClick={()=>disconnect()}>Se deconnecter</Link>
+          </DropdownItem>
         </div>
       </CSSTransition>
     </div>
