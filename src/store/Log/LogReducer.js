@@ -9,6 +9,7 @@ const initialState = {
   error: "",
   token: Cookies.get("token"),
   userID: Cookies.get("id"),
+  is_admin: false,
 };
 
 const LogReducer = (state = initialState, action) => {
@@ -17,6 +18,7 @@ const LogReducer = (state = initialState, action) => {
       return {
         ...state,
         logged: action.logged,
+        is_admin: action.is_admin,
       };
     case LOG_SUCCESS:
       return {
@@ -25,12 +27,14 @@ const LogReducer = (state = initialState, action) => {
         logged: action.logged,
         token: Cookies.get("token"),
         userID: action.data.id,
+        is_admin: action.data.is_admin,
       };
     case LOG_FAILURE:
       return {
         ...state,
         error: action.error,
         logged: action.logged,
+        is_admin: action.is_admin,
       };
     default:
       return state;

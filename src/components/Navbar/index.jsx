@@ -15,10 +15,15 @@ import Cookies from 'js-cookie';
 
 const Navbar = () => {
   const logged = useSelector(state => state.logReducer.logged);
+  const is_admin = useSelector(state => state.logReducer.is_admin);
+
   return (
     <NavbarContainer>
       {logged ?
         <>
+        {is_admin?
+          <Link className="btn-blog" to="/admin">Panel Admin</Link>
+          :<></>}
         <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
         <NavItem icon={<CaretIcon />}>
           <DropdownMenu></DropdownMenu>
