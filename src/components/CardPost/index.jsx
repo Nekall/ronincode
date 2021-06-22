@@ -23,7 +23,7 @@ const CardPost = (article) => {
 
   }, [article])
 
- 
+
   return(
     <div className="card-post">
       <BtnLangage />
@@ -45,7 +45,7 @@ const CardPost = (article) => {
       <div className="card-post-txt-container">
         <p className="Lead_paragraph">{article.data.lead}</p>
       </div>
-      <a href={`/articles/${article.data.id}`} className="read_more">Lire la suite</a>
+      <a href={`/blog/${article.data.id}`} className="read_more">Lire la suite</a>
     </div>
   )
 };
