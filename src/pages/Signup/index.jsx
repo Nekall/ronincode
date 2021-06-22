@@ -51,7 +51,7 @@ if(password.length > 8){
 
 
   return (
-    <div>
+    <div className="Sign">
       <div className="login-box">
         <h2>Créer un compte</h2>
         <form onSubmit={handleFetch}>
