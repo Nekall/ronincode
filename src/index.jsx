@@ -16,66 +16,70 @@ import EditProfile from 'pages/EditProfile';
 import Team from 'pages/Team';
 import Message from 'pages/Message';
 import PrivateMessaging from 'pages/PrivateMessaging';
+import PrivateRoute from 'components/PrivateRoute';
 import Footer from "components/Footer";
 import "style/main.scss";
 import { store } from 'store/index';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const App = () => (
-  <>
-    <Provider store={store}>
-      <Router>
-        {/* <NavbarOld /> */}
-        <Navbar />
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/inscription">
-              <Signup />
-            </Route>
-            <Route path="/se-connecter">
-              <Signin />
-            </Route>
-            <Route path="/blog" exact>
-              <Blog />
-            </Route>
-            <Route path="/nouvel-article">
-              <CreateArticle />
-            </Route>
-            <Route path="/creer-un-rendez-vous">
-              <CreateAppointment />
-            </Route>
-            <Route path="/rendez-vous/:appointmentSlug">
-              <ShowAppointment />
-            </Route>
-            <Route path="/profile/:id_user">
-              <UserProfile />
-            </Route>
-            <Route path={`/profile/edit`} exact>
-              <EditProfile />
-            </Route>
-            <Route path="/conversations/:conversationId/messages" exact>
-              <Message />
-            </Route>
-            <Route path="/conversations" exact>
-              <PrivateMessaging />
-            </Route>
-            <Route path="/blog/:articleSlug" exact>
-              <ShowArticle />
-            </Route>
-            <Route path="/blog/edit/:articleSlug" exact>
-              <EditArticle />
-            </Route>
-            <Route path="/team" exact>
-              <Team />
-            </Route>
-          </Switch>
-        <Footer />
-      </Router>
-    </Provider>
-  </>
-);
 
+const App = () => {
+  return(
+    <>
+      <Provider store={store}>
+        <Router>
+          {/* <NavbarOld /> */}
+          <Navbar />
+            <Switch>
+              <Route path="/" exact>
+                <Home />
+              </Route>
+              <Route path="/inscription">
+                <Signup />
+              </Route>
+              <Route path="/se-connecter">
+                <Signin />
+              </Route>
+              <Route path="/blog" exact>
+                <Blog />
+              </Route>
+              <Route path="/nouvel-article">
+                <CreateArticle />
+              </Route>
+              <Route path="/creer-un-rendez-vous">
+                <CreateAppointment />
+              </Route>
+              <Route path="/rendez-vous/:appointmentSlug">
+                <ShowAppointment />
+              </Route>
+              <Route path="/profile">
+                <UserProfile />
+              </Route>
+              <Route path={`/profile/edit`} exact>
+                <EditProfile />
+              </Route>
+              <Route path="/conversations/:conversationId/messages" exact>
+                <Message />
+              </Route>
+              <Route path="/conversations" exact>
+                <PrivateMessaging />
+              </Route>
+              <Route path="/blog/:articleSlug" exact>
+                <ShowArticle />
+              </Route>
+              <Route path="/blog/edit/:articleSlug" exact>
+                <EditArticle />
+              </Route>
+              <Route path="/team" exact>
+                <Team />
+              </Route>
+              <PrivateRoute />
+            </Switch>
+          <Footer />
+        </Router>
+      </Provider>
+    </>
+  );
+};
 render(<App />, document.getElementById("root"));
