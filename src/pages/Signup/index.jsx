@@ -17,9 +17,13 @@ const Signup = () => {
       password: password
     }
   }
+  let validate = "8 caractère minimum ✖"
+
+if(password.length > 8){
+  validate = "";
+}
 
   const handleFetch = (e) => {
-    e.preventDefault();
 
     if (password !== confirmPassword) {
         setError('Les mots de passe ne correspondent pas.')
@@ -53,15 +57,14 @@ const Signup = () => {
             <label className="label-form-log">Email</label>
             <input type="email" value={email} required onChange={(e) => setEmail(e.target.value)}></input>
           </div>
-
           <div className="user-box">
             <label className="label-form-log">Mot de passe</label>
-            <input type="password" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)}></input>
+            <input id="password_id" type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
+            <div className="validate-message">{validate}</div>
           </div>
-
           <div className="user-box">
             <label className="label-form-log">Confirmation du mot de passe</label>
-            <input type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
+            <input type="password" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)}></input>
             <div className="error-message">{error}</div>
           </div>
           <button>
