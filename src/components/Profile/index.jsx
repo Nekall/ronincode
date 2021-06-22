@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -13,18 +13,23 @@ const Profile = () => {
   const { id_user } = useParams();
   let id = Cookies.get('id');
   const logged = useSelector((state) => state.ready);
-  const {data: UserData, doFetch: fetchUser } = useFetch();
+  const {data, doFetch: fetchUser } = useFetch();
+  const [ifClicked, setIfClicked] = useState(false);
 
   const FetchDataUser = () => {
     fetchUser(`users/${id_user}`);
+  };
+
+  const test = () => {
+    setIfClicked(!ifClicked);
   };
 
   useEffect(() => {
     FetchDataUser();
   }, [])
 
-  console.log(id);
-  console.log(id_user);
+  console.log(data);
+  console.log(ifClicked);
 
   return(
     <>
@@ -41,14 +46,14 @@ const Profile = () => {
               
               {logged && (id !== id_user) ? 
                 <div>
-                  <Link to="/" className="btn-message">Prendre RDV</Link>
-                  <button>Crée une conversation avec {UserData.email}</button>
-                  <ModalCreateConversation value={id_user} />
                 </div>
                 :
                 <div>
                   <Link to="/conversations" className="btn-message">Mes Conversations</Link>
                   <Link to={`/users/${id_user}/edit`} className="btn-message">Edit Profile</Link>
+                  <Link to="/" className="btn-message">Prendre RDV</Link>
+                  <button onClick={test}>Crée une conversation avec {}</button>
+                  {ifClicked ? <ModalCreateConversation id={id_user} /> : ""}
                 </div>
               }
             </div>
@@ -105,6 +110,8 @@ const Profile = () => {
 
 export default Profile;
 
-//<div className="username">{UserData.username} ({UserData.firstname} {UserData.lastname})</div>
+//<div className="username">{data.username} ({data.firstname} {data.lastname})</div>
 
-//{UserData.resources ? <CardPostCompact data={UserData.resources} username={UserData.username}/> : "Aucun article n'a été trouvé"}
+//{data.resources ? <CardPostCompact data={data.resources} username={data.username}/> : "Aucun article n'a été trouvé"}
+
+//data.email

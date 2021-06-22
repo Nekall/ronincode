@@ -5,12 +5,15 @@ import Cookies from 'js-cookie';
 const ModalCreateConversation = (props) => {
   const senderId = Cookies.get('id');
   let idSender = parseInt(senderId);
+  let idRecipient = parseInt(props.id);
   const [content, setContent] = useState('')
 
   const dataConversation = {
     sender_id: idSender,
-    recipient_id: props.id,
+    recipient_id: idRecipient,
   }
+  console.log(idSender);
+  console.log(idRecipient);
 
   const dataMessage = {
     body: content,
