@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
 
@@ -7,14 +7,15 @@ const Message = () => {
   const senderId = Cookies.get('id');
   let idSender = parseInt(senderId);
   const { conversationId } = useParams();
-  const { data: dataMessage, doFetch: findMessage } = useFetch();
-  const { doFetch: createFetchMessage } = useFetch("POST", sendDataMessage);
   const [content, setContent] = useState('')
-
+  
   const sendDataMessage = {
     body: content,
     user_id: idSender,
   }
+  
+  const { data: dataMessage, doFetch: findMessage } = useFetch();
+  const { doFetch: createFetchMessage } = useFetch("POST", sendDataMessage);
 
   const allMessages = () => {
     findMessage(`privatemessagings/${conversationId}/messages`);
@@ -25,17 +26,19 @@ const Message = () => {
     createFetchMessage(`privatemessagings/${conversationId}/messages`);
   };
 
+  console.log(dataMessage);
+
   useEffect(() => {
     allMessages();
-  }, [dataMessage])
+  }, [idSender])
 
   return(
     <div>
       <h1> Messages </h1>
-      <div>{dataMessage && dataMessage.map((message) =>
-        <div>
-          <p key={message.id}> Body: {message.body} </p>
-          <span key={message.id}>Envoyer par: {message.email} à: {message.timestamp}</span>
+      <div>{dataMessage && dataMessage.map((message, index) =>
+        <div key={index.id}>
+          <p key={index.id}> Body: {message.body} </p>
+          <span key={index.id}>Envoyer par: {message.email} à: {message.created_at}</span>
         </div>
       )}
       </div>
@@ -48,6 +51,7 @@ const Message = () => {
           <input type="submit" value="Envoyer" />
         </form>
       </div>
+      <Link to="/conversations" className="btn-message">Mes Conversations</Link>
     </div>
   )
 

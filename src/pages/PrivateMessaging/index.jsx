@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 const PrivateMessaging = () => {
   const user_id = Cookies.get('id');
   let id = parseInt(user_id);
+  const [test, setTest] = useState(false);
   let receiver = "";
 
   const { data: dataUser, doFetch: findAllUsers } = useFetch();
@@ -13,23 +14,53 @@ const PrivateMessaging = () => {
 
   const allUsers = () => {
     findAllUsers("users");
+    console.log(dataUser);
   };
 
   const allConversations = () => {
     FindAllConversations("privatemessagings");
+    console.log(dataConversation);
+  };
+
+  const testClick = () => {
+    setTest(!test);
   };
 
   useEffect(() => {
     allUsers();
     allConversations();
-  }, [])
+  }, [test])
 
-  console.log(dataConversation);
 
   return(
     <div>
       <h1> Conversations </h1>
+      <button onClick={testClick}>LA</button>
       <ul>{dataConversation && dataConversation.map((list) => {
+        if (id === list.sender_id || id === list.recipient_id) {
+          if (id === list.sender_id) {
+            if (list.recipient_id ) {
+              receiver = dataUser.find(({ id }) => id === list.recipient_id);
+            }
+          } else if (id === list.recipient_id) {
+            if (list.sender_id ) {
+              receiver = dataUser.find(({ id }) => id === list.sender_id);
+            }
+            
+          }
+          return(<li key={list.id}><Link to={`/conversations/${list.id}/messages`}>Conversation avec {receiver.email}</Link></li>);
+        } else {
+          return false;
+        }
+      })}
+      </ul>
+    </div>
+  )
+}
+
+export default PrivateMessaging;
+
+      /*<ul>{dataConversation && dataConversation.map((list) => {
         {dataUser && dataUser.map((user) => {
           if (id === list.sender_id || id === list.recipient_id) {
             if (id === list.sender_id) {
@@ -47,9 +78,4 @@ const PrivateMessaging = () => {
           }
         })}
       })}
-      </ul>
-    </div>
-  )
-}
-
-export default PrivateMessaging;
+      </ul>*/

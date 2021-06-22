@@ -1,28 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
 import BtnLangage from 'components/BtnLangage';
 import CardPostCompact from 'components/CardPostCompact';
 import ModalCreateConversation from 'components/ModalCreateConversation';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
-//import { useParams } from 'react-router-dom';
 
 const Profile = () => {
-  //let {userId} = useParams();
-  let user_id = Cookies.get('id');
-  let id = parseInt(user_id);
+  const { id_user } = useParams();
+  let id = Cookies.get('id');
   const logged = useSelector((state) => state.ready);
-  const {data: UserData, doFetch: fetchUser } = useFetch();
+  const {data, doFetch: fetchUser } = useFetch();
+  const [ifClicked, setIfClicked] = useState(false);
 
   const FetchDataUser = () => {
-    fetchUser(`users/${id}`);
+    fetchUser(`users/${id_user}`);
+  };
+
+  const test = () => {
+    setIfClicked(!ifClicked);
   };
 
   useEffect(() => {
     FetchDataUser();
   }, [])
+
+  console.log(data);
+  console.log(ifClicked);
 
   return(
     <>
@@ -36,18 +43,19 @@ const Profile = () => {
           </div>
           <div className="txt-container">
             <div className="contact">
-              <div className="username">{UserData.username} ({UserData.firstname} {UserData.lastname})</div>
-              <Link to="/" className="btn-message">Prendre RDV</Link>
-              <Link to="/conversations" className="btn-message">Mes Conversations</Link>
-              {logged && logged.id !== id ? 
+              
+              {logged && (id !== id_user) ? 
                 <div>
-                  <button>Crée une conversation avec {UserData.email}</button>
-                  <ModalCreateConversation value={id} />
                 </div>
                 :
-                ""
+                <div>
+                  <Link to="/conversations" className="btn-message">Mes Conversations</Link>
+                  <Link to={`/users/${id_user}/edit`} className="btn-message">Edit Profile</Link>
+                  <Link to="/" className="btn-message">Prendre RDV</Link>
+                  <button onClick={test}>Crée une conversation avec {}</button>
+                  {ifClicked ? <ModalCreateConversation id={id_user} /> : ""}
+                </div>
               }
-              <Link to={`/users/${id}/edit`} className="btn-message">Edit Profile</Link>
             </div>
             <BtnLangage />
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, dignissimos fugit nisi nesciunt inventore enim, nostrum nulla excepturi cum tempore accusantium necessitatibus ducimus autem animi temporibus quasi iure tenetur quos!</p>
@@ -93,7 +101,7 @@ const Profile = () => {
           </ul>
         </div>
         <div className="cardGroupCompact">
-          {UserData.resources ? <CardPostCompact data={UserData.resources} username={UserData.username}/> : "Aucun article n'a été trouvé"}
+          
         </div>
       </div>
     </>
@@ -101,3 +109,9 @@ const Profile = () => {
 };
 
 export default Profile;
+
+//<div className="username">{data.username} ({data.firstname} {data.lastname})</div>
+
+//{data.resources ? <CardPostCompact data={data.resources} username={data.username}/> : "Aucun article n'a été trouvé"}
+
+//data.email

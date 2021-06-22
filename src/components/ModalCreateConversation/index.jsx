@@ -5,12 +5,15 @@ import Cookies from 'js-cookie';
 const ModalCreateConversation = (props) => {
   const senderId = Cookies.get('id');
   let idSender = parseInt(senderId);
+  let idRecipient = parseInt(props.id);
   const [content, setContent] = useState('')
 
   const dataConversation = {
     sender_id: idSender,
-    recipient_id: props.id,
+    recipient_id: idRecipient,
   }
+  console.log(idSender);
+  console.log(idRecipient);
 
   const dataMessage = {
     body: content,
@@ -33,12 +36,12 @@ const ModalCreateConversation = (props) => {
   return (
     <div>
       <form onSubmit={createMessage}>
-          <div className="user-box">
-            <label className="label-form-log">Vôtre message</label>
-            <input type="text" value={content} required onChange={(e) => setContent(e.target.value)}></input>
-          </div>
-          <input type="submit" value="Envoyer" />
-        </form>
+        <div className="user-box">
+          <label className="label-form-log">Vôtre message</label>
+          <input type="text" value={content} required onChange={(e) => setContent(e.target.value)}></input>
+        </div>
+        <input type="submit" value="Envoyer" />
+      </form>
     </div>
   )
 }
