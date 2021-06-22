@@ -2,7 +2,7 @@
   border: 2px solid #ffffb3b3;
   border-radius: 5px;
   padding: 0.5em;
-  max-width: 1600px;
+  max-width: 1800px;
   box-shadow: 0px 0px 20px #7f8000;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -103,9 +103,29 @@ img{
 @media (max-width: 580px) {
   
   .card-team{
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
+    
+    grid-template-columns: 1fr 1fr !important;
     grid-gap: 1em;
+  }
+  .card-1{
+    grid-row: 1/2;
+    grid-column: 1/1;
+  }
+  .card-2{
+    grid-row: 1/2;
+    grid-column: 2/2;
+  }
+  .card-3{
+    grid-row: 2/3;
+    grid-column: 1/1;
+  }
+  .card-4{
+    grid-row: 2/3;
+    grid-column: 2/2;
+  }
+  .card-5{
+    grid-row: 3/3;
+    grid-column: 1/2;
   }
 }
 @media (max-width: 460px) {
@@ -116,8 +136,28 @@ img{
     
   }
   .card-team{
-    display: grid !important;
-    grid-template-columns: 1fr;
+    
+    grid-template-columns: 1fr !important;
+  }
+  .card-1{
+    grid-row: 1/1;
+    grid-column: 1/1;
+  }
+  .card-2{
+    grid-row: 2/2;
+    grid-column: 1/1;
+  }
+  .card-3{
+    grid-row: 3/3;
+    grid-column: 1/1;
+  }
+  .card-4{
+    grid-row: 4/4;
+    grid-column: 1/1;
+  }
+  .card-5{
+    grid-row: 5/5;
+    grid-column: 1/1;
   }
 }
   
