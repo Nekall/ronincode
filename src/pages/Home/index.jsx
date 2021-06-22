@@ -16,7 +16,7 @@ const Home = () => {
     <>
       <Hero />
       <CardGroupPostCompact />
-      {dataResources? <h1>Il y a actuellement {dataResources.length} articles chargés sur cette page</h1> : '' }
+      {/* {dataResources? <h1>Il y a actuellement {dataResources.length} articles chargés sur cette page</h1> : '' } */}
     </>
   )
 }
