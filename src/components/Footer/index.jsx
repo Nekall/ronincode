@@ -7,14 +7,18 @@ const Footer = () => {
 
 return (
   <footer>
-    <div className="Footer" >
-      <div className="Colums">
-        <div className="FooterColumn">
+    <div className="footer-content">
+      <div className="footer-background cell-1"></div>
+      <div className="footer-background cell-2"></div>
+      <div className="footer-background cell-3"></div>
+      <div className="txt-grid-container">
+        <div className="footer-bloc brand-container">
           <Link to="/articles">
             <img className="logo" src={img_logo} alt="Ronin Code"></img>
           </Link>
+          <div className="mention">© 2021 Tous droits réservés</div>
         </div>
-        <div className="FooterColumn">
+        <div className="footer-bloc">
           <h5> Profil</h5>
           <Link to="/profile">
             <h6> Dashboard</h6>
@@ -26,7 +30,7 @@ return (
             <h6> Messages</h6>
           </Link>
         </div>
-        <div className="FooterColumn">
+        <div className="footer-bloc">
           <h5> Collaborer</h5>
           <Link to="/">
             <h6> Chercher un Mentor</h6>
@@ -35,7 +39,7 @@ return (
             <h6> Devenir Mentor</h6>
           </Link>
         </div>
-        <div className="FooterColumn">
+        <div className="footer-bloc">
           <h5> Entreprise</h5>
           <Link to="/blog">
             <h6> Ressources</h6>
@@ -47,9 +51,6 @@ return (
             <h6> Team</h6>
           </Link>
         </div>
-      </div>
-      <div className="mention">
-        <p>© 2021 Tous droits réservés</p>
       </div>
     </div>
   </footer>

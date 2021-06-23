@@ -1,7 +1,13 @@
 
 .NewArticle{
   width: 80%;
-  margin:auto;
+  margin:20%;
+  padding:10%;
+  display: flex;
+}
+
+.date {
+  margin-left: 90px;
 }
 
 .NewArticle h1 {
@@ -26,6 +32,8 @@
 
 .form{
   display: flex;
+  flex-direction: column;
+  align-self: normal;
 }
 
 .FirstColumn{

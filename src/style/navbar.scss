@@ -17,6 +17,10 @@
   display: flex;
   z-index: 1;
 
+  .rubrik:hover {
+    font-weight: 500;
+  }
+
   .brand-nav{
     align-items: center;
     justify-content: center;
