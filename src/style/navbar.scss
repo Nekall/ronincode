@@ -9,10 +9,9 @@
 }
 
 .navbar {
-  border-bottom: 1px solid #fca4db;
   display: flex;
   z-index: 1;
-  background: $dark-gradient;
+  background: linear-gradient(0.25turn, #30243B, #19031cdb);
   padding: 0;
   position: fixed;
   width: 100%;
