@@ -110,41 +110,25 @@
 
 
 
-.heroMini{
-  position: relative;
-  overflow: hidden;
+.hero-mini{
   height: 300px;
 
-  .hero-background{
+  .txt-container{
+    position: absolute;
+    display: grid;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    position: absolute;
-  }
-
-  .hero-txt-container{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    // background: #00ff3873;
-  }
-
-  .hero-txt{
+    text-align: center;
     color: #fff;
-    object-fit: contain;
-    width: 844px;
-    font-family: 'Belshaw';
-    font-weight: normal;
-    // background: #ff000073;
-    margin: auto;
+    font-family: courier;
+    
+    h1{
+      font-size: 5em;
+      font-weight: 100;
+      place-self: center;
+    }
 
     h2{
-      margin-top: 150px;
-      font-size: 3.5em;
-    }
-    
-    h3{
-      font-size: 2em;
       
     }
   }
