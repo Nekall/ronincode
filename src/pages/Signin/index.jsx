@@ -61,7 +61,7 @@ const Signin = () => {
           <div className="error-message">{error}</div>
           </div>
           <Link className="link-sign" to="/reinitialiser/mot-de-passe">Mot de passe oublié ?</Link><br/>
-          <Link className="link-sign" to="/se-connecter">Se connecter</Link>
+          <Link className="link-sign" to="/inscription">S'inscrire'</Link>
           <button>
             <span></span>
             <span></span>
