@@ -14,6 +14,8 @@ import ShowAppointment from 'pages/ShowAppointment';
 import IndexAppointment from 'pages/IndexAppointment';
 import EditArticle from 'pages/EditArticle';
 import EditProfile from 'pages/EditProfile';
+import ForgotPassword from 'pages/ForgotPassword';
+import ResetPassword from 'pages/ResetPassword';
 import Team from 'pages/Team';
 import Message from 'pages/Message';
 import PrivateMessaging from 'pages/PrivateMessaging';
@@ -77,6 +79,12 @@ const App = () => {
               </Route>
               <Route path="/rendez-vous" exact>
                 <IndexAppointment />
+              </Route>
+              <Route path="/nouveau/mot-de-passe/:token" exact>
+                <ResetPassword />
+              </Route>
+              <Route path="/reinitialiser/mot-de-passe" exact>
+                <ForgotPassword />
               </Route>
               <PrivateRoute />
             </Switch>

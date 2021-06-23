@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { LogFailure, LogSuccess } from 'store/Log/LogActions';
 import Cookies from 'js-cookie'
@@ -41,7 +41,7 @@ const Signin = () => {
       } else {
         dispatch(LogFailure(data.message, false))
         Cookies.remove('token');
-        setError(data.message + 'Vérifiez votre adresse mail et votre mot de passe.') //a ajouter dans le render
+        setError(data.message + 'Vérifiez votre adresse mail et votre mot de passe.')
       }
     })
   }
@@ -60,6 +60,7 @@ const Signin = () => {
             <input type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
           <div className="error-message">{error}</div>
           </div>
+          <Link className="link-sign" to="/reinitialiser/mot-de-passe">Mot de passe oublié ?</Link>
           <button>
             <span></span>
             <span></span>
