@@ -18,26 +18,29 @@ const Navbar = () => {
   const is_admin = useSelector(state => state.logReducer.is_admin);
 
   return (
-    <NavbarContainer>
-      {logged ?
+    <>
+      <NavbarContainer>
+        {logged ?
+          <>
+          {is_admin?
+            <Link className="btn-blog" to="/admin">Panel Admin</Link>
+            :<></>}
+          <NavItem linkTo="/" icon={<AgendaIcon />} />
+          <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
+          <NavItem linkTo={`/`} icon={<UserIcon />} /> {/* linkTo={`/profile/${id}`} */}
+          <NavItem icon={<CaretIcon />}>
+            <DropdownMenu></DropdownMenu>
+          </NavItem>
+          </>
+        :
         <>
-        {is_admin?
-          <Link className="btn-blog" to="/admin">Panel Admin</Link>
-          :<></>}
-        <NavItem linkTo="/" icon={<AgendaIcon />} />
-        <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
-        <NavItem linkTo={`/`} icon={<UserIcon />} /> {/* linkTo={`/profile/${id}`} */}
-        <NavItem icon={<CaretIcon />}>
-          <DropdownMenu></DropdownMenu>
-        </NavItem>
+        <Link className="btn-connexion btn-signin" to="/se-connecter">Connexion</Link>
+        <Link className="btn-connexion btn-signup" to="/inscription">Inscription</Link>
         </>
-      :
-      <>
-      <Link className="btn-connexion btn-signin" to="/se-connecter">Connexion</Link>
-      <Link className="btn-connexion btn-signup" to="/inscription">Inscription</Link>
-      </>
-      }
-    </NavbarContainer>
+        }
+      </NavbarContainer>
+      <span className="fix-sticky-navbar" />
+    </>
   );
 }
 

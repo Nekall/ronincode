@@ -9,12 +9,14 @@
 }
 
 .navbar {
-  height: 75px;
-  padding: 0 1.5em;
   border-bottom: 1px solid #fca4db;
   display: flex;
   z-index: 1;
   background: $dark-gradient;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  height: 75px;
 
   .brand-nav{
     align-items: center;
@@ -31,6 +33,10 @@
     align-self: center;
     font-size: 1.6em;
     font-weight: bold;
+
+    &:hover{
+      text-decoration: underline;
+    }
   }
 
   .btn-connexion{
@@ -43,12 +49,12 @@
     padding-bottom: 10px;
     transition: .8s;
     text-decoration-line: none;
+    margin-top: 12px;
   }
-
+  
   .btn-signin{
     text-shadow:0 0 7px $pink, 0 0 10px $pink, 0 0 21px $pink, 0 0 42px $pink;
     margin-right: 30px;
-    
   }
   
   .btn-signup{
@@ -63,7 +69,9 @@
     text-shadow:0 0 7px $violet, 0 0 10px $violet, 0 0 21px $violet, 0 0 42px $violet, 0 0 82px $violet, 0 0 92px $violet, 0 0 102px $violet, 0 0 151px $violet;
   }
 
-  .btn-signin:hover, .btn-signup:hover{
+  .btn-connexion:hover{
+    margin-top: 8px;
+    padding-bottom: 17px;
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-thickness: 5px;
@@ -77,7 +85,7 @@
   
   ul {
     list-style: none;
-    margin: 0;
+    margin-right: 30px;
     padding: 0;
     flex: 1;
   }
@@ -87,6 +95,11 @@
     text-decoration: none;;
   }
 
+}
+
+.fix-sticky-navbar{
+  display: block;
+  height: 76px;
 }
 
 /* <ul> */
@@ -138,7 +151,7 @@
 .dropdown {
   position: absolute;
   top: 58px;
-  width: 300px;
+  width: 278px;
   transform: translateX(-45%);
   background: $dark-gradient;
   border: 1px solid #fca4db;
@@ -211,11 +224,32 @@
   transition: all var(--speed) ease;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
+  .navbar-nav{
+    // font-size: .6em;
+    letter-spacing: 0;
+    justify-content: space-evenly;
+  }
   .navbar{
-    padding: 0 1em;
-    position: fixed;
-    width: 100%;
+    padding: 0;
+  }
+  .navbar .brand-nav img{
+    margin-right: .8em;
+    padding-left: .5em;
+  }
+  .navbar .btn-signin{
+    margin-right: 10px;
+  }
+  .btn-signup{
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .fix-sticky-navbar{
+    height: 65px;
+  }
+  .navbar{
     height: 65px;
 
     .brand-nav img {
@@ -228,7 +262,7 @@
       height: var(--button-size);
       background-color: #AB0DFC;
       border-radius: 50%;
-      padding: 5px;
+      padding: 2px;
       margin: 2px;
       display: flex;
       align-items: center;
@@ -238,9 +272,13 @@
       border: 2px solid #cb68fd;
       font-size: .8em;
     }
+
+    .nav-item{
+      width: fit-content;
+    }
+    .icon-button{
+      padding: 2px;
+    }
     
-  }
-  .hero {
-    padding-top: 76px;
   }
 }
