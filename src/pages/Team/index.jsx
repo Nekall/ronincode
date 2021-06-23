@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import img_post from 'assets/images/image-test.png';
 
 const Team = () => {
 
   return(
     <div className="card-team">
-      
+
       <div className="card-char card-1">
         <div className="up-text">
           <p className="">Kevin</p>
@@ -13,11 +13,11 @@ const Team = () => {
           <p className="">Warrior</p>
           <p className="">Lv.23</p>
         </div>
-      
+
         <div className="photo">
             <img  src={img_post} alt="Ligne de code sur un écran" />
         </div>
-        
+
         <div className="down-text">
           <p className=""> HP: 120/120</p>
           <div class="progress">
@@ -37,13 +37,13 @@ const Team = () => {
           <p className="">ANEZO</p>
           <p className="">Paladin</p>
           <p className="">Lv.23</p>
-            
+
         </div>
-      
+
         <div className="photo">
             <img  src={img_post} alt="Ligne de code sur un écran" />
         </div>
-        
+
         <div className="down-text">
           <p className=""> HP: 100/100</p>
           <div class="progress">
@@ -64,13 +64,13 @@ const Team = () => {
           <p className="">SY</p>
           <p className="">Wizard</p>
           <p className="">Lv.23</p>
-            
+
         </div>
-      
+
         <div className="photo">
             <img  src={img_post} alt="Ligne de code sur un écran" />
         </div>
-        
+
         <div className="down-text">
           <p className=""> HP: 50/50</p>
           <div class="progress">
@@ -90,13 +90,13 @@ const Team = () => {
           <p className="">TEXIER</p>
           <p className="">Druide</p>
           <p className="">Lv.23</p>
-            
+
         </div>
-      
+
         <div className="photo">
             <img  src={img_post} alt="Ligne de code sur un écran" />
         </div>
-        
+
         <div className="down-text">
           <p className=""> HP: 60/60</p>
           <div class="progress">
@@ -116,13 +116,13 @@ const Team = () => {
           <p className="">SIDDI</p>
           <p className="">Rogue</p>
           <p className="">Lv.23</p>
-            
+
         </div>
-      
+
         <div className="photo">
             <img  src={img_post} alt="Ligne de code sur un écran" />
         </div>
-        
+
         <div className="down-text">
           <p className=""> HP: 70/70</p>
           <div class="progress">

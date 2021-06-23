@@ -1,7 +1,5 @@
 import React, { useState} from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { LogFailure, LogSuccess } from 'store/Log/LogActions';
 import '../../style/pages/sign.scss'
 
 const ResetPassword = () => {
@@ -10,15 +8,11 @@ const ResetPassword = () => {
   const [error, setError] = useState('')
   const { token } = useParams();
   const data = {
-    user: {
-      password: password,
-      token: token
-    }
+    password: password,
+    token: token
   }
   let validate = "8 caractère minimum ✖"
   let isValid = false;
-
-console.log(token);
 
 if(password.length > 7){
   validate = "";
