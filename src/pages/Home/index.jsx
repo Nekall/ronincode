@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Hero from "components/Hero";
 import useFetch from 'Hooks/useFetch';
 import CardGroupPostCompact from 'components/CardGroupPostCompact';
+import CallToAction from 'components/CallToAction';
 
 const Home = () => {
   const { data: dataResources, doFetch: fetchResources } = useFetch();
@@ -15,6 +16,7 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <CallToAction />
       <main>
         <CardGroupPostCompact />
       </main>
