@@ -1,0 +1,104 @@
+.cta-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 150px 1fr;
+  width: 1200px;
+  margin: 4em auto;
+  grid-gap: 0 4em;
+
+  .img-container{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    grid-row: 1/3;
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  h1{
+    font-family: courier;
+    grid-row: 1;
+    color: #fff;
+    text-align: center;
+    font-size: 4em;
+  }
+
+  .txt-container{
+    color: #fff;
+    padding: 4em;
+    text-align: center;
+    align-self: center;
+
+    h2{
+      font-family: 'Press Start 2P';
+      margin-bottom: 1.5em;
+    }
+
+    a{
+      font-family: 'Press Start 2P';
+      color: $yellow;
+      text-decoration: none;
+      font-size: 2.5em;
+
+      &:hover{
+        transition: color .3s;
+        color: $pink;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .cta-container{
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px auto 250px;
+    width: 100%;
+  }
+  
+  .cta-container .img-container{
+    grid-row: 1;
+    height: auto;
+  }
+  
+  .cta-container h1{
+    grid-row: 2;
+    align-self: center;
+    padding: 0 2em;
+  }
+  
+  .cta-container .txt-container{
+    grid-row: 3;
+    padding: 0 2em;
+  }
+}
+@media (max-width: 565px) {
+  .cta-container{
+    grid-template-rows: 200px auto auto;
+  }
+
+  .cta-container h1{
+    font-size: 1.4em;
+    margin: 1em 0;
+  }
+
+  .cta-container .txt-container{
+    margin: 2em 0;
+  }
+
+  .cta-container .txt-container h2{
+    font-size: 1em;
+  }
+
+  .cta-container .txt-container a{
+    font-size: 1.5em;
+  }
+
+}
