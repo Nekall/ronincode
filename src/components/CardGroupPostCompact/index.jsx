@@ -26,7 +26,7 @@ const CardGroupPostCompact = () => {
   return(
 
     <div className="card-postCompact-container">
-      {Articles && Articles.map((article, index) =>
+      {Articles && Articles.reverse().map((article, index) =>
         <CardPostCompact key={index} data={article}/>
       )}
     </div>
