@@ -10,7 +10,7 @@ return (
     <div className="footer-content">
       <div className="footer-background cell-1"></div>
       <div className="footer-background cell-2"></div>
-      <div className="footer-background cell-3"></div>
+      <div className="cell-3"></div>
       <div className="txt-grid-container">
         <div className="footer-bloc brand-container">
           <Link to="/articles">

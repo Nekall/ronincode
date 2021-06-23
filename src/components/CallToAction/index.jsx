@@ -8,9 +8,8 @@ const CallToAction = () => {
       <div className="img-container">
         <img src={tokyo_street} alt="Extérieur nuit tokyo" />
       </div>
-      <h1>Ça commence ici !</h1>
       <div className="txt-container">
-        <h2>Appuie sur START pour commencer !</h2>
+        <h2>Appuie sur START pour&nbsp;commencer&nbsp;!</h2>
         <Link to="/inscription">&gt;START</Link>
       </div>
     </div>
