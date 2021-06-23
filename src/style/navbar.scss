@@ -10,16 +10,10 @@
 
 .navbar {
   height: 75px;
-  background-color: $dark-gradient;
   padding: 0 1.5em;
   border-bottom: 1px solid #fca4db;
-  justify-content: space-between;
   display: flex;
   z-index: 1;
-
-  .rubrik:hover {
-    font-weight: 500;
-  }
 
   .brand-nav{
     align-items: center;
@@ -27,16 +21,52 @@
     display: flex;
 
     img{
-      height: 50px;
-      width: 50px;
-      margin: .8em 0;
+      height: 85px;
+      margin-right: 1.5em;
     }
   }
 
   .btn-blog{
     align-self: center;
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+
+  .btn-connexion{
+    align-self: center;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
+    font-family: 'lazer84';
+    letter-spacing: .2rem;
+    color: #fff;
+    padding-bottom: 10px;
+    transition: .8s;
+    text-decoration-line: none;
+  }
+
+  .btn-signin{
+    text-shadow:0 0 7px $pink, 0 0 10px $pink, 0 0 21px $pink, 0 0 42px $pink;
+    margin-right: 30px;
+    
+  }
+  
+  .btn-signup{
+    text-shadow:0 0 7px $violet, 0 0 10px $violet, 0 0 21px $violet, 0 0 42px $violet;
+  }
+  
+  .btn-signin:hover{
+    text-shadow:0 0 7px $pink, 0 0 10px $pink, 0 0 21px $pink, 0 0 42px $pink, 0 0 82px $pink, 0 0 92px $pink, 0 0 102px $pink, 0 0 151px $pink;
+  }
+
+  .btn-signup:hover{
+    text-shadow:0 0 7px $violet, 0 0 10px $violet, 0 0 21px $violet, 0 0 42px $violet, 0 0 82px $violet, 0 0 92px $violet, 0 0 102px $violet, 0 0 151px $violet;
+  }
+
+  .btn-signin:hover, .btn-signup:hover{
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 6px;
   }
 
   code {
@@ -48,10 +78,11 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    flex: 1;
   }
 
   a {
-    color: var(--text-color);
+    color: $white;
     text-decoration: none;;
   }
 

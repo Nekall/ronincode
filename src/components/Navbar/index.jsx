@@ -32,8 +32,8 @@ const Navbar = () => {
         </>
       :
       <>
-      <Link className="btn-blog" to="/inscription">S'inscrire / </Link>
-      <Link className="btn-blog" to="/se-connecter">Se Connecter</Link>
+      <Link className="btn-connexion btn-signin" to="/se-connecter">Connexion</Link>
+      <Link className="btn-connexion btn-signup" to="/inscription">Inscription</Link>
       </>
       }
     </NavbarContainer>
@@ -44,9 +44,9 @@ function NavbarContainer(props) {
   return (
     <nav className="navbar">
       <Logo />
-      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">TROUVER UN MENTOR</div></Link>
-      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">DEVENIR MENTOR</div></Link>
-      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">BLOG</div></Link>
+      {/* <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">TROUVER UN MENTOR</div></Link>
+      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">DEVENIR MENTOR</div></Link> */}
+      <Link to={props.linkTo || "/blog"} className="btn-blog">BLOG</Link>
       <ul className="navbar-nav">{props.children}</ul>
     </nav>
   );
