@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import CardPost from 'components/CardPost';
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 const CardGroupPost = () => {
 
-  const [Articles, setArticles] = useState([])
+  const [articles, setArticles] = useState([])
 
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const CardGroupPost = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-      setArticles(data);
+      setArticles(data.reverse());
 
       })
     .catch(err => console.error(err));
@@ -26,14 +26,14 @@ const CardGroupPost = () => {
   return(
 
     <div className="card-post-container">
-      {Articles && Articles.map((article) =>
-        <div>
+      {articles && articles.map((article) =>
+        <div key={uuidv4()}>
           <CardPost data={article}/>
         </div>
       )}
-    </div> 
+    </div>
   )
-  
+
 };
 
 export default CardGroupPost;
