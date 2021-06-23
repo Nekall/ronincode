@@ -45,7 +45,7 @@ const Message = () => {
       <div>
         <form onSubmit={createMessage}>
           <div className="user-box">
-            <label className="label-form-log">Vôtre message</label>
+            <label className="label-form-message">Vôtre message</label>
             <input type="text" value={content} required onChange={(e) => setContent(e.target.value)}></input>
           </div>
           <input type="submit" value="Envoyer" />
