@@ -11,6 +11,9 @@
 @import "team.scss";
 @import "showArticle.scss";
 
+main{
+  padding: 0 2em;
+}
 
 .hackerman{
   height: 500px;
@@ -23,8 +26,7 @@
 }
 
 a,p{
-  font-family: 'Oswald';
-  font-weight: 300;
+  font-family: 'courier';
 }
 
 .retro-filter{
