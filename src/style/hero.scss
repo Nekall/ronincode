@@ -13,7 +13,7 @@
   .hero-2{
     position: absolute;
     height: 530px;
-    margin: 20px ​auto 0 aut;
+    margin: 20px ​auto 0 auto;
     object-fit: contain;
     width: 100%;
     right: 130px;
@@ -52,6 +52,60 @@
     font-weight: normal;
   }
 }
+
+@media (max-width: 1000px) {
+  .hero{
+    height: 500px;
+  }
+  .hero .hero-txt-header{
+    font-size: 2em;
+  }
+  .hero .hero-2{
+    height: 400px;
+    right: 99px;
+    top: 18px;
+  }
+  .hero .hero-3{
+    position: absolute;
+    height: 403px;
+    margin: auto;
+    object-fit: contain;
+    width: 100%;
+    margin-top: 141px;
+  }
+  .hero .hero-txt{
+    margin-top: 100px;
+    font-size: 2.5em;
+  }
+}
+
+@media (max-width: 570px) {
+  .hero {
+    height: 388px;
+  }
+
+  .hero .hero-2 {
+    height: 400px;
+    right: 68px;
+  }
+  
+  .hero .hero-txt {
+    margin: 125px 0 0 -73px;
+    font-size: 1.5em;
+  }
+
+  .hero .hero-3 {
+    height: 275px;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero .hero-2 {
+    top: 18px;
+  }
+}
+
+
 
 
 .heroMini{

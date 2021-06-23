@@ -18,7 +18,7 @@ return (
           </Link>
           <div className="mention">© 2021 Tous droits réservés</div>
         </div>
-        <div className="footer-bloc">
+        <div className="footer-bloc bloc-1">
           <h5> Profil</h5>
           <Link to="/profile">
             <h6> Dashboard</h6>
@@ -30,7 +30,7 @@ return (
             <h6> Messages</h6>
           </Link>
         </div>
-        <div className="footer-bloc">
+        <div className="footer-bloc bloc-2">
           <h5> Collaborer</h5>
           <Link to="/">
             <h6> Chercher un Mentor</h6>
@@ -39,7 +39,7 @@ return (
             <h6> Devenir Mentor</h6>
           </Link>
         </div>
-        <div className="footer-bloc">
+        <div className="footer-bloc bloc-3">
           <h5> Entreprise</h5>
           <Link to="/blog">
             <h6> Ressources</h6>

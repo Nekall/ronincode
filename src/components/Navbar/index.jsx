@@ -6,7 +6,6 @@ import { ReactComponent as MessagesIcon } from '../../assets/images/icons/messag
 import { ReactComponent as CaretIcon } from '../../assets/images/icons/caret.svg';
 import { ReactComponent as UserIcon } from '../../assets/images/icons/user.svg';
 import { ReactComponent as LogoutIcon } from '../../assets/images/icons/logout.svg';
-import { ReactComponent as BlogIcon } from '../../assets/images/icons/open-book.svg';
 import { ReactComponent as WriteIcon } from '../../assets/images/icons/edit.svg';
 import { ReactComponent as AddRDVIcon } from '../../assets/images/icons/add.svg';
 import { ReactComponent as AgendaIcon } from '../../assets/images/icons/agenda.svg';
@@ -19,24 +18,29 @@ const Navbar = () => {
   const is_admin = useSelector(state => state.logReducer.is_admin);
 
   return (
-    <NavbarContainer>
-      {logged ?
+    <>
+      <NavbarContainer>
+        {logged ?
+          <>
+          {is_admin?
+            <Link className="btn-blog" to="/admin">Panel Admin</Link>
+            :<></>}
+          <NavItem linkTo="/" icon={<AgendaIcon />} />
+          <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
+          <NavItem linkTo={`/`} icon={<UserIcon />} /> {/* linkTo={`/profile/${id}`} */}
+          <NavItem icon={<CaretIcon />}>
+            <DropdownMenu></DropdownMenu>
+          </NavItem>
+          </>
+        :
         <>
-        {is_admin?
-          <Link className="btn-blog" to="/admin">Panel Admin</Link>
-          :<></>}
-        <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
-        <NavItem icon={<CaretIcon />}>
-          <DropdownMenu></DropdownMenu>
-        </NavItem>
+        <Link className="btn-connexion btn-signin" to="/se-connecter">Connexion</Link>
+        <Link className="btn-connexion btn-signup" to="/inscription">Inscription</Link>
         </>
-      :
-      <>
-      <Link className="btn-blog" to="/inscription">S'inscrire / </Link>
-      <Link className="btn-blog" to="/se-connecter">Se Connecter</Link>
-      </>
-      }
-    </NavbarContainer>
+        }
+      </NavbarContainer>
+      <span className="fix-sticky-navbar" />
+    </>
   );
 }
 
@@ -44,9 +48,9 @@ function NavbarContainer(props) {
   return (
     <nav className="navbar">
       <Logo />
-      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">TROUVER UN MENTOR</div></Link>
-      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">DEVENIR MENTOR</div></Link>
-      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">BLOG</div></Link>
+      {/* <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">TROUVER UN MENTOR</div></Link>
+      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">DEVENIR MENTOR</div></Link> */}
+      <Link to={props.linkTo || "/blog"} className="btn-blog">BLOG</Link>
       <ul className="navbar-nav">{props.children}</ul>
     </nav>
   );
@@ -111,19 +115,15 @@ function DropdownMenu() {
             Tableau de bord
           </DropdownItem>
           <DropdownItem linkTo="/creer-un-rendez-vous"
-            leftIcon={<AddRDVIcon />}>
-            Créer un RDV
-          </DropdownItem>
-          <DropdownItem linkTo="/"
             leftIcon={<AgendaIcon />}>
-            Mes RDV
+            Prendre rendez-vous
           </DropdownItem>
           <DropdownItem linkTo="/nouvel-article"
             leftIcon={<WriteIcon />}>
             Écrire un article
           </DropdownItem>
           <DropdownItem
-            leftIcon={<LogoutIcon />}> <Link to="" onClick={()=>disconnect()}>Se deconnecter</Link>
+            leftIcon={<LogoutIcon />}> <Link to="" onClick={()=>disconnect()}>Se déconnecter</Link>
           </DropdownItem>
         </div>
       </CSSTransition>
