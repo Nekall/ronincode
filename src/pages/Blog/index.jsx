@@ -1,8 +1,11 @@
-import CardGroupPost from "../../components/CardGroupPost/index.jsx";
+import CardGroupPostCompact from "components/CardGroupPostCompact/index.jsx";
 
 const Blog = () => {
   return(
-    <CardGroupPost />
+    <>
+      {/* <HeroMini /> */}
+      <CardGroupPostCompact />
+    </>
   )
 }
 
