@@ -83,7 +83,7 @@ const App = () => {
               <Route path="/nouveau/mot-de-passe/:token" exact>
                 <ResetPassword />
               </Route>
-              <Route path="/reinitialiser/mot-de-passe" exact>
+              <Route path="/reinitialisation/mot-de-passe" exact>
                 <ForgotPassword />
               </Route>
               <PrivateRoute />
