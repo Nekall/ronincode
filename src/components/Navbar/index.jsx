@@ -6,7 +6,6 @@ import { ReactComponent as MessagesIcon } from '../../assets/images/icons/messag
 import { ReactComponent as CaretIcon } from '../../assets/images/icons/caret.svg';
 import { ReactComponent as UserIcon } from '../../assets/images/icons/user.svg';
 import { ReactComponent as LogoutIcon } from '../../assets/images/icons/logout.svg';
-import { ReactComponent as BlogIcon } from '../../assets/images/icons/open-book.svg';
 import { ReactComponent as WriteIcon } from '../../assets/images/icons/edit.svg';
 import { ReactComponent as AddRDVIcon } from '../../assets/images/icons/add.svg';
 import { ReactComponent as AgendaIcon } from '../../assets/images/icons/agenda.svg';
@@ -25,7 +24,9 @@ const Navbar = () => {
         {is_admin?
           <Link className="btn-blog" to="/admin">Panel Admin</Link>
           :<></>}
+        <NavItem linkTo="/" icon={<AgendaIcon />} />
         <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
+        <NavItem linkTo={`/`} icon={<UserIcon />} /> {/* linkTo={`/profile/${id}`} */}
         <NavItem icon={<CaretIcon />}>
           <DropdownMenu></DropdownMenu>
         </NavItem>
@@ -111,19 +112,15 @@ function DropdownMenu() {
             Tableau de bord
           </DropdownItem>
           <DropdownItem linkTo="/creer-un-rendez-vous"
-            leftIcon={<AddRDVIcon />}>
-            Créer un RDV
-          </DropdownItem>
-          <DropdownItem linkTo="/"
             leftIcon={<AgendaIcon />}>
-            Mes RDV
+            Prendre rendez-vous
           </DropdownItem>
           <DropdownItem linkTo="/nouvel-article"
             leftIcon={<WriteIcon />}>
             Écrire un article
           </DropdownItem>
           <DropdownItem
-            leftIcon={<LogoutIcon />}> <Link to="" onClick={()=>disconnect()}>Se deconnecter</Link>
+            leftIcon={<LogoutIcon />}> <Link to="" onClick={()=>disconnect()}>Se déconnecter</Link>
           </DropdownItem>
         </div>
       </CSSTransition>

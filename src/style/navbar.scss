@@ -14,6 +14,7 @@
   border-bottom: 1px solid #fca4db;
   display: flex;
   z-index: 1;
+  background: $dark-gradient;
 
   .brand-nav{
     align-items: center;
@@ -109,7 +110,7 @@
   --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: $blue;
+  background-color: $violet;
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
@@ -117,6 +118,8 @@
   align-items: center;
   justify-content: center;
   transition: filter 300ms;
+  box-shadow: inset -7px 6px 11px 2px #ffffff47;
+  border: 2px solid #cb68fd;
 }
 
 .icon-button:hover {
@@ -137,8 +140,8 @@
   top: 58px;
   width: 300px;
   transform: translateX(-45%);
-  background-color: var(--bg);
-  border: var(--border);
+  background: $dark-gradient;
+  border: 1px solid #fca4db;
   border-radius: var(--border-radius);
   padding: 1rem;
   overflow: hidden;
@@ -168,7 +171,7 @@
 }
 
 .menu-item:hover {
-  background-color: #525357;
+  background-color: #40304f;
 }
 
 .icon-right {
@@ -206,4 +209,38 @@
 .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
+}
+
+@media (max-width: 500px) {
+  .navbar{
+    padding: 0 1em;
+    position: fixed;
+    width: 100%;
+    height: 65px;
+
+    .brand-nav img {
+    height: 45px;
+    }
+
+    .btn-blog{
+      --button-size: calc(var(--nav-size) * 0.5);
+      width: var(--button-size);
+      height: var(--button-size);
+      background-color: #AB0DFC;
+      border-radius: 50%;
+      padding: 5px;
+      margin: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: filter 300ms;
+      box-shadow: inset -7px 6px 11px 2px #ffffff47;
+      border: 2px solid #cb68fd;
+      font-size: .8em;
+    }
+    
+  }
+  .hero {
+    padding-top: 76px;
+  }
 }
