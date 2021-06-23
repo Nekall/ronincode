@@ -1,7 +1,6 @@
 .cta-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 150px 1fr;
   width: 1200px;
   margin: 4em auto;
   grid-gap: 0 4em;
@@ -12,7 +11,6 @@
     width: 100%;
     height: 600px;
     overflow: hidden;
-    grid-row: 1/3;
 
     img {
       position: absolute;
@@ -20,14 +18,6 @@
       height: 100%;
       object-fit: cover;
     }
-  }
-
-  h1{
-    font-family: courier;
-    grid-row: 1;
-    color: #fff;
-    text-align: center;
-    font-size: 4em;
   }
 
   .txt-container{
@@ -68,12 +58,6 @@
     height: auto;
   }
   
-  .cta-container h1{
-    grid-row: 2;
-    align-self: center;
-    padding: 0 2em;
-  }
-  
   .cta-container .txt-container{
     grid-row: 3;
     padding: 0 2em;
@@ -82,11 +66,6 @@
 @media (max-width: 565px) {
   .cta-container{
     grid-template-rows: 200px auto auto;
-  }
-
-  .cta-container h1{
-    font-size: 1.4em;
-    margin: 1em 0;
   }
 
   .cta-container .txt-container{
