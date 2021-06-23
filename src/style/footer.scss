@@ -1,11 +1,13 @@
 footer {
   flex-grow: 1;
   display: flex;
+  place-items: flex-end;
   
   .footer-content{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 2em 1fr 2em;
+    height: fit-content;
   }
 
   .footer-background{
