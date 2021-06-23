@@ -17,7 +17,7 @@ const Profile = () => {
   let id_current = parseInt(id_cookie);
   const logged = useSelector((state) => state.logReducer.logged);
   const {data: dataUser, doFetch: fetchUser } = useFetch();
-  const [ifClicked, setIfClicked] = useState(false);
+  let [ifClicked, setIfClicked] = useState(false);
 
   const FetchDataUser = () => {
     fetchUser(`users/${id_user_profile}`);
@@ -31,7 +31,7 @@ const Profile = () => {
     FetchDataUser();
   }, [])
 
-  console.log(dataUser);
+  console.log(id_user);
 
   return(
     <>

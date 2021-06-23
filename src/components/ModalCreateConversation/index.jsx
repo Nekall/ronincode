@@ -9,6 +9,7 @@ const ModalCreateConversation = (props) => {
   const [content, setContent] = useState('')
   const [showOrRemove, setShowOrRemove] = useState(true)
   const [onScreen, setOnScreen] = useState(true)
+  let privatemessaging = '';
 
   const dataConversation = {
     sender_id: idSender,
@@ -20,12 +21,14 @@ const ModalCreateConversation = (props) => {
     user_id: idSender,
   }
 
-  const { data, doFetch: createConversation } = useFetch("POST", dataConversation);
+  const { doFetch: createConversation } = useFetch("POST", dataConversation);
+  const { data, doFetch: findFetchMessage } = useFetch();
   const { doFetch: createFetchMessage } = useFetch("POST", dataMessage);
    
   const createMessage = (e) => {
     e.preventDefault();
-    createFetchMessage(`privatemessagings/${data.privatemessagings_id}/messages`);
+    privatemessaging = data.find((id) => id.recipient_id === idRecipient && id.sender_id === idSender )
+    createFetchMessage(`privatemessagings/${privatemessaging.id}/messages`);
   };
 
   const remove = () => {
@@ -37,6 +40,7 @@ const ModalCreateConversation = (props) => {
 
   useEffect(() => {
     createConversation("privatemessagings");
+    findFetchMessage("privatemessagings");
   }, []);
 
   return (
