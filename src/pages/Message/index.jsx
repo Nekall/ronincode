@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import Skeleton from 'react-loading-skeleton';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
 
@@ -8,7 +10,7 @@ const Message = () => {
   let idSender = parseInt(senderId);
   const { conversationId } = useParams();
   const [content, setContent] = useState('')
-  let senderName = '';
+  let senderInfo = '';
   
   const sendDataMessage = {
     body: content,
@@ -17,7 +19,7 @@ const Message = () => {
   
   const { data: dataMessage, doFetch: findMessage } = useFetch();
   const { data: dataUser, doFetch: findAllUsers } = useFetch();
-  const { doFetch: createFetchMessage } = useFetch("POST", sendDataMessage);
+  const { data: endFetch, doFetch: createFetchMessage } = useFetch("POST", sendDataMessage);
 
   const allMessages = () => {
     findMessage(`privatemessagings/${conversationId}/messages`);
@@ -35,29 +37,29 @@ const Message = () => {
   useEffect(() => {
     allUsers();
     allMessages();
-  }, [])
+  }, [endFetch])
   
   return(
     <div>
       <h1> Messages </h1>
       {dataUser ?
-        <div>{dataMessage && dataMessage.map((message, index) => {
-          senderName = dataUser.find(({id}) => id === message.user_id)
-          return(
-            <>
-              {(message.body === null || message.body === undefined) ?
-                ""
-              :
-                <div key={index.id}>
-                  <p key={index.id}> Body: {message.body} </p>
-                  <span key={index.id}>Envoyer par: {senderName.email} le {new Intl.DateTimeFormat('fr-FR', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(message.created_at))}</span>
-                </div>
-              }
-            </>
-          )
-        })}</div>
+          <div className="conversation-body">{dataMessage && dataMessage.map((message) => {
+            senderInfo = dataUser.find(({id}) => id === message.user_id)
+            return(
+              <div key={uuidv4()}>
+                {(message.body === null || message.body === undefined) ?
+                  ""
+                :
+                  <div key={uuidv4()}>
+                    <p> Body: {message.body} </p>
+                    <span>Envoyer par: {senderInfo.email} le {new Intl.DateTimeFormat('fr-FR', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(message.created_at))}</span>
+                  </div>
+                }
+              </div>
+            )
+          })}</div>
         :
-        ""
+          <Skeleton count={5}/>
       }
       <div>
         <form onSubmit={createMessage}>
@@ -75,5 +77,3 @@ const Message = () => {
 }
 
 export default Message;
-
-//senderName = dataUser.find((id) => id.id === dataMessage.user_id)

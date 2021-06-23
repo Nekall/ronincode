@@ -1,6 +1,7 @@
 @import "components/modal-message.scss";
 @import "libs/reset.scss";
 @import "libs/colors.scss";
+@import "pages/message.scss";
 @import "post.scss";
 @import "postCompact.scss";
 @import "profile.scss";
@@ -12,28 +13,29 @@
 @import "team.scss";
 @import "showArticle.scss";
 
-main{
+main {
   padding: 0 2em;
 }
 
-.hackerman{
+.hackerman {
   height: 500px;
 }
 
-.longpage{
+.longpage {
   display: block;
   height: 2000px;
   width: 200px;
 }
 
-a,p{
-  font-family: 'courier';
+a,
+p {
+  font-family: "courier";
 }
 
-.retro-filter{
+.retro-filter {
   position: absolute;
-  background: linear-gradient( 0.38turn, #FC0DA2, #650CF2);
+  background: linear-gradient(0.38turn, #fc0da2, #650cf2);
   width: 100%;
   height: 100%;
-  opacity: .35;
+  opacity: 0.35;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
 
@@ -47,7 +48,7 @@ const PrivateMessaging = () => {
               }
               
             }
-            return(<li key={list.id}><Link to={`/conversations/${list.id}/messages`}>Conversation avec {receiver.email}</Link></li>);
+            return(<li key={uuidv4()}><Link to={`/conversations/${list.id}/messages`}>Conversation avec {receiver.email}</Link></li>);
           } else {
             return false;
           }
