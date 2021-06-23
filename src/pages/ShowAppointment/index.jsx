@@ -41,6 +41,8 @@ const Showappointment = () => {
               <h2>Titre : </h2>
               <h3>{appointment.title}</h3>
               <h2>Mentor : </h2>
+              <h3>{appointment.time}</h3>
+              <h2>Heure : </h2>
               <h3>{appointment.user_2_id}</h3>
           </div>
         </div>
