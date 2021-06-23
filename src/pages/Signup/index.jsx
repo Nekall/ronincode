@@ -20,13 +20,13 @@ const Signup = () => {
   let validate = "8 caractère minimum ✖"
   let isValid = false;
 
-if(password.length > 8){
+if(password.length > 7){
   validate = "";
   isValid = true;
 }
 
   const handleFetch = (e) => {
-
+    e.preventDefault();
     if (password !== confirmPassword && isValid !== false) {
         setError('Les mots de passe ne correspondent pas.')
     } else {

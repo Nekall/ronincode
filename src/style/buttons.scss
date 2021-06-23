@@ -2,6 +2,11 @@
   color: #fff;
   font-weight: bold;
   text-decoration: none;
+
+  &:hover{
+    border: 2px solid #ffffb3b3;
+    box-shadow: 0px 0px 20px #7f8000;
+  }
 }
 
 .btn-message{

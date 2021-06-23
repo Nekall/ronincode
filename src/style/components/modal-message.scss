@@ -1,0 +1,36 @@
+.modal-message {
+  .visible {
+  }
+
+  .hidden {
+  }
+}
+
+.modalShow {
+  animation: show-modal 1s ease-out;
+}
+
+@keyframes show-modal {
+  from {
+    opacity: 0;
+    transform: translateY(-300px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.modalRemove {
+  animation: remove-modal 2s ease-out;
+}
+
+@keyframes remove-modal {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-300px);
+  }
+}

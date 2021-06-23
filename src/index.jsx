@@ -54,7 +54,7 @@ const App = () => {
               <Route path="/rendez-vous/:appointmentSlug">
                 <ShowAppointment />
               </Route>
-              <Route path="/profile">
+              <Route path="/profile/:id_user">
                 <UserProfile />
               </Route>
               <Route path={`/profile/edit`} exact>

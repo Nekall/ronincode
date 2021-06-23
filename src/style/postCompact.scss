@@ -1,22 +1,58 @@
 .card-postCompact-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 1200px;
+  max-width: 1200px;
   margin: 2em auto;
   grid-gap: 1em;
+
 }
+
+@media (max-width: 1200px) {
+  .card-postCompact-container{
+    grid-template-columns: 1fr;
+  }
+  .card-postCompact{
+    max-width: 700px;
+  }
+}
+
 .card-postCompact{
-  border: 2px solid #ffffb3b3;
+  border: 2px solid #efb3ffb3;
   border-radius: 5px;
   padding: 1.5em;
-  max-width: 780px;
-  box-shadow: 0px 0px 20px #7f8000;
+  width: -webkit-fill-available;
+  box-shadow: 0px 0px 20px #643f7a;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
+  margin: auto;
 
   .btn_language{
     text-align: center;
+    font-family: 'lazer84';
+    letter-spacing: .3rem;
+    background: #d600e6;
+    padding: .3em;
+    width: fit-content;
+    margin: auto;
+    border-radius: 5px;
+    border: 2px solid $magenta;
+
+    &:hover{
+      border: 2px solid #ffffb3b3;
+      box-shadow: 0px 0px 20px #7f8000;
+      transition: box-shadow, .3s;
+    }
+  }
+
+  .date{
+    color: #fff;
+    font-family: courier;
+    display: block;
+    text-align: right;
+    flex-grow: 1;
+    font-size: 1em;
+    align-self: center;
   }
 
   .card-txt{
@@ -65,7 +101,7 @@
   }
 
   .card-post-img-container{
-    width: 280px;
+    width: 100%;
     height: 200px;
     flex: none;
     grid-row: 2;
@@ -91,37 +127,54 @@
     margin-bottom: .4em;
 
     .post-username{
-      font-family: 'Oswald';
       font-weight: 300;
       align-self: center;
-    }
-    
-    .date{
-      color: #fff;
-      font-family: 'Oswald';
-      display: block;
-      text-align: right;
-      flex-grow: 1;
-      font-size: .8em;
-      align-self: center;
+      font-family: courier;
     }
   }
 
-  .Lead_paragraph{
+  .Lead-paragraph{
     font-size: 1em;
     margin-bottom: 1em;
+    font-family: courier;
   }
 
-  .read_more{
-    text-decoration: none;
-    font-family: 'Oswald';
-    text-align: right;
+  .read-more-container{
     grid-row: 3;
     grid-column: 2/2;
-    color: $blue;
-  }
-  .read_more:hover{
-    color: $pink;
-  }
+    justify-self: right;
 
+    .read-more{
+      text-decoration: none;
+      font-family: 'Press Start 2P';
+      font-size: .8em;
+      color: $yellow;
+    }
+    .read-more:hover{
+      color: $pink;
+      transition: color .3s;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .card-postCompact{
+    grid-template-columns: 1fr;
+
+    .card-post-img-container{
+      grid-row: auto;
+    }
+
+    .card-txt{
+      grid-row: auto;
+    }
+
+    .read-more-container {
+      grid-row: auto;
+      grid-column: auto;
+    }
+    .date{
+      grid-row: 3;
+    }
+  }
 }

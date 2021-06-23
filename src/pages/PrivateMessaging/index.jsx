@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
 
@@ -14,12 +15,10 @@ const PrivateMessaging = () => {
 
   const allUsers = () => {
     findAllUsers("users");
-    console.log(dataUser);
   };
 
   const allConversations = () => {
     FindAllConversations("privatemessagings");
-    console.log(dataConversation);
   };
 
   const testClick = () => {
@@ -36,24 +35,27 @@ const PrivateMessaging = () => {
     <div>
       <h1> Conversations </h1>
       <button onClick={testClick}>LA</button>
-      <ul>{dataConversation && dataConversation.map((list) => {
-        if (id === list.sender_id || id === list.recipient_id) {
-          if (id === list.sender_id) {
-            if (list.recipient_id ) {
-              receiver = dataUser.find(({ id }) => id === list.recipient_id);
+      {dataUser ?
+        <ul>{dataConversation && dataConversation.map((list) => {
+          if (id === list.sender_id || id === list.recipient_id) {
+            if (id === list.sender_id) {
+              if (list.recipient_id ) {
+                receiver = dataUser.find(({ id }) => id === list.recipient_id);
+              }
+            } else if (id === list.recipient_id) {
+              if (list.sender_id ) {
+                receiver = dataUser.find(({ id }) => id === list.sender_id);
+              }
+              
             }
-          } else if (id === list.recipient_id) {
-            if (list.sender_id ) {
-              receiver = dataUser.find(({ id }) => id === list.sender_id);
-            }
-            
+            return(<li key={uuidv4()}><Link to={`/conversations/${list.id}/messages`}>Conversation avec {receiver.email}</Link></li>);
+          } else {
+            return false;
           }
-          return(<li key={list.id}><Link to={`/conversations/${list.id}/messages`}>Conversation avec {receiver.email}</Link></li>);
-        } else {
-          return false;
-        }
-      })}
-      </ul>
+        })}</ul>
+        :
+        ""
+      }
     </div>
   )
 }
