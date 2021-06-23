@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import BtnLangage from "components/BtnLangage";
+import { Link } from 'react-router-dom';
 
+import BtnLangage from "components/BtnLangage";
 import img_post from 'assets/images/image-test.png';
 import avatar from 'assets/images/avatar.jpg';
 
@@ -29,17 +30,17 @@ const CardPostCompact = (article) => {
       <BtnLangage />
       <span className="date">{article.data.created_at.substring(0, 10)}</span>
       <div className="card-post-img-container">
-        <a href="/">
+        <Link to="/">
           <img src={img_post} alt="Ligne de code sur un écran" />
           <div className="retro-filter"></div>
-        </a>
+        </Link>
       </div>
       <div className="card-txt">
         <div className="post-author-date">
-          <a href="/" className="post-avatar-container">
+          <Link to="/" className="post-avatar-container">
             <img src={avatar} alt="" />
             <div className="retro-filter"></div>
-          </a>
+          </Link>
           <h4 className="post-username">{User.username} </h4>
         </div>
         <h3 className="post-title"><a href="/">{article.data.title}</a></h3>
@@ -48,7 +49,7 @@ const CardPostCompact = (article) => {
         </div>
       </div>
       <div className="read-more-container">
-        <a href={`/articles/${article.data.id}`} className="read-more">> Lire la suite</a>
+        <Link to={`/blog/${article.data.id}`} className="read-more">&gt; Lire la suite</Link>
       </div>
     </div>
   )
