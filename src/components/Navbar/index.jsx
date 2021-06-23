@@ -5,9 +5,9 @@ import { CSSTransition } from 'react-transition-group';
 import { ReactComponent as MessagesIcon } from '../../assets/images/icons/messages.svg';
 import { ReactComponent as CaretIcon } from '../../assets/images/icons/caret.svg';
 import { ReactComponent as UserIcon } from '../../assets/images/icons/user.svg';
+import { ReactComponent as AdminIcon } from '../../assets/images/icons/admin.svg';
 import { ReactComponent as LogoutIcon } from '../../assets/images/icons/logout.svg';
 import { ReactComponent as WriteIcon } from '../../assets/images/icons/edit.svg';
-import { ReactComponent as AddRDVIcon } from '../../assets/images/icons/add.svg';
 import { ReactComponent as AgendaIcon } from '../../assets/images/icons/agenda.svg';
 import useFetch from '../../Hooks/useFetch';
 import Logo from 'components/Logo';
@@ -15,16 +15,12 @@ import Cookies from 'js-cookie';
 
 const Navbar = () => {
   const logged = useSelector(state => state.logReducer.logged);
-  const is_admin = useSelector(state => state.logReducer.is_admin);
 
   return (
     <>
       <NavbarContainer>
         {logged ?
           <>
-          {is_admin?
-            <Link className="btn-blog" to="/admin">Panel Admin</Link>
-            :<></>}
           <NavItem linkTo="/" icon={<AgendaIcon />} />
           <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
           <NavItem linkTo={`/`} icon={<UserIcon />} /> {/* linkTo={`/profile/${id}`} */}
@@ -91,6 +87,7 @@ function DropdownMenu() {
     );
   }
 
+  const is_admin = useSelector(state => state.logReducer.is_admin);
   const { doFetch: discoFetch } = useFetch("DELETE");
     let id = Cookies.get('id');
     function disconnect(){
@@ -122,6 +119,12 @@ function DropdownMenu() {
             leftIcon={<WriteIcon />}>
             Écrire un article
           </DropdownItem>
+          {is_admin?
+            <DropdownItem linkTo="/admin" className="admin-style"
+            leftIcon={<AdminIcon />}>
+              Administration
+            </DropdownItem>
+          :<></>}
           <DropdownItem
             leftIcon={<LogoutIcon />}> <Link to="" onClick={()=>disconnect()}>Se déconnecter</Link>
           </DropdownItem>
