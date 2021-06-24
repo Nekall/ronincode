@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import ModalMentoringSection from 'components/ModalMentoringSection';
-import CardPostCompact from 'components/CardPostCompact';
 import ModalContact from 'components/ModalContact';
 import BtnTechno from 'components/BtnTechno';
 import Skeleton from 'react-loading-skeleton';
@@ -12,6 +11,7 @@ import avatar from 'assets/images/avatar.jpg';
 import ModalDate from 'components/ModalDate';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
+import dolorean from 'assets/images/dolorean.jpeg';
 
 const UserProfile = () => {
   const { id_user } = useParams();
@@ -38,30 +38,24 @@ const UserProfile = () => {
 
   return(
     <>
+    <div className="hero-mini">
+      <img src={dolorean} alt="Dolorean à Tokyo" className="hero-background"/>
+    </div>
       {dataAppointment && dataAllUser ?
+
         <div className="profile-container">
-          <div className="infos-container">
-            <div className="avatar-container">
-              <div className="avatar-content">
-                <img className="avatar" src={avatar} alt="" />
-                <div className="retro-filter"></div>
-              </div>
-            </div>
-            <div className="txt-container">
-
-              <ModalContact logged={logged} id_current={id_current} id_user_profile={id_user_profile} dataAllUser={dataAllUser} />
-
-              <BtnTechno />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, dignissimos fugit nisi nesciunt inventore enim, nostrum nulla excepturi cum tempore accusantium necessitatibus ducimus autem animi temporibus quasi iure tenetur quos!</p>
-            </div>
+          <div className="avatar">
+            <img src={avatar} alt="" />
+            <div className="retro-filter"></div>
           </div>
+          <ModalContact logged={logged} id_current={id_current} id_user_profile={id_user_profile} dataAllUser={dataAllUser} />
           <ModalDate id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
           <ModalMentoringSection id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
-          
-          <div className="cardGroupCompact">
-            
-          </div>
         </div>
+        
+        
+        
+        
         :
         <div className="profile-container">
           <div className="infos-container">
@@ -81,13 +75,11 @@ const UserProfile = () => {
                   </div>
                   :
                   <div>
-                    <button className="btn-message">Mes Conversations</button>
-                    <button className="btn-message">Edit Profile</button>
+                    <button className="btn-message">Messages</button>
+                    <button className="btn-message">Editer le profil</button>
                   </div>
                 }
               </div>
-              <BtnTechno />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, dignissimos fugit nisi nesciunt inventore enim, nostrum nulla excepturi cum tempore accusantium necessitatibus ducimus autem animi temporibus quasi iure tenetur quos!</p>
             </div>
           </div>
           <div className="date">
