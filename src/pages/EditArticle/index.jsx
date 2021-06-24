@@ -13,7 +13,7 @@ const EditArticle = () => {
     const { articleSlug } = useParams();
     const [technologies, setTechnologies] = useState([])
     const [articleInfo, setarticleInfo] = useState([])
-   
+    // const [joindata, setJoindata] = useState()
     const history = useHistory()
 
     
@@ -22,22 +22,18 @@ const EditArticle = () => {
         title: articleInfo.title,
         lead: articleInfo.lead,
         content: articleInfo.content,
-        technologies: {
-          resource_id: articleSlug,
-          technology_id: articleInfo.technology_id,
-        }
+        
     });
     
+
     const handleChange = (e) => {
-      const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
       setData({
         ...data,
-        [e.target.name]: value, 
+        [e.target.name]: e.target.value, 
 
       })
       
     };
-
 
     const url = `https://ronincode.herokuapp.com/resources/${articleSlug}`
 
@@ -61,25 +57,27 @@ const EditArticle = () => {
 
       const updateFetch = (e) => {
         e.preventDefault();
-        console.log(`data`, data)
+        let techno1 = document.getElementById("techno1").value
+        let joindata = {
+          resource_id: parseInt(articleSlug),
+          technology_id: parseInt(techno1),
+        }
+        console.log(`joindata2`, joindata)
+        console.log(`techno1`, techno1)
         fetch(`https://ronincode.herokuapp.com/resources_technologies/`, {
           method : "POST",
           headers : {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': token,
             "Content-Type" : "application/json",
           },
-          body : JSON.stringify(data)
-         
+          body : JSON.stringify(joindata)
         })
         .then((response) => response.json())
-        .then(data => { setarticleInfo(data)})
-          console.log(`data`, data)
         } 
 
         const makeitFetch = (data) => {
           handleFetch(data);
           updateFetch(data);
-          
         }
     
       const technoFetch = () => {
@@ -103,17 +101,7 @@ const EditArticle = () => {
           technoFetch();
       }, [])
 
-      const [checkedState, setCheckedState] = useState(
-        new Array(technologies.length).fill(false)
-      );
-      const handleOnChange = (position) => {
-        const updatedCheckedState = checkedState.map((item, index) =>
-          index === position ? !item : item
-        );
-        setCheckedState(updatedCheckedState);
-        console.log(`object`, updatedCheckedState)
-
-      }
+     
         
     return (
       <div className = "editArticle">
@@ -124,20 +112,20 @@ const EditArticle = () => {
               <input type="text" className="ArticleTitle" name="title" placeholder="Titre de l'article" onFocus={(e) => e.target.placeholder = ''}  onBlur={(e) => e.target.placeholder = "Titre de l'article"} onChange={handleChange}></input>
               <textarea className="ArticleLead" name="lead" placeholder="Introduction" type="textarea" onChange={handleChange}></textarea>
               <textarea className="ArticleContent" name="content" placeholder="Contenu de l'article" type="textarea"  onChange={handleChange}></textarea>
-              <button>Modifier</button>
+              <input type="submit" value="modifier"/>
             </div>
             <div className="Column2">
               <div className="Technologies">
                 <h2>Technologies</h2>
-                <div className="Options">{technologies && technologies.map(({name, id}, index) =>
-                  <div className="Option">
-                    <p key={index}>{name} </p>
-                    <input type="checkbox" id={id}  name="technology_id" value={id} checked={checkedState[index]}  onChange={() => handleOnChange(index)}></input>
-                  </div>
+                  <select name="techno" id="techno1">
+                    {technologies && technologies.map(({name, id}, index) =>
+                      
+                      <option key={Math.random()} value ={id}>{name}</option>
+                    
+                    )}
+                   
+                  </select> 
                   
-                )}
-                  
-                </div>
               </div>
             </div>
           </div> 
