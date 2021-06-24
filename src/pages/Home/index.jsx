@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { useSelector } from "react-redux";
 import Hero from "components/Hero";
 import useFetch from 'Hooks/useFetch';
 import CardGroupPostCompact from 'components/CardGroupPostCompact';
+import CallToAction from 'components/CallToAction';
 
 const Home = () => {
+  const logged = useSelector(state => state.logReducer.logged);
   const { data: dataResources, doFetch: fetchResources } = useFetch();
 
   useEffect(() => {
@@ -14,7 +17,15 @@ const Home = () => {
 
   return (
     <>
-      <Hero />
+      {logged ?
+      <>
+      </>
+        :
+        <>
+          <Hero />
+          <CallToAction />
+        </>
+      }
       <main>
         <CardGroupPostCompact />
       </main>
@@ -24,3 +35,6 @@ const Home = () => {
 }
 
 export default Home;
+
+// articles
+// list mentor (plusieurs listes)

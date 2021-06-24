@@ -11,9 +11,9 @@ footer {
   }
 
   .footer-background{
-    background-color: $blue;
+    background: $chat-gradient;
   }
-
+  
   .cell-1{
     grid-row: 2;
   }
@@ -22,6 +22,7 @@ footer {
     grid-row: 2;
   }
   .cell-3{
+    background: #B8428B;
     grid-column: 1/4;
     grid-row: 3;
   }

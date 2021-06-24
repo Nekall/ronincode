@@ -9,11 +9,10 @@
 
 .login-box {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   width: 400px;
   padding: 40px;
-  margin: 4em;
   transform: translate(-50%, -50%);
   background-image: url(../../assets/images/background-retrowave-web.jpg);
   background-position: right;
@@ -164,9 +163,16 @@
   color: rgb(255, 65, 0);
 }
 
+.success-message{
+  color: rgb(0, 255, 18);
+}
+
 .validate-message{
   color: rgb(255, 65, 0);
   padding-bottom: 25px;
 }
 
-
+.link-sign{
+  color: $yellow;
+  float: right;
+}

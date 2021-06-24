@@ -1,12 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import CardPostCompact from 'components/CardPostCompact';
 
-
-
 const CardGroupPostCompact = () => {
 
   const [Articles, setArticles] = useState([])
-
 
   useEffect(() => {
 
@@ -21,7 +18,6 @@ const CardGroupPostCompact = () => {
     .catch(err => console.error(err));
 
   }, [])
-
 
   return(
 

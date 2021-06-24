@@ -1,21 +1,15 @@
 import React, { useState} from 'react'
-import { useHistory, Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { LogFailure, LogSuccess } from 'store/Log/LogActions';
+import { useHistory, useParams } from 'react-router-dom'
 import '../../style/pages/sign.scss'
 
-const Signup = () => {
-  const [email, setEmail] = useState('')
+const ResetPassword = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const inputData = {
-    user: {
-      email: email,
-      password: password
-    }
+  const { token } = useParams();
+  const data = {
+    password: password,
+    token: token
   }
   let validate = "8 caractère minimum ✖"
   let isValid = false;
@@ -30,19 +24,20 @@ if(password.length > 7){
     if (password !== confirmPassword && isValid !== false) {
         setError('Les mots de passe ne correspondent pas.')
     } else {
-      fetch("https://ronincode.herokuapp.com/users", {
+      fetch("https://ronincode.herokuapp.com/password/reset", {
         method: 'POST',
         headers: {
           "Content-Type" : "application/json"
         },
-        body: JSON.stringify(inputData)
+        body: JSON.stringify(data)
       })
       .then(data => {
         if(data.ok){
-          dispatch(LogSuccess(data, true))
-          history.push("/");
+          console.log("SUCCES");
+          console.log(data);
         } else {
-          dispatch(LogFailure(data.error, false))
+          console.log("ERROR");
+          console.log(data);
           setError('Désolé, une erreur est survenue.')
         }
       })
@@ -53,12 +48,8 @@ if(password.length > 7){
   return (
     <div className="Sign">
       <div className="login-box">
-        <h2>Créer un compte</h2>
+        <h2>Nouveau mot de passe :</h2>
         <form onSubmit={handleFetch}>
-          <div className="user-box">
-            <label className="label-form-log">Email</label>
-            <input type="email" value={email} required onChange={(e) => setEmail(e.target.value)}></input>
-          </div>
           <div className="user-box">
             <label className="label-form-log">Mot de passe</label>
             <input id="password_id" type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
@@ -69,13 +60,12 @@ if(password.length > 7){
             <input type="password" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)}></input>
             <div className="error-message">{error}</div>
           </div>
-          <Link className="link-sign" to="/se-connecter">Se connecter</Link>
           <button>
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-            Inscription
+            Réinitialiser
           </button>
         </form>
       </div>
@@ -83,4 +73,4 @@ if(password.length > 7){
   )
 }
 
-export default Signup
+export default ResetPassword;

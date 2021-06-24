@@ -8,11 +8,14 @@ import Signin from 'pages/Signin';
 import Blog from 'pages/Blog';
 import UserProfile from 'pages/UserProfile';
 import CreateArticle from 'pages/CreateArticle';
-import CreateAppointment from 'pages/CreateAppointment';
+import CreateAppointment from 'components/CreateAppointment';
 import ShowArticle from 'pages/ShowArticle';
 import ShowAppointment from 'pages/ShowAppointment';
+import IndexAppointment from 'pages/IndexAppointment';
 import EditArticle from 'pages/EditArticle';
 import EditProfile from 'pages/EditProfile';
+import ForgotPassword from 'pages/ForgotPassword';
+import ResetPassword from 'pages/ResetPassword';
 import Team from 'pages/Team';
 import Message from 'pages/Message';
 import PrivateMessaging from 'pages/PrivateMessaging';
@@ -73,6 +76,15 @@ const App = () => {
               </Route>
               <Route path="/team" exact>
                 <Team />
+              </Route>
+              <Route path="/rendez-vous" exact>
+                <IndexAppointment />
+              </Route>
+              <Route path="/nouveau/mot-de-passe/:token" exact>
+                <ResetPassword />
+              </Route>
+              <Route path="/reinitialisation/mot-de-passe" exact>
+                <ForgotPassword />
               </Route>
               <PrivateRoute />
             </Switch>
