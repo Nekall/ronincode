@@ -1,17 +1,17 @@
-/* 
+
 .NewRDV{
   width: 80%;
   display: flex;
-  padding: 10%
+  padding: 7%
 }
 
 
-.date {
+.rdv {
   margin-left: 90px;
 }
 
 .NewRDV h1 {
-  color:black;
+  color:white;
   margin: 1em;
 }
 
@@ -67,4 +67,4 @@
   display: flex;
   justify-content: start;
   align-items: center;
-} */
+}

@@ -13,18 +13,15 @@ const CreateAppointment = (props) => {
     const inputData = {
       appointment: {
         date: date,
-        time: time,
+        appointment_time: time,
         title: title,
         user_2_id: userTwo,
       }
     }
-    const url = "https://ronincode.herokuapp.com/appointments"
+    const url = "http://localhost:3000/appointments"
 
     const handleFetch = (e) => {
       e.preventDefault();
-
-      console.log(inputData)
-      console.log(token)
 
       fetch(url, {
         method : "POST",
@@ -38,6 +35,8 @@ const CreateAppointment = (props) => {
       .then(data => {
         if(data === undefined){
           alert("error")
+          console.log(data)
+
          } else {
             console.log(data)
             props.rdvFetch();

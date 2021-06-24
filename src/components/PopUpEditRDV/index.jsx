@@ -4,21 +4,31 @@ import './style.css'
 
 
 const PopUpEditRDV = (props) => { 
-    const [date, setDate] = useState('')
-    const [time, setTime] = useState('')
-    const [title, setTitle] = useState('')
-    const [userTwo, setUserTwo] = useState('')
     const token = Cookies.get('token')
+    console.log(props.title)
 
-    const inputData = {
+    const [inputData, setInputData] = useState({
       appointment: {
-        date: date,
-        time: time,
-        title: title,
-        user_2_id: userTwo,
+        date: props.date,
+        appointment_time: props.appointment_time,
+        title: props.title,
+        user_2_id: props.user_2_id,
       }
-    }
-    const url = `https://ronincode.herokuapp.com/appointments/${props.id}`
+    })
+
+
+    const handleChange = (e) => {
+      setInputData({
+        ...inputData,
+        appointment: {
+          [e.target.name]: e.target.value
+        }
+      });
+    };
+  
+
+    const url = `http://localhost:3000/appointments/${props.id}`
+
 
     const handleFetch = (e) => {
       e.preventDefault();
@@ -52,10 +62,10 @@ const PopUpEditRDV = (props) => {
         <span className="close-icon" onClick={props.handleClose}>x</span>
         <h1>Modifier l'évènement</h1>
         <form className="form" onSubmit={handleFetch}>
-            <input type="text" value={title} placeholder="Ajouter un titre" onChange={(e) => setTitle(e.target.value)}></input>
-            <input type="date" value={date} placeholder="Date du rendez-vous" onChange={(e) => setDate(e.target.value)}></input>
-            <input type="time" value={time} placeholder="heure du rendez-vous" onChange={(e) => setTime(e.target.value)}></input>
-            <input type="text" value={userTwo} placeholder="Ajouter un invité (id)" onChange={(e) => setUserTwo(e.target.value)}></input>
+            <input type="text" placeholder={props.title} name="title" onChange={handleChange}></input>
+            <input type="date" placeholder={props.date} name="date" onChange={handleChange}></input>
+            <input type="time" placeholder={props.appointment_time} name="appointment_time" onChange={handleChange}></input>
+            <input type="text" placeholder={props.user_2_id} name="user_2_id" onChange={handleChange}></input>
             <button>Valider</button>
         </form>
       </div>
