@@ -8,7 +8,6 @@ import Signin from 'pages/Signin';
 import Blog from 'pages/Blog';
 import UserProfile from 'pages/UserProfile';
 import CreateArticle from 'pages/CreateArticle';
-import CreateAppointment from 'components/CreateAppointment';
 import ShowArticle from 'pages/ShowArticle';
 import ShowAppointment from 'pages/ShowAppointment';
 import IndexAppointment from 'pages/IndexAppointment';
@@ -39,35 +38,23 @@ const App = () => {
               <Route path="/" exact>
                 <Home />
               </Route>
-              <Route path="/inscription">
-                <Signup />
-              </Route>
-              <Route path="/se-connecter">
-                <Signin />
-              </Route>
-              <Route path="/blog" exact>
-                <Blog />
-              </Route>
-              <Route path="/nouvel-article">
-                <CreateArticle />
-              </Route>
-              <Route path="/creer-un-rendez-vous">
-                <CreateAppointment />
+              <Route path="/creer-un-rendez-vous" exact>
+                <IndexAppointment />
               </Route>
               <Route path="/rendez-vous/:appointmentSlug">
                 <ShowAppointment />
               </Route>
-              <Route path="/profile/:id_user">
-                <UserProfile />
-              </Route>
-              <Route path="/profile-edit" exact>
-                <EditProfile />
+              <Route path="/conversations" exact>
+                <PrivateMessaging />
               </Route>
               <Route path="/conversations/:conversationId/messages" exact>
                 <Message />
               </Route>
-              <Route path="/conversations" exact>
-                <PrivateMessaging />
+              <Route path="/blog" exact>
+                <Blog />
+              </Route>
+              <Route path="/nouvel-article" exact>
+                <CreateArticle />
               </Route>
               <Route path="/blog/:articleSlug" exact>
                 <ShowArticle />
@@ -78,8 +65,17 @@ const App = () => {
               <Route path="/team" exact>
                 <Team />
               </Route>
-              <Route path="/rendez-vous" exact>
-                <IndexAppointment />
+              <Route path="/inscription" exact>
+                <Signup />
+              </Route>
+              <Route path="/se-connecter" exact>
+                <Signin />
+              </Route>
+              <Route path="/profile/:id_user">
+                <UserProfile />
+              </Route>
+              <Route path="/profile-edit">
+                <EditProfile />
               </Route>
               <Route path="/nouveau/mot-de-passe/:token" exact>
                 <ResetPassword />

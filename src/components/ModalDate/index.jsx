@@ -40,9 +40,10 @@ const ModalDate = (props) => {
               </li>
             );
           } else {
-            return(<div>pas encore de rendez-vous</div>);
+            return false;
           }
         })}
+        {props.dataAppointment.user_1_id !== props.id_user_profile && props.dataAppointment.user_2_id !== props.id_user_profile ? <div>pas encore de rendez-vous</div> : ""}
       </ul>
     </div>
   );
