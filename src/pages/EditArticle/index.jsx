@@ -1,85 +1,112 @@
-import React, { useState} from 'react'
-import Cookies from 'js-cookie';
-import './style.css'
-import { useHistory } from 'react-router-dom'
+import React, {useEffect, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import './style.css';
 
+const EditArticle = () => {
 
-
-const CreateArticle = () => { 
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [lead, setLead] = useState('')
     const token = Cookies.get('token')
     const { articleSlug } = useParams();
-
-
+    const [technologies, setTechnologies] = useState([])
+    const [articleInfo, setarticleInfo] = useState([])
     const history = useHistory()
-    console.log(token)
+    const [data, setData] = useState({
+        title: articleInfo.title,
+        lead: articleInfo.lead,
+        content: articleInfo.content,
+    });
 
-    const inputData = {
-      resource: {
-        title: title,
-        lead: lead,
-        content: content,
-      }
-    }
-
-
-    const url = `https://ronincode.herokuapp.com/resources/${articleSlug}`
+    const handleChange = (e) => {
+      setData({
+        ...data,
+        [e.target.name]: e.target.value,
+      })
+    };
 
     const handleFetch = (e) => {
       e.preventDefault();
 
-      console.log("hello")
-
-      fetch(url, {
+      fetch(`https://ronincode.herokuapp.com/resources/${articleSlug}`, {
         method : "PUT",
         headers : {
           "Content-Type" : "application/json",
         },
-        body : JSON.stringify(inputData)
+        body : JSON.stringify(data)
       })
       .then((response) => response.json())
-      .then(data => {
-        if(data === undefined){
-          alert("error")
-         } else {
-            console.log(data.id)
-            alert("Article modifié")
-            history.push(`/articles/${data.id}`)
-          }
+      .then(data => { setarticleInfo(data)
+          history.push(`/blog/${articleSlug}`)
         })
-      } 
+      }
 
-    
-    
+
+      const updateFetch = (e) => {
+        e.preventDefault();
+        let techno1 = document.getElementById("techno1").value
+        let joindata = {
+          resource_id: parseInt(articleSlug),
+          technology_id: parseInt(techno1),
+        }
+        console.log(`joindata2`, joindata)
+        console.log(`techno1`, techno1)
+        fetch(`https://ronincode.herokuapp.com/resources_technologies/`, {
+          method : "POST",
+          headers : {
+            'Authorization': token,
+            "Content-Type" : "application/json",
+          },
+          body : JSON.stringify(joindata)
+        })
+        .then((response) => response.json())
+        }
+
+        const makeitFetch = (data) => {
+          handleFetch(data);
+          updateFetch(data);
+        }
+
+      const technoFetch = () => {
+
+        fetch(`https://ronincode.herokuapp.com/technologies/`, {
+          method : "GET",
+          headers : {
+            "Content-Type" : "application/json",
+          },
+
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          setTechnologies(data)
+        })
+      }
+
+        useEffect(() => {
+          technoFetch();
+      }, [])
+
+      console.log(technologies);
+
     return (
-      <div className = "NewArticle">
+      <div className = "editArticle">
         <h1>Modifier l'Article</h1>
-        <form className="form" onSubmit={handleFetch}>
-          <div className="FirstColumn">
-            <input type="text" value={title} placeholder="Titre de l'article" onChange={(e) => setTitle(e.target.value)}></input>
-            <textarea className="ArticleLead" placeholder="Introduction" type="textarea" value={lead} onChange={(e) => setLead(e.target.value)}></textarea>
-            <textarea className="ArticleContent" placeholder="Contenu de l'article" type="textarea" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
-            <button>Modifier</button>
-          </div>
-          <div className="SecondColumn">
-            <div className="Technologies">
-              <h2>Technologies</h2>
-              <div className="Options">
-                <div>
-                  <label>JS</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
-                </div>
-                <div>
-                  <label>React</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
-                </div>
-                <div>
-                  <label>HTML</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
-                </div>
+        <form className="form" onSubmit={makeitFetch}>
+          <div className="ContentArticle" >
+            <div className="Column1">
+              <input type="text" className="ArticleTitle" name="title" placeholder="Titre de l'article" onFocus={(e) => e.target.placeholder = ''}  onBlur={(e) => e.target.placeholder = "Titre de l'article"} onChange={handleChange}></input>
+              <textarea className="ArticleLead" name="lead" placeholder="Introduction" type="textarea" onChange={handleChange}></textarea>
+              <textarea className="ArticleContent" name="content" placeholder="Contenu de l'article" type="textarea"  onChange={handleChange}></textarea>
+              <input type="submit" value="modifier"/>
+            </div>
+            <div className="Column2">
+              <div className="Technologies">
+                <h2>Technologies</h2>
+                  <select name="techno" id="techno1">
+                    {technologies && technologies.map(({name, id}, index) =>
+                      <option key={Math.random()} value ={id}>{name}</option>
+                    )}
+                  </select>
               </div>
             </div>
           </div>
@@ -88,4 +115,4 @@ const CreateArticle = () => {
   );
 }
 
-export default CreateArticle
+export default EditArticle

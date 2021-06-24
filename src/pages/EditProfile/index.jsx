@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 const EditProfile = () => {
   const id = Cookies.get('id');
   const [userinfo, setUserinfo] = useState('');
-  
+
   const [dataUser, setDataUser] = useState({
     user: {
       username: userinfo.username,
@@ -17,7 +17,7 @@ const EditProfile = () => {
       password: userinfo.password,
     }
   });
-  
+
   const {data: sync, doFetch: updateUser } = useFetch('PUT', dataUser);
 
   const handleChange = (e) => {
