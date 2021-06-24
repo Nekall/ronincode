@@ -13,7 +13,7 @@ const NextMeeting = () => {
             <div className="month">septembre</div>
           </div>
           <div className="txt-container">
-            <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
+            <div className="title">14h30 : Mentorat - Mentor : <Link to="/" className="mentor-name">Day101</Link></div>
             <BtnTechno />
           </div>
         </div>

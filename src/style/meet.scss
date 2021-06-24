@@ -42,14 +42,22 @@
       
       .title{
   
-        a{
-          color: $white;
+        .mentor-name{
+          color: $yellow;
           text-decoration: none;
+          font-weight: bold;
           
           &:hover{
             text-decoration: underline;
           }
         }
+
+      }
+
+      .btn-techno{
+        margin: initial;
+        font-size: .8em;
+        margin-top: 5px;
       }
     }
   }
