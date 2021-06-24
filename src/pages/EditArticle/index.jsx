@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Cookies from 'js-cookie';
 import './style.css'
 import { useHistory } from 'react-router-dom'
@@ -6,24 +6,37 @@ import { useParams } from 'react-router-dom';
 
 
 
-const CreateArticle = () => { 
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [lead, setLead] = useState('')
+const EditArticle = () => { 
+
+    
     const token = Cookies.get('token')
     const { articleSlug } = useParams();
-
-
+    const [technologies, setTechnologies] = useState([])
+    const [articleInfo, setarticleInfo] = useState([])
+   
     const history = useHistory()
-    console.log(token)
 
-    const inputData = {
-      resource: {
-        title: title,
-        lead: lead,
-        content: content,
-      }
-    }
+    
+    const [data, setData] = useState({
+      
+        title: articleInfo.title,
+        lead: articleInfo.lead,
+        content: articleInfo.content,
+        technologies: {
+          resource_id: articleSlug,
+          technology_id: articleInfo.technology_id,
+        }
+    });
+    
+    const handleChange = (e) => {
+      const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+      setData({
+        ...data,
+        [e.target.name]: value, 
+
+      })
+      
+    };
 
 
     const url = `https://ronincode.herokuapp.com/resources/${articleSlug}`
@@ -31,61 +44,106 @@ const CreateArticle = () => {
     const handleFetch = (e) => {
       e.preventDefault();
 
-      console.log("hello")
-
       fetch(url, {
         method : "PUT",
         headers : {
           "Content-Type" : "application/json",
         },
-        body : JSON.stringify(inputData)
+        body : JSON.stringify(data)
       })
       .then((response) => response.json())
-      .then(data => {
-        if(data === undefined){
-          alert("error")
-         } else {
-            console.log(data.id)
-            alert("Article modifié")
-            history.push(`/articles/${data.id}`)
-          }
+      .then(data => { setarticleInfo(data)
+          history.push(`/blog/${articleSlug}`)
         })
+        
       } 
 
+
+      const updateFetch = (e) => {
+        e.preventDefault();
+        console.log(`data`, data)
+        fetch(`https://ronincode.herokuapp.com/resources_technologies/`, {
+          method : "POST",
+          headers : {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type" : "application/json",
+          },
+          body : JSON.stringify(data)
+         
+        })
+        .then((response) => response.json())
+        .then(data => { setarticleInfo(data)})
+          console.log(`data`, data)
+        } 
+
+        const makeitFetch = (data) => {
+          handleFetch(data);
+          updateFetch(data);
+          
+        }
     
-    
+      const technoFetch = () => {
+  
+        fetch(`https://ronincode.herokuapp.com/technologies/`, {
+          method : "GET",
+          headers : {
+            "Content-Type" : "application/json",
+          },
+          
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          setTechnologies(data)
+        })
+  
+      }
+  
+        useEffect(() => {
+          technoFetch();
+      }, [])
+
+      const [checkedState, setCheckedState] = useState(
+        new Array(technologies.length).fill(false)
+      );
+      const handleOnChange = (position) => {
+        const updatedCheckedState = checkedState.map((item, index) =>
+          index === position ? !item : item
+        );
+        setCheckedState(updatedCheckedState);
+        console.log(`object`, updatedCheckedState)
+
+      }
+        
     return (
-      <div className = "NewArticle">
+      <div className = "editArticle">
         <h1>Modifier l'Article</h1>
-        <form className="form" onSubmit={handleFetch}>
-          <div className="FirstColumn">
-            <input type="text" value={title} placeholder="Titre de l'article" onChange={(e) => setTitle(e.target.value)}></input>
-            <textarea className="ArticleLead" placeholder="Introduction" type="textarea" value={lead} onChange={(e) => setLead(e.target.value)}></textarea>
-            <textarea className="ArticleContent" placeholder="Contenu de l'article" type="textarea" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
-            <button>Modifier</button>
-          </div>
-          <div className="SecondColumn">
-            <div className="Technologies">
-              <h2>Technologies</h2>
-              <div className="Options">
-                <div>
-                  <label>JS</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
-                </div>
-                <div>
-                  <label>React</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
-                </div>
-                <div>
-                  <label>HTML</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
+        <form className="form" onSubmit={makeitFetch}>
+          <div className="ContentArticle" >
+            <div className="Column1">
+              <input type="text" className="ArticleTitle" name="title" placeholder="Titre de l'article" onFocus={(e) => e.target.placeholder = ''}  onBlur={(e) => e.target.placeholder = "Titre de l'article"} onChange={handleChange}></input>
+              <textarea className="ArticleLead" name="lead" placeholder="Introduction" type="textarea" onChange={handleChange}></textarea>
+              <textarea className="ArticleContent" name="content" placeholder="Contenu de l'article" type="textarea"  onChange={handleChange}></textarea>
+              <button>Modifier</button>
+            </div>
+            <div className="Column2">
+              <div className="Technologies">
+                <h2>Technologies</h2>
+                <div className="Options">{technologies && technologies.map(({name, id}, index) =>
+                  <div className="Option">
+                    <p key={index}>{name} </p>
+                    <input type="checkbox" id={id}  name="technology_id" value={id} checked={checkedState[index]}  onChange={() => handleOnChange(index)}></input>
+                  </div>
+                  
+                )}
+                  
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
         </form>
       </div>
   );
 }
 
-export default CreateArticle
+export default EditArticle

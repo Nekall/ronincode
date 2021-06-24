@@ -14,7 +14,6 @@ const ShowArticle = () => {
 
     const ArticleFetch = () => {
       const url = `https://ronincode.herokuapp.com/resources/${articleSlug}`
-      console.log("hello")
 
       fetch(url, {
         method : "GET",
@@ -36,7 +35,7 @@ const ShowArticle = () => {
     }, [])
 
       const goEdit = () => {
-        history.push(`/editarticles/${article.id}`)
+        history.push(`/blog/edit/${article.id}`)
       }
 
     if (article !== undefined) {
@@ -52,7 +51,7 @@ const ShowArticle = () => {
             </div>
             <div className="Column2">
               <h2>Technologies</h2>
-              <div className="Techno">{article.technologies && article.technologies.map((techno) =>
+              <div className="Techno">{article.technologies && article.technologies.map(({name, img}, index) =>
                 <div className="Option">
                   <p>{techno.name} {techno.img}</p>
 
