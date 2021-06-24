@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ModalMentoringSection from 'components/ModalMentoringSection';
 import CardPostCompact from 'components/CardPostCompact';
 import ModalContact from 'components/ModalContact';
-import BtnLangage from 'components/BtnLangage';
+import BtnTechno from 'components/BtnTechno';
 import Skeleton from 'react-loading-skeleton';
 import avatar from 'assets/images/avatar.jpg';
 import ModalDate from 'components/ModalDate';
@@ -51,7 +51,7 @@ const UserProfile = () => {
 
               <ModalContact logged={logged} id_current={id_current} id_user_profile={id_user_profile} dataAllUser={dataAllUser} />
 
-              <BtnLangage />
+              <BtnTechno />
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, dignissimos fugit nisi nesciunt inventore enim, nostrum nulla excepturi cum tempore accusantium necessitatibus ducimus autem animi temporibus quasi iure tenetur quos!</p>
             </div>
           </div>
@@ -86,7 +86,7 @@ const UserProfile = () => {
                   </div>
                 }
               </div>
-              <BtnLangage />
+              <BtnTechno />
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, dignissimos fugit nisi nesciunt inventore enim, nostrum nulla excepturi cum tempore accusantium necessitatibus ducimus autem animi temporibus quasi iure tenetur quos!</p>
             </div>
           </div>
@@ -100,7 +100,7 @@ const UserProfile = () => {
                 </div>
                 <div className="txt-container">
                   <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
-                  <BtnLangage />
+                  <BtnTechno />
                 </div>
               </li>
               <li>
@@ -110,7 +110,7 @@ const UserProfile = () => {
                 </div>
                 <div className="txt-container">
                   <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
-                  <BtnLangage />
+                  <BtnTechno />
                 </div>
               </li>
             </ul>

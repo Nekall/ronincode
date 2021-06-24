@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import BtnLangage from 'components/BtnLangage';
+import BtnTechno from 'components/BtnTechno';
 
 const ModalDate = (props) => {
   let name = '';
@@ -21,7 +21,7 @@ const ModalDate = (props) => {
                 </div>
                 <div className="txt-container">
                   <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link to={`/profile/${appointment.user_2_id}`}>{name.email}</Link></span>
-                  <div>Sur: <BtnLangage /></div>
+                  <div>Sur: <BtnTechno /></div>
                 </div>
               </li>
             );
@@ -35,7 +35,7 @@ const ModalDate = (props) => {
                 </div>
                 <div className="txt-container">
                   <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link to={`/profile/${appointment.user_1_id}`}>{name.email}</Link></span>
-                  <div>Sur: <BtnLangage /></div>
+                  <div>Sur: <BtnTechno /></div>
                 </div>
               </li>
             );
