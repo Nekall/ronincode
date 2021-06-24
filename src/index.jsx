@@ -12,6 +12,7 @@ import CreateAppointment from 'components/CreateAppointment';
 import ShowArticle from 'pages/ShowArticle';
 import ShowAppointment from 'pages/ShowAppointment';
 import IndexAppointment from 'pages/IndexAppointment';
+import IndexMentor from 'pages/IndexMentor';
 import EditArticle from 'pages/EditArticle';
 import EditProfile from 'pages/EditProfile';
 import ForgotPassword from 'pages/ForgotPassword';
@@ -85,6 +86,9 @@ const App = () => {
               </Route>
               <Route path="/reinitialisation/mot-de-passe" exact>
                 <ForgotPassword />
+              </Route>
+              <Route path="/trouver-un-mentor" exact>
+                <IndexMentor />
               </Route>
               <PrivateRoute />
             </Switch>
