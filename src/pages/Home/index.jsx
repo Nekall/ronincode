@@ -5,6 +5,7 @@ import useFetch from 'Hooks/useFetch';
 import CardGroupPostCompact from 'components/CardGroupPostCompact';
 import CallToAction from 'components/CallToAction';
 import NextMeeting from 'components/NextMeeting';
+import MentorList from 'components/MentorList';
 
 const Home = () => {
   const logged = useSelector(state => state.logReducer.logged);
@@ -29,6 +30,9 @@ const Home = () => {
       }
       <main>
         <NextMeeting />
+        <ul className="mentor-list-container">
+          <MentorList />
+        </ul>
         <CardGroupPostCompact />
       </main>
       {/* {dataResources? <h1>Il y a actuellement {dataResources.length} articles chargés sur cette page</h1> : '' } */}
