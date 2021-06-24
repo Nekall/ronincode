@@ -29,13 +29,20 @@ const Home = () => {
         </>
       }
       <main>
-        <NextMeeting />
-        <div className="mentor-list-home">
-          <h1>Trouvez un mentor</h1>
-          <MentorList />
-          <MentorList />
-          <MentorList />
-        </div>
+        {logged ?
+          <>
+            <NextMeeting />
+            <div className="mentor-list-home">
+              <h1>Trouvez un mentor</h1>
+              <MentorList />
+              <MentorList />
+              <MentorList />
+            </div>
+          </>
+          :
+          <>
+          </>
+        }
         <CardGroupPostCompact />
       </main>
       {/* {dataResources? <h1>Il y a actuellement {dataResources.length} articles chargés sur cette page</h1> : '' } */}
