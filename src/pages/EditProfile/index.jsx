@@ -1,56 +1,41 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
-import {useHistory} from 'react-router-dom'
 
 const EditProfile = () => {
-
-  const id = Cookies.get('id')
-  const token = Cookies.get('token')
-  const [userinfo, setUserinfo] = useState('')
-  const history = useHistory();
-
-
+  const id = Cookies.get('id');
+  const [userinfo, setUserinfo] = useState('');
+  
   const [data, setData] = useState({
-    username: userinfo.username,
-    email: userinfo.email,
-    password: userinfo.password,
-    firstname: userinfo.firstname,
-    lastname: userinfo.lastname
+    user: {
+      username: userinfo.username,
+      email: userinfo.email,
+      firstname: userinfo.firstname,
+      lastname: userinfo.lastname,
+      password: userinfo.password,
+    }
   });
+  
+  const {data: sync, doFetch: updateUser } = useFetch('PUT', data);
 
   const handleChange = (e) => {
     setData({
       ...data,
-      [e.target.name]: e.target.value
-    })
-    
+      user: {
+        [e.target.name]: e.target.value
+      }
+    });
   };
-
 
   const updateFetch = (e) => {
     e.preventDefault();
-
-    fetch(`https://ronincode.herokuapp.com/users/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({user: data})
-      })
-      .then(response => response.json())
-      
-       
-      // e.target.reset();
-      history.push(`/users/${id}`);
+    updateUser(`users/${id}`);
+    e.target.reset();
   };
 
- 
-
-
-
-  const getFetch = () => {
-
+  useEffect(() => {
     fetch(`https://ronincode.herokuapp.com/users/${id}`,{
       method:'GET',
     })
@@ -59,40 +44,37 @@ const EditProfile = () => {
       setUserinfo(dataUser);
       })
     .catch(err => console.error(err));
-
-  }
-
-  useEffect(() => {
-    getFetch();
-  }, [])
+    // eslint-disable-next-line
+  }, [sync]);
 
   return (
     <div>
       <h1>Edit Profile</h1>
-
-      <p>{userinfo.username}</p>
-      <p>{userinfo.email}</p>
-      <p>{userinfo.firstname}</p>
-      <p>{userinfo.lastname}</p>
-
-      <form onSubmit={updateFetch}>
-        <label htmlFor="username"> Username :
-          <input type="text" name="username"  onChange={handleChange}/>
-        </label>
-        <label htmlFor="email"> Email:
-          <input type="text" name="email"  onChange={handleChange}/>
-        </label>
-        <label htmlFor="firstname"> Firstname :
-          <input type="text" name="firstname"  onChange={handleChange}/>
-        </label>
-        <label htmlFor="lastname"> Lastname :
-          <input type="text" name="lastname"  onChange={handleChange}/>
-        </label>
-        <label htmlFor="password"> Password :
-          <input type="text" name="password"  onChange={handleChange}/>
-        </label>
-        <input type="submit" value="update" />
-      </form>
+      {userinfo ?
+        <div>
+          <form onSubmit={updateFetch}>
+            <label htmlFor="username"> Pseudo :
+              <input type="text" name="username" placeholder={userinfo.username} onChange={handleChange}/>
+            </label>
+            <label htmlFor="email"> Email:
+              <input type="text" name="email" placeholder={userinfo.email} onChange={handleChange}/>
+            </label>
+            <label htmlFor="firstname"> Prénom :
+              <input type="text" name="firstname" placeholder={userinfo.firstname} onChange={handleChange}/>
+            </label>
+            <label htmlFor="lastname"> Nom :
+              <input type="text" name="lastname" placeholder={userinfo.lastname} onChange={handleChange}/>
+            </label>
+            <label htmlFor="password"> Mot de passe :
+              <input type="text" name="password" minLength="8" placeholder={"8 caractére minimum"} onChange={handleChange}/>
+            </label>
+            <input type="submit" className="btn-message" value="Mettre à jour mes informations" />
+          </form>
+          <Link to={`/profile/${id}`} className="btn-message">Mon profile</Link>
+        </div>
+        :
+        <Skeleton count={2}/>
+      }
     </div>
   );
 };

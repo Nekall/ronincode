@@ -37,6 +37,7 @@ const Message = () => {
   useEffect(() => {
     allUsers();
     allMessages();
+    // eslint-disable-next-line
   }, [endFetch])
   
   return(

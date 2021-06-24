@@ -56,7 +56,7 @@ const App = () => {
               <Route path="/profile/:id_user">
                 <UserProfile />
               </Route>
-              <Route path={`/profile/edit`} exact>
+              <Route path="/profile-edit" exact>
                 <EditProfile />
               </Route>
               <Route path="/conversations/:conversationId/messages" exact>

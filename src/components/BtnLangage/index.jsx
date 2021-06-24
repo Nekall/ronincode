@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BtnLangage = () => {
   return (
-    <a className="btn_language" href="/">CSS</a>
+    <Link to="/" className="btn_language">CSS</Link>
   );
 };
 

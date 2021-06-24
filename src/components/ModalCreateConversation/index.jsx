@@ -41,6 +41,7 @@ const ModalCreateConversation = (props) => {
   useEffect(() => {
     createConversation("privatemessagings");
     findFetchMessage("privatemessagings");
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -53,7 +54,7 @@ const ModalCreateConversation = (props) => {
               <label className="label-form-message">Vôtre message</label>
               <input type="text" value={content} required onChange={(e) => setContent(e.target.value)}></input>
             </div>
-            <input type="submit" value="Envoyer" />
+            <input type="submit" onClick={remove} value="Envoyer" />
           </form>
         </div>
         :

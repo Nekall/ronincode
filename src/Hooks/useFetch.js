@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Cookies from "js-cookie";
 
 const useFetch = (method = "GET", payload) => {
@@ -25,10 +25,6 @@ const useFetch = (method = "GET", payload) => {
       setError(error.message);
     }
   }
-
-  /*useEffect(() => {
-    doFetch();
-  }, [url]);*/
 
   return { data, error, doFetch };
 }

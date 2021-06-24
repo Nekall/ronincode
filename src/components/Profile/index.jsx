@@ -29,6 +29,7 @@ const Profile = () => {
 
   useEffect(() => {
     FetchDataUser();
+    // eslint-disable-next-line
   }, [])
 
   console.log(id_user);
@@ -50,13 +51,13 @@ const Profile = () => {
                 {logged && (id_current !== id_user_profile) ? 
                   <div>
                     <Link to="/" className="btn-message">Prendre RDV</Link>
-                    <button onClick={clicked} className="btn-message">Crée une conversation avec {dataUser.email}</button>
+                    <button onClick={clicked} className="btn-message">Envoyer un message à {dataUser.email}</button>
                     {ifClicked ? <ModalCreateConversation id={id_user_profile} /> : ""}
                   </div>
                   :
                   <div>
                     <Link to="/conversations" className="btn-message">Mes Conversations</Link>
-                    <Link to={`/users/${id_user_profile}/edit`} className="btn-message">Edit Profile</Link>
+                    <Link to="/profile-edit" className="btn-message">Edit Profile</Link>
                   </div>
                 }
               </div>
@@ -121,14 +122,13 @@ const Profile = () => {
                 <div className="username"><Skeleton/></div>
                 {logged && (id_current !== id_user_profile) ? 
                   <div>
-                    <Link to="/" className="btn-message">Prendre RDV</Link>
-                    <button onClick={clicked} className="btn-message">Crée une conversation avec <Skeleton/></button>
-                    {ifClicked ? <ModalCreateConversation id={id_user_profile} /> : ""}
+                    <button className="btn-message">Prendre RDV</button>
+                    <button className="btn-message">Crée une conversation avec <Skeleton/></button>
                   </div>
                   :
                   <div>
-                    <Link to="/conversations" className="btn-message">Mes Conversations</Link>
-                    <Link to={`/users/${id_user_profile}/edit`} className="btn-message">Edit Profile</Link>
+                    <button className="btn-message">Mes Conversations</button>
+                    <button className="btn-message">Edit Profile</button>
                   </div>
                 }
               </div>
