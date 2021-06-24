@@ -10,7 +10,7 @@ const DeleteRdv = (props) => {
 
   if (window.confirm("êtes vous sûr.sure de vouloir supprimer le RDV ?")) {
     
-    const url = `http://localhost:3000/appointments/${props.id}`
+    const url = `https://ronincode.herokuapp.com/appointments/${props.id}`
 
     fetch(url, {
       method : "DELETE",

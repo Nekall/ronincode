@@ -3,7 +3,7 @@ import CreateAppointment from 'components/CreateAppointment'
 import PopUpEditRDV from 'components/PopUpEditRDV'
 import DeleteRdv from 'components/DeleteRdv'
 // import Cookies from 'js-cookie';
-import './style.css'
+import './style.scss'
 import BtnTechno from 'components/BtnTechno';
 import { Link } from 'react-router-dom';
 
@@ -51,13 +51,13 @@ const IndexAppointment = () => {
       return (
         <div className = "NewRDV">
           <CreateAppointment rdvFetch={rdvFetch} />
-          <div className="rdv">
+          <div className="rddv">
             <ul>
               <h1>Mes prochains rendez-vous</h1>
             {rdv.map((rdv => (
               <li key={rdv.id}>
                 <div className="dm-container">
-                  <div className="day">{rdv.date}</div>
+                  <div className="rdv">{rdv.date}</div>
                   <div className="month">septembre</div>
                 </div>
                 <div className="txt-container">

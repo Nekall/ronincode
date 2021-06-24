@@ -69,7 +69,7 @@ const IndexMentor = () => {
                 </div>
                 <div className="editButton">
                 
-                  <button href="http://localhost:3000/users/{user.email}">Profil</button>
+                  <button href="https://ronincode.herokuapp.com/users/{user.email}">Profil</button>
                   <button>Contacter</button>
                 </div>
               </li>

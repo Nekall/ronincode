@@ -27,7 +27,7 @@ const PopUpEditRDV = (props) => {
     };
   
 
-    const url = `http://localhost:3000/appointments/${props.id}`
+    const url = `https://ronincode.herokuapp.com/appointments/${props.id}`
 
 
     const handleFetch = (e) => {

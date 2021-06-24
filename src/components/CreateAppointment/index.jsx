@@ -18,7 +18,7 @@ const CreateAppointment = (props) => {
         user_2_id: userTwo,
       }
     }
-    const url = "http://localhost:3000/appointments"
+    const url = "https://ronincode.herokuapp.com/appointments"
 
     const handleFetch = (e) => {
       e.preventDefault();
