@@ -30,9 +30,12 @@ const Home = () => {
       }
       <main>
         <NextMeeting />
-        <ul className="mentor-list-container">
+        <div className="mentor-list-home">
+          <h1>Trouvez un mentor</h1>
           <MentorList />
-        </ul>
+          <MentorList />
+          <MentorList />
+        </div>
         <CardGroupPostCompact />
       </main>
       {/* {dataResources? <h1>Il y a actuellement {dataResources.length} articles chargés sur cette page</h1> : '' } */}
