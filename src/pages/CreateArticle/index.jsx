@@ -1,16 +1,14 @@
-import React, { useState} from 'react'
+import { useHistory } from 'react-router-dom';
+import React, { useState} from 'react';
 import Cookies from 'js-cookie';
-import { useHistory } from 'react-router-dom'
 
-
-const CreateArticle = () => { 
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [lead, setLead] = useState('')
-    const token = Cookies.get('token')
-
-    const history = useHistory()
-
+const CreateArticle = () => {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [lead, setLead] = useState('');
+    const token = Cookies.get('token');
+    const [technologies, setTechnologies] = useState([]);
+    const history = useHistory();
     const inputData = {
       resource: {
         title: title,
@@ -19,35 +17,43 @@ const CreateArticle = () => {
       }
     }
 
-
-    const url = "https://ronincode.herokuapp.com/resources"
-
     const handleFetch = (e) => {
-      e.preventDefault();
+    e.preventDefault();
+    fetch("https://ronincode.herokuapp.com/resources", {
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json",
+        "Authorization": `${token}`
+      },
+      body : JSON.stringify(inputData)
+    })
+    .then((response) => response.json())
+    .then(data => {
+      if(data === undefined){
+        alert("error")
+       } else {
+          console.log(data.id)
+          alert("Article crée")
+          history.push(`/articles/${data.id}`)
+        }
+      })
+    }
 
-      console.log("hello")
 
-      fetch(url, {
-        method : "POST",
+    const technoFetch = () => {
+      fetch(`https://ronincode.herokuapp.com/technologies/`, {
+        method : "GET",
         headers : {
           "Content-Type" : "application/json",
-          "Authorization": `${token}`
         },
-        body : JSON.stringify(inputData)
       })
       .then((response) => response.json())
-      .then(data => {
-        if(data === undefined){
-          alert("error")
-         } else {
-            console.log(data.id)
-            alert("Article crée")
-            history.push(`/articles/${data.id}`)
-          }
-        })
-      } 
+      .then((data) => {
+        setTechnologies(data)
+      })
+    }
 
-    
+
     return (
       <div className = "NewArticle">
         <form className="newform" onSubmit={handleFetch}>
@@ -61,22 +67,16 @@ const CreateArticle = () => {
           <div className="Column2">
             <div className="Technologies">
               <h2>Technologies</h2>
-              <div className="Options">
-                <div>
-                  <label>JS</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
-                </div>
-                <div>
-                  <label>React</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
-                </div>
-                <div>
-                  <label>HTML</label>
-                  <input type="radio" id="male" name="gender" value="male"></input>
-                </div>
+              <div className="Technologies">
+                <h2>Technologies</h2>
+                  <select name="techno" id="techno1">
+                    {technologies && technologies.map(({name, id}, index) =>
+                      <option key={Math.random()} value ={id}>{name}</option>
+                    )}
+                  </select>
+              </div>
               </div>
             </div>
-          </div>
         </form>
       </div>
   );
