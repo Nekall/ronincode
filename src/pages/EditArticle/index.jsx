@@ -5,12 +5,11 @@ import Cookies from 'js-cookie';
 import './style.css';
 
 const EditArticle = () => {
-
-    const token = Cookies.get('token')
+    const token = Cookies.get('token');
     const { articleSlug } = useParams();
-    const [technologies, setTechnologies] = useState([])
-    const [articleInfo, setarticleInfo] = useState([])
-    const history = useHistory()
+    const [technologies, setTechnologies] = useState([]);
+    const [articleInfo, setarticleInfo] = useState([]);
+    const history = useHistory();
     const [data, setData] = useState({
         title: articleInfo.title,
         lead: articleInfo.lead,
@@ -26,67 +25,62 @@ const EditArticle = () => {
 
     const handleFetch = (e) => {
       e.preventDefault();
+    fetch(`https://ronincode.herokuapp.com/resources/${articleSlug}`, {
+      method : "PUT",
+      headers : {
+        "Content-Type" : "application/json",
+      },
+      body : JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then(data => { setarticleInfo(data)
+        history.push(`/blog/${articleSlug}`)
+      })
+    }
 
-      fetch(`https://ronincode.herokuapp.com/resources/${articleSlug}`, {
-        method : "PUT",
+
+    const updateFetch = (e) => {
+      e.preventDefault();
+      let techno1 = document.getElementById("techno1").value
+      let joindata = {
+        resource_id: parseInt(articleSlug),
+        technology_id: parseInt(techno1),
+      }
+      console.log(`joindata2`, joindata)
+      console.log(`techno1`, techno1)
+      fetch(`https://ronincode.herokuapp.com/resources_technologies/`, {
+        method : "POST",
+        headers : {
+          'Authorization': token,
+          "Content-Type" : "application/json",
+        },
+        body : JSON.stringify(joindata)
+      })
+      .then((response) => response.json())
+      }
+
+      const makeitFetch = (data) => {
+        handleFetch(data);
+        updateFetch(data);
+      }
+
+    const technoFetch = () => {
+      fetch(`https://ronincode.herokuapp.com/technologies/`, {
+        method : "GET",
         headers : {
           "Content-Type" : "application/json",
         },
-        body : JSON.stringify(data)
       })
       .then((response) => response.json())
-      .then(data => { setarticleInfo(data)
-          history.push(`/blog/${articleSlug}`)
-        })
-      }
+      .then((data) => {
+        console.log(data)
+        setTechnologies(data)
+      })
+    }
 
-
-      const updateFetch = (e) => {
-        e.preventDefault();
-        let techno1 = document.getElementById("techno1").value
-        let joindata = {
-          resource_id: parseInt(articleSlug),
-          technology_id: parseInt(techno1),
-        }
-        console.log(`joindata2`, joindata)
-        console.log(`techno1`, techno1)
-        fetch(`https://ronincode.herokuapp.com/resources_technologies/`, {
-          method : "POST",
-          headers : {
-            'Authorization': token,
-            "Content-Type" : "application/json",
-          },
-          body : JSON.stringify(joindata)
-        })
-        .then((response) => response.json())
-        }
-
-        const makeitFetch = (data) => {
-          handleFetch(data);
-          updateFetch(data);
-        }
-
-      const technoFetch = () => {
-
-        fetch(`https://ronincode.herokuapp.com/technologies/`, {
-          method : "GET",
-          headers : {
-            "Content-Type" : "application/json",
-          },
-
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data)
-          setTechnologies(data)
-        })
-      }
-
-        useEffect(() => {
-          technoFetch();
-      }, [])
-
-      console.log(technologies);
+    useEffect(() => {
+      technoFetch();
+    }, [])
 
     return (
       <div className = "editArticle">
