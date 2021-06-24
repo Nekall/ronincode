@@ -7,6 +7,7 @@
   box-shadow: 0px 0px 20px #3f617a;
   background: #0f1127;
   font-family: courier;
+  padding: 0 1em;
 
   .card-title{
     padding: 1em;
@@ -34,11 +35,10 @@
     }
 
     .txt-container{
-      padding: 1em;
+      padding: 1em 2em;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 400px;
       
       .title{
   
@@ -60,5 +60,22 @@
         margin-top: 5px;
       }
     }
+  }
+}
+
+@media  (max-width: 480px) {
+  .next-meeting .date-container{
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+  .next-meeting .date-container .date{
+    width: 100%;
+    padding: 1em 0;
+  }
+  .next-meeting .date-container .txt-container{
+    padding: 1em;
+  }
+  .next-meeting .date-container .txt-container .btn-techno{
+    margin: 1em auto 0 auto;
   }
 }
