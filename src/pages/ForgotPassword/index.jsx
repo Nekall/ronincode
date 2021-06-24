@@ -2,11 +2,9 @@ import React, { useState} from 'react'
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
 
-  let token;
   const data = {
     email: email,
   }
