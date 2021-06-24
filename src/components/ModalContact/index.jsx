@@ -19,7 +19,7 @@ const ModalDate = (props) => {
               <div className="username">{user.username} ({user.firstname} {user.lastname})</div>
               {props.logged && (props.id_current !== props.id_user_profile) ? 
                 <div className="buttons">
-                  <Link to="/rendez-vous" className="btn-message">Prendre rendez-vous</Link>
+                  <Link to="/creer-un-rendez-vous" className="btn-message">Prendre rendez-vous</Link>
                   {ifClicked ? <button onClick={clicked} className="btn-message">X</button> : <button onClick={clicked} className="btn-message">Envoyer un message à {user.email}</button>}
                   {ifClicked ? <ModalCreateConversation id={props.id_user_profile} /> : ""}
                 </div>
