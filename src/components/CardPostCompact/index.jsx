@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
-import BtnLangage from "components/BtnLangage";
+import BtnTechno from "components/BtnTechno";
 import img_post from 'assets/images/image-test.png';
 import avatar from 'assets/images/avatar.jpg';
 
@@ -27,7 +27,7 @@ const CardPostCompact = (article) => {
  
   return(
     <div className="card-postCompact">
-      <BtnLangage />
+      <BtnTechno />
       <span className="date">{article.data.created_at.substring(0, 10)}</span>
       <div className="card-post-img-container">
         <Link to="/">
