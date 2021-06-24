@@ -1,5 +1,5 @@
 import React from 'react';
-import BtnLangage from 'components/BtnLangage';
+import BtnTechno from 'components/BtnTechno';
 import { Link } from 'react-router-dom';
 
 const NextMeeting = () => {
@@ -14,7 +14,7 @@ const NextMeeting = () => {
           </div>
           <div className="txt-container">
             <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
-            <BtnLangage />
+            <BtnTechno />
           </div>
         </div>
       </div>

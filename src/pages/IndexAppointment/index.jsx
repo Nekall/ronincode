@@ -3,7 +3,7 @@ import CreateAppointment from 'components/CreateAppointment'
 import PopUpEditRDV from 'components/PopUpEditRDV'
 // import Cookies from 'js-cookie';
 import './style.css'
-import BtnLangage from 'components/BtnLangage';
+import BtnTechno from 'components/BtnTechno';
 import { Link } from 'react-router-dom';
 
 
@@ -61,7 +61,7 @@ const IndexAppointment = () => {
                 <div className="txt-container">
                   <div className="title">{rdv.title} <Link to="/">{rdv.user_2_id}</Link></div>
                   <div className="buttons">
-                    <BtnLangage />
+                    <BtnTechno />
                   </div>
                 </div>
                 <div className="editButton">

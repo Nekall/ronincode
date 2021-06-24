@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import avatar from 'assets/images/avatar.jpg';
-import BtnLangage from 'components/BtnLangage';
-import CardPostCompact from 'components/CardPostCompact';
+import BtnTechno from 'components/BtnTechno';
+// import CardPostCompact from 'components/CardPostCompact';
 import ModalCreateConversation from 'components/ModalCreateConversation';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
@@ -61,7 +61,7 @@ const Profile = () => {
                   </div>
                 }
               </div>
-              <BtnLangage />
+              <BtnTechno />
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, dignissimos fugit nisi nesciunt inventore enim, nostrum nulla excepturi cum tempore accusantium necessitatibus ducimus autem animi temporibus quasi iure tenetur quos!</p>
             </div>
           </div>
@@ -75,7 +75,7 @@ const Profile = () => {
                 </div>
                 <div className="txt-container">
                   <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
-                  <BtnLangage />
+                  <BtnTechno />
                 </div>
               </li>
               <li>
@@ -85,7 +85,7 @@ const Profile = () => {
                 </div>
                 <div className="txt-container">
                   <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
-                  <BtnLangage />
+                  <BtnTechno />
                 </div>
               </li>
             </ul>
@@ -132,7 +132,7 @@ const Profile = () => {
                   </div>
                 }
               </div>
-              <BtnLangage />
+              <BtnTechno />
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, dignissimos fugit nisi nesciunt inventore enim, nostrum nulla excepturi cum tempore accusantium necessitatibus ducimus autem animi temporibus quasi iure tenetur quos!</p>
             </div>
           </div>
@@ -146,7 +146,7 @@ const Profile = () => {
                 </div>
                 <div className="txt-container">
                   <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
-                  <BtnLangage />
+                  <BtnTechno />
                 </div>
               </li>
               <li>
@@ -156,7 +156,7 @@ const Profile = () => {
                 </div>
                 <div className="txt-container">
                   <div className="title">14h30 : Mentorat - Mentor : <Link to="/">Day101</Link></div>
-                  <BtnLangage />
+                  <BtnTechno />
                 </div>
               </li>
             </ul>

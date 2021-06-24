@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BtnLangage = () => {
+const BtnTechno = () => {
   return (
     <Link to="/" className="btn_language">CSS</Link>
   );
 };
 
-export default BtnLangage;
+export default BtnTechno;
