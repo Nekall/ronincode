@@ -7,7 +7,7 @@
   grid-template-rows: auto;
   margin: auto;
   padding: 2em 0;
-  width: 1200px;
+  max-width: 1200px;
 
   h1{
     grid-column: 1/4;
@@ -50,5 +50,30 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 780px) {
+  .mentor-list-home{
+    grid-template-columns: 1fr;
+  }
+
+  .mentor-list-home h1{
+    grid-column: auto;
+  }
+
+  .mentor-list-home .mentor-list:nth-child(2){
+    margin-bottom: 2em;
+  }
+
+  .mentor-list-home .mentor-list:nth-child(3){
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-right: none;
+    border-left: none;
+    padding: 1em 0;
+  }
+  .mentor-list-home .mentor-list:nth-child(4){
+    margin-bottom: 1em;
   }
 }
