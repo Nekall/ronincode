@@ -45,7 +45,7 @@ const Message = () => {
       <h1> Messages </h1>
       {dataUser ?
           <div className="conversation-body">{dataMessage && dataMessage.map((message) => {
-            senderInfo = dataUser.find(({id}) => id === message.user_id)
+            senderInfo = dataUser.find(({ id }) => id === message.user_id)
             return(
               <div key={uuidv4()}>
                 {(message.body === null || message.body === undefined) ?

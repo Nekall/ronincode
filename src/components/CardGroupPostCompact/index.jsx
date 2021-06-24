@@ -22,6 +22,7 @@ const CardGroupPostCompact = () => {
   return(
 
     <div className="card-postCompact-container">
+      <h1>Les dernières publications</h1>
       {Articles && Articles.reverse().map((article, index) =>
         <CardPostCompact key={index} data={article}/>
       )}
