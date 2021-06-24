@@ -11,17 +11,10 @@ const ResetPassword = () => {
     password: password,
     token: token
   }
-  let validate = "8 caractère minimum ✖"
-  let isValid = false;
-
-if(password.length > 7){
-  validate = "";
-  isValid = true;
-}
 
   const handleFetch = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword && isValid !== false) {
+    if (password !== confirmPassword) {
         setError('Les mots de passe ne correspondent pas.')
     } else {
       fetch("https://ronincode.herokuapp.com/password/reset", {
@@ -52,12 +45,11 @@ if(password.length > 7){
         <form onSubmit={handleFetch}>
           <div className="user-box">
             <label className="label-form-log">Mot de passe</label>
-            <input id="password_id" type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
-            <div className="validate-message">{validate}</div>
+            <input id="password_id" minLength="8" type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
           </div>
           <div className="user-box">
             <label className="label-form-log">Confirmation du mot de passe</label>
-            <input type="password" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)}></input>
+            <input minLength="8" type="password" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)}></input>
             <div className="error-message">{error}</div>
           </div>
           <button>
