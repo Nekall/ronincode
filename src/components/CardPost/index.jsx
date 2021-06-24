@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import BtnLangage from "components/BtnLangage";
+import BtnTechno from "components/BtnTechno";
 import { Link } from 'react-router-dom';
 import img_post from 'assets/images/image-test.png';
 import avatar from 'assets/images/avatar.jpg';
@@ -26,7 +26,7 @@ const CardPost = (article) => {
 
   return(
     <div className="card-post">
-      <BtnLangage />
+      <BtnTechno />
       <h3 className="post-title"><a href="/">{article.data.title}</a></h3>
       <div className="post-author-date">
         <a href="/" className="post-avatar-container">

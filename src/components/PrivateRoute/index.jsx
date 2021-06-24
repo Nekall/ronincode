@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Route, Redirect } from 'react-router-dom';
 import Admin from 'pages/Admin';
 
 const PrivateRoute = () => {

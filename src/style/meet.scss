@@ -1,0 +1,81 @@
+.next-meeting{
+  max-width: 600px;
+  color: $white;
+  margin: 2em auto;
+  border: 2px solid #b3ebffb3;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px #3f617a;
+  background: #0f1127;
+  font-family: courier;
+  padding: 0 1em;
+
+  .card-title{
+    padding: 1em;
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  .date-container{
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 2em auto;
+    border: 1px solid $white;
+    border-radius: 5px;
+
+    .date{
+      background: $violet;
+      width: 78px;
+      padding: 1em;
+      text-align: center;
+      margin-left: auto;
+      border-radius: 5px 0 0 5px;
+ 
+      .day{}
+      .mounth{}
+    }
+
+    .txt-container{
+      padding: 1em 2em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
+      .title{
+  
+        .mentor-name{
+          color: $yellow;
+          text-decoration: none;
+          font-weight: bold;
+          
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+
+      }
+
+      .btn-techno{
+        margin: initial;
+        font-size: .8em;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+@media  (max-width: 480px) {
+  .next-meeting .date-container{
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+  .next-meeting .date-container .date{
+    width: 100%;
+    padding: 1em 0;
+  }
+  .next-meeting .date-container .txt-container{
+    padding: 1em;
+  }
+  .next-meeting .date-container .txt-container .btn-techno{
+    margin: 1em auto 0 auto;
+  }
+}

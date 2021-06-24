@@ -10,10 +10,16 @@
 @import "navbar.scss";
 @import "buttons.scss";
 @import "fonts.scss";
+@import "meet.scss";
+@import "mentor.scss";
 @import "team.scss";
 @import "showArticle.scss";
 @import "CallToAction.scss";
+<<<<<<< HEAD
 @import "editArticle.scss";
+=======
+@import "CreateArticle.scss";
+>>>>>>> 7e439b2d19786a06f79d83803630e6909116c964
 
 main {
   padding: 0 2em;
