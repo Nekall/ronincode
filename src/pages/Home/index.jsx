@@ -4,6 +4,7 @@ import Hero from "components/Hero";
 import useFetch from 'Hooks/useFetch';
 import CardGroupPostCompact from 'components/CardGroupPostCompact';
 import CallToAction from 'components/CallToAction';
+import NextMeeting from 'components/NextMeeting';
 
 const Home = () => {
   const logged = useSelector(state => state.logReducer.logged);
@@ -27,6 +28,7 @@ const Home = () => {
         </>
       }
       <main>
+        <NextMeeting />
         <CardGroupPostCompact />
       </main>
       {/* {dataResources? <h1>Il y a actuellement {dataResources.length} articles chargés sur cette page</h1> : '' } */}
