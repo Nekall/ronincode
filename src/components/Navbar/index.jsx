@@ -14,6 +14,7 @@ import Logo from 'components/Logo';
 import Cookies from 'js-cookie';
 
 const Navbar = () => {
+  let id = Cookies.get('id');
   const logged = useSelector(state => state.logReducer.logged);
 
   return (
@@ -21,9 +22,9 @@ const Navbar = () => {
       <NavbarContainer>
         {logged ?
           <>
-          <NavItem linkTo="/" icon={<AgendaIcon />} />
+          <NavItem linkTo="/creer-un-rendez-vous" icon={<AgendaIcon />} />
           <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
-          <NavItem linkTo={`/`} icon={<UserIcon />} /> {/* linkTo={`/profile/${id}`} */}
+          <NavItem linkTo={`/profile/${id}`} icon={<UserIcon />} />
           <NavItem icon={<CaretIcon />}>
             <DropdownMenu></DropdownMenu>
           </NavItem>
@@ -44,8 +45,6 @@ function NavbarContainer(props) {
   return (
     <nav className="navbar">
       <Logo />
-      {/* <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">TROUVER UN MENTOR</div></Link>
-      <Link to={props.linkTo || "/blog"} className="btn-blog"><div className="rubrik">DEVENIR MENTOR</div></Link> */}
       <Link to={props.linkTo || "/blog"} className="btn-blog">BLOG</Link>
       <ul className="navbar-nav">{props.children}</ul>
     </nav>
@@ -89,14 +88,14 @@ function DropdownMenu() {
 
   const is_admin = useSelector(state => state.logReducer.is_admin);
   const { doFetch: discoFetch } = useFetch("DELETE");
-    let id = Cookies.get('id');
-    function disconnect(){
-      discoFetch('users/sign_out')
-      Cookies.remove('token');
-      Cookies.remove('id');
-      window.location.href = '/';
-      return false;
-    }
+
+  function disconnect(){
+    discoFetch('users/sign_out')
+    Cookies.remove('token');
+    Cookies.remove('id');
+    window.location.href = '/';
+    return false;
+  }
 
   return (
     <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
@@ -107,13 +106,9 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem linkTo={`/profile/${id}`}
+          <DropdownItem linkTo={'/profile-edit'}
             leftIcon={<UserIcon />}>
-            Tableau de bord
-          </DropdownItem>
-          <DropdownItem linkTo="/creer-un-rendez-vous"
-            leftIcon={<AgendaIcon />}>
-            Prendre rendez-vous
+            Edit profile
           </DropdownItem>
           <DropdownItem linkTo="/nouvel-article"
             leftIcon={<WriteIcon />}>
