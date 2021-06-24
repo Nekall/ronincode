@@ -8,7 +8,7 @@ const EditProfile = () => {
   const id = Cookies.get('id');
   const [userinfo, setUserinfo] = useState('');
   
-  const [data, setData] = useState({
+  const [dataUser, setDataUser] = useState({
     user: {
       username: userinfo.username,
       email: userinfo.email,
@@ -18,11 +18,11 @@ const EditProfile = () => {
     }
   });
   
-  const {data: sync, doFetch: updateUser } = useFetch('PUT', data);
+  const {data: sync, doFetch: updateUser } = useFetch('PUT', dataUser);
 
   const handleChange = (e) => {
-    setData({
-      ...data,
+    setDataUser({
+      ...dataUser,
       user: {
         [e.target.name]: e.target.value
       }
