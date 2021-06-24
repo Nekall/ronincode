@@ -14,6 +14,10 @@ import IndexAppointment from 'pages/IndexAppointment';
 import IndexMentor from 'pages/IndexMentor';
 import EditArticle from 'pages/EditArticle';
 import EditProfile from 'pages/EditProfile';
+import Rgpd from 'pages/Rgpd';
+import Contact from 'pages/Contact';
+import LegalMention from 'pages/LegalMention';
+import WhoAreWe from 'pages/WhoAreWe';
 import ForgotPassword from 'pages/ForgotPassword';
 import ResetPassword from 'pages/ResetPassword';
 import Team from 'pages/Team';
@@ -41,8 +45,11 @@ const App = () => {
               <Route path="/creer-un-rendez-vous" exact>
                 <IndexAppointment />
               </Route>
-              <Route path="/rendez-vous/:appointmentSlug">
+              <Route path="/rendez-vous/:appointmentSlug" exact>
                 <ShowAppointment />
+              </Route>
+              <Route path="/trouver-un-mentor">
+                <IndexMentor />
               </Route>
               <Route path="/conversations" exact>
                 <PrivateMessaging />
@@ -50,11 +57,11 @@ const App = () => {
               <Route path="/conversations/:conversationId/messages" exact>
                 <Message />
               </Route>
+              <Route path="/nouvel-article">
+                <CreateArticle />
+              </Route>
               <Route path="/blog" exact>
                 <Blog />
-              </Route>
-              <Route path="/nouvel-article" exact>
-                <CreateArticle />
               </Route>
               <Route path="/blog/:articleSlug" exact>
                 <ShowArticle />
@@ -62,13 +69,13 @@ const App = () => {
               <Route path="/blog/edit/:articleSlug" exact>
                 <EditArticle />
               </Route>
-              <Route path="/team" exact>
+              <Route path="/team">
                 <Team />
               </Route>
-              <Route path="/inscription" exact>
+              <Route path="/inscription">
                 <Signup />
               </Route>
-              <Route path="/se-connecter" exact>
+              <Route path="/se-connecter">
                 <Signin />
               </Route>
               <Route path="/profile/:id_user">
@@ -77,14 +84,23 @@ const App = () => {
               <Route path="/profile-edit">
                 <EditProfile />
               </Route>
-              <Route path="/nouveau/mot-de-passe/:token" exact>
+              <Route path="/nouveau/mot-de-passe/:token">
                 <ResetPassword />
               </Route>
-              <Route path="/reinitialisation/mot-de-passe" exact>
+              <Route path="/reinitialisation/mot-de-passe">
                 <ForgotPassword />
               </Route>
-              <Route path="/trouver-un-mentor" exact>
-                <IndexMentor />
+              <Route path="/rgpd">
+                <Rgpd />
+              </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/mentions-legales">
+                <LegalMention />
+              </Route>
+              <Route path="/qui-sommes-nous">
+                <WhoAreWe />
               </Route>
               <PrivateRoute />
             </Switch>
