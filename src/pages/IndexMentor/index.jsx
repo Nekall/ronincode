@@ -41,7 +41,7 @@ const IndexMentor = () => {
   
 
       return (
-        <div className = "NewRDV">
+        <div className = "findMentor">
           <div className="date">
           <h1>Trouver un mentor</h1>
             <div>
@@ -51,7 +51,8 @@ const IndexMentor = () => {
               </form>
 
             </div>
-            <ul>
+            
+            <ul className = "mentors">
             {users.map((user => (
               <li className="mentor_card">
                 <div className="mentor-container">
@@ -75,6 +76,7 @@ const IndexMentor = () => {
               </li>
             )))}
             </ul>
+            
           </div>
         </div>
     );

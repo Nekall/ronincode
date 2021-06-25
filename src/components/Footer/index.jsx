@@ -33,7 +33,7 @@ const Footer = () => {
             <Link to="/blog">
               <h6> Blog</h6>
             </Link>
-            <a href="https://www.youtube.com/watch?v=N8belcUA4hk?autoplay=1" target="_blank">
+            <a href="https://www.youtube.com/watch?v=N8belcUA4hk?autoplay=1" rel="noreferrer" target="_blank">
               <h5 style={{color: "white"}}>リックロール</h5>
             </a>
           </div>
