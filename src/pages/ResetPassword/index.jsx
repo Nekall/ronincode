@@ -6,7 +6,7 @@ import '../../style/pages/sign.scss';
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error] = useState("");
   const { token } = useParams();
   const history = useHistory();
   const alert = useAlert();

@@ -84,7 +84,7 @@ const UserProfile = () => {
           </div>
           <div className="date">
             <ul>
-              Prochain rendez-vous
+              Prochains rendez-vous
               <li>
                 <div className="dm-container">
                   <div className="day">20</div>

@@ -15,6 +15,7 @@ const Home = () => {
     if(dataResources === undefined || dataResources === null){
       fetchResources("resources")
     };
+    // eslint-disable-next-line
   }, [])
 
   return (

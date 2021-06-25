@@ -25,6 +25,7 @@ const ShowArticle = () => {
 
       useEffect(() => {
         ArticleFetch();
+        // eslint-disable-next-line
     }, [])
 
       const goEdit = () => {

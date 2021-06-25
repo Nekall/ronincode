@@ -7,7 +7,7 @@
   box-shadow: 0px 0px 20px #3f617a;
   background: #0f1127;
   font-family: courier;
-  padding: 0 1em;
+  padding: 0 2em;
 
   .card-title{
     padding: 1em;
@@ -71,6 +71,7 @@
   .next-meeting .date-container .date{
     width: 100%;
     padding: 1em 0;
+    border-radius: 5px 5px 0 0;
   }
   .next-meeting .date-container .txt-container{
     padding: 1em;
