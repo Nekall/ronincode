@@ -29,6 +29,7 @@ const Showappointment = () => {
 
       useEffect(() => {
         appointmentFetch();
+        // eslint-disable-next-line
     }, [])
 
 
