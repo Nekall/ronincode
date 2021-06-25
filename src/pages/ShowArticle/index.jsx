@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import Cookies from 'js-cookie';
 
 const ShowArticle = () => {
@@ -20,7 +21,6 @@ const ShowArticle = () => {
       .then((data) => {
         setArticle(data)
       })
-
     }
 
       useEffect(() => {
@@ -32,6 +32,8 @@ const ShowArticle = () => {
         history.push(`/blog/edit/${article.id}`)
       }
 
+      let user = article.user;
+
     if (article !== undefined) {
       return (
         <div className = "Article">
@@ -40,16 +42,16 @@ const ShowArticle = () => {
               <h1>{article.title}</h1>
               <h3>{article.lead}</h3>
               <p>{article.content}</p>
+              {user? <p>{user.username}</p> : ""}
             </div>
             <div className="Column2">
               <h2>Technologies</h2>
               <div className="Techno">{article.technologies && article.technologies.map(({name, img}, index) =>
-                <div className="Option">
-                  <p>techno</p>
+                <div key={uuidv4()}  className="Option">
+                  {article? <p>{article.technologies[0].name}</p> : ""}
                 </div>
               )}</div>
               {article.user_id === id ? "" : <button onClick={goEdit}>Modifier l'article</button>}
-
             </div>
           </div>
         </div>
@@ -57,7 +59,7 @@ const ShowArticle = () => {
 } else {
   return (
     <p>
-      Annonce introuvable
+      Article introuvable
     </p>
   )
 }

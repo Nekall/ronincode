@@ -8,6 +8,7 @@ import Cookies from 'js-cookie'
 import './style.scss'
 import BtnTechno from 'components/BtnTechno';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 
 const IndexAppointment = () => { 
@@ -17,6 +18,7 @@ const IndexAppointment = () => {
     const [eventValue, setEventValue ] = useState("");
     const id = Cookies.get('id')
     console.log(id)
+    dayjs.locale('fr')
  
     
     
@@ -67,16 +69,20 @@ const IndexAppointment = () => {
                 <h1>Mes prochains rendez-vous</h1>
               {rdvs && rdvs.map((rdv) => {
 
-                if(id == rdv.user_1_id){
+                if(parseInt(id) === rdv.user_1_id){
                   return (
                   <li key={rdv.id} className="eventCard">
                     <div className="dm-container">
-                      <div className="rdv">{rdv.date}</div>
-                      <div className="rdv">{rdv.user_2.email}</div>
-                      <div className="month"> Rôle : Mentor </div>
+                      <div className="rdv">{ dayjs(rdv.date).format('DD') }</div>
+                      <div className="rdv">{ dayjs(rdv.date).format('MMMM') }</div>
+                      <div className="rdv">{ rdv.appointment_time }</div>
                     </div>
                     <div className="txt-container">
                       <div className="title">{rdv.title} <Link to="/">{rdv.user_2_id}</Link></div>
+                    </div>
+                    <div className="invite">
+                      <div className="month"> Rôle : Mentor </div>
+                      <div className="month"> Invité : {rdv.user_2.email} </div>
                     </div>
                       <div className="buttons">
                         <BtnTechno />
