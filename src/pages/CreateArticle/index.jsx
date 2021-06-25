@@ -40,7 +40,7 @@ const CreateArticle = () => {
     }
 
 
-    const technoFetch = () => {
+    /*const technoFetch = () => {
       fetch(`https://ronincode.herokuapp.com/technologies/`, {
         method : "GET",
         headers : {
@@ -51,7 +51,7 @@ const CreateArticle = () => {
       .then((data) => {
         setTechnologies(data)
       })
-    }
+    }*/
 
 
     return (
