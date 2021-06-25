@@ -12,6 +12,7 @@ const IndexAppointment = () => {
     // const token = Cookies.get('token')
     const [rdvs, setRdv] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [eventValue, setEventValue ] = useState("");
  
     
     
@@ -46,12 +47,12 @@ const IndexAppointment = () => {
         setIsOpen(false)
       }
 
-      const openPopup = () => {
+      const openPopup = (rdv) => {
+        setEventValue(rdv)
         setIsOpen(true)
+        console.log(isOpen)
       }
 
-
-        if(isOpen){
           return (
             <div className = "NewRDV">
             <CreateAppointment rdvFetch={rdvFetch} />
@@ -74,48 +75,16 @@ const IndexAppointment = () => {
                     <DeleteRdv id={rdv.id} rdvFetch={rdvFetch} />
                   </div>
                   <div>
-                    <PopUpEditRDV title={rdv.title} appointment_time={rdv.appointment_time} id={rdv.id} user_2_id={rdv.user_2_id} close={closePopup} rdvFetch={rdvFetch}/>
-                    <button onClick={closePopup}>Edit</button>
+                    <button onClick={() => openPopup(rdv)}>Edit</button>
                   </div>
                 </li>
               )))}
               </ul>
+              { isOpen ? <PopUpEditRDV title={eventValue.title} appointment_time={eventValue.appointment_time} id={eventValue.id} user_2_id={eventValue.user_2_id} close={closePopup} rdvFetch={rdvFetch}/> : null }
             </div>
           </div>
-
-        )} else {
-           return (
-            <div className = "NewRDV">
-              <CreateAppointment rdvFetch={rdvFetch} />
-              <div className="rddv">
-                <ul>
-                  <h1>Mes prochains rendez-vous</h1>
-                {rdvs.map((rdv => (
-                  <li key={rdv.id} className="eventCard">
-                        <BtnTechno />
-                    <div className="dm-container">
-                      <div className="rdv">{rdv.date}</div>
-                    </div>
-                    <div className="txt-container">
-                      <div className="title">{rdv.title} </div>
-                      <div><Link to="/">{rdv.user_2_id}</Link></div>
-                      <div className="buttons">
-                      </div>
-                    </div>
-                    <div className="editButton">
-                      {/* {/* <button onClick={togglePopup}>Edit</button> */}
-                      <DeleteRdv id={rdv.id} rdvFetch={rdvFetch} />
-                    </div>
-                      <button onClick={openPopup}>Edit</button>
-                  </li>
-                )))}
-                </ul>
-              </div>
-            </div>
           )
         }
-
-    }
 
 
 export default IndexAppointment

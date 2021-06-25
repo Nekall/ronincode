@@ -9,7 +9,7 @@ import { ReactComponent as AdminIcon } from '../../assets/images/icons/admin.svg
 import { ReactComponent as LogoutIcon } from '../../assets/images/icons/logout.svg';
 import { ReactComponent as WriteIcon } from '../../assets/images/icons/edit.svg';
 import { ReactComponent as AgendaIcon } from '../../assets/images/icons/agenda.svg';
-import useFetch from '../../Hooks/useFetch';
+import useFetch from 'Hooks/useFetch';
 import Logo from 'components/Logo';
 import Cookies from 'js-cookie';
 
@@ -78,11 +78,11 @@ function DropdownMenu() {
 
   function DropdownItem(props) {
     return (
-      <Link to={props.linkTo || "#"} className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+      <div to={props.linkTo || "#"} className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
-      </Link>
+      </div>
     );
   }
 
@@ -106,22 +106,19 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem linkTo={'/profile-edit'}
-            leftIcon={<UserIcon />}>
-            Edit profile
+          <DropdownItem leftIcon={<UserIcon />}>
+            <Link to="/profile-edit">Edit profile</Link>
           </DropdownItem>
-          <DropdownItem linkTo="/nouvel-article"
-            leftIcon={<WriteIcon />}>
-            Écrire un article
+          <DropdownItem leftIcon={<WriteIcon />}>
+            <Link to="/nouvel-article">Écrire un article</Link>
           </DropdownItem>
           {is_admin?
-            <DropdownItem linkTo="/admin" className="admin-style"
-            leftIcon={<AdminIcon />}>
-              Administration
+            <DropdownItem className="admin-style" leftIcon={<AdminIcon />}>
+              <Link to="/admin">Administration</Link>
             </DropdownItem>
           :<></>}
-          <DropdownItem
-            leftIcon={<LogoutIcon />}> <Link to="" onClick={()=>disconnect()}>Se déconnecter</Link>
+          <DropdownItem leftIcon={<LogoutIcon />}>
+            <Link to="" onClick={()=>disconnect()}>Se déconnecter</Link>
           </DropdownItem>
         </div>
       </CSSTransition>
