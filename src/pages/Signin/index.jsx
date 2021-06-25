@@ -1,22 +1,23 @@
-import React, { useState} from 'react'
-import { useHistory, Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { LogFailure, LogSuccess } from 'store/Log/LogActions';
-import Cookies from 'js-cookie'
+import { useHistory, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import React, { useState} from 'react';
+import { useAlert } from "react-alert";
+import Cookies from 'js-cookie';
 
 const Signin = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const alert = useAlert();
   let token;
   const data = {
     user: {
       email: email,
       password: password
     }
-  }
+  };
 
   const handleFetch = (e) => {
     e.preventDefault();
@@ -38,10 +39,11 @@ const Signin = () => {
         dispatch(LogSuccess(data, true))
         Cookies.set('id', data.id)
         history.push("/");
+        return(alert.success("Connecté 👋"))
       } else {
         dispatch(LogFailure(data.message, false))
         Cookies.remove('token');
-        setError(data.message + 'Vérifiez votre adresse mail et votre mot de passe.')
+        return(alert.error("Désolé, une erreur est survenue."))
       }
     })
   }
@@ -58,7 +60,6 @@ const Signin = () => {
           <div className="user-box">
             <label className="label-form-log">Mot de passe</label>
             <input type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
-          <div className="error-message">{error}</div>
           </div>
           <Link className="link-sign" to="/reinitialisation/mot-de-passe">Mot de passe oublié ?</Link><br/>
           <Link className="link-sign" to="/inscription">S'inscrire'</Link>
@@ -75,4 +76,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default Signin;

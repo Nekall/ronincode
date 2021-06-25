@@ -1,17 +1,16 @@
-import React, { useState} from 'react'
+import { useHistory, useParams } from 'react-router-dom'
+import React, { useState} from 'react';
+import { useAlert } from "react-alert";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("")
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
-
+  const [email, setEmail] = useState("");
+  const history = useHistory();
+  const alert = useAlert();
   const data = {
     email: email,
-  }
+  };
 
   const handleFetch = (e) => {
-    setSuccess("");
-    setError("");
     e.preventDefault();
     fetch("https://ronincode.herokuapp.com/password/forgot", {
       method: 'POST',
@@ -22,9 +21,11 @@ const ForgotPassword = () => {
     })
     .then(data => {
       if(data.ok){
-        setSuccess("Un mail vient de vous être envoyé.")
+        history.push("/");
+        return(alert.success("Un mail vient de vous être envoyé."))
       } else {
-        setError("Vérifiez votre adresse mail et réessayer.")
+        return(alert.error("Vérifiez votre adresse mail et réessayer."))
+
       }
     })
   }
@@ -37,8 +38,6 @@ const ForgotPassword = () => {
           <div className="user-box">
             <label className="label-form-log">Email</label>
             <input type="email" value={email} required onChange={(e) => setEmail(e.target.value)}></input>
-            <div className="error-message">{error}</div>
-            <div className="success-message">{success}</div>
           </div>
           <button>
             <span></span>
