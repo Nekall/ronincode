@@ -20,7 +20,7 @@ const IndexAppointment = () => {
  
     
     
-    const url = "http://localhost:3000/appointments"
+    const url = "https://ronincode.herokuapp.com/appointments"
     const rdvFetch = () => {
 
       fetch(url, {

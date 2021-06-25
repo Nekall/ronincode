@@ -44,7 +44,6 @@ const CreateAppointment = (props) => {
         })
       } 
 
-    
     return (
       <div className = "RDV">
         <h1>Créer un RDV</h1>

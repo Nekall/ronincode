@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import Cookies from 'js-cookie';
 import BtnLangage from 'components/BtnTechno';
+import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
 import './style.css'
 
