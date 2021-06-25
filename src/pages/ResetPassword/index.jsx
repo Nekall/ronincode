@@ -1,21 +1,24 @@
-import React, { useState} from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import '../../style/pages/sign.scss'
+import React, { useState} from 'react';
+import { useAlert } from "react-alert";
+import '../../style/pages/sign.scss';
 
 const ResetPassword = () => {
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('')
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   const { token } = useParams();
+  const history = useHistory();
+  const alert = useAlert();
   const data = {
     password: password,
     token: token
-  }
+  };
 
   const handleFetch = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-        setError('Les mots de passe ne correspondent pas.')
+      return(alert.error("Les mots de passe ne correspondent pas."))
     } else {
       fetch("https://ronincode.herokuapp.com/password/reset", {
         method: 'POST',
@@ -26,12 +29,10 @@ const ResetPassword = () => {
       })
       .then(data => {
         if(data.ok){
-          console.log("SUCCES");
-          console.log(data);
+          history.push("/se-connecter");
+          return(alert.success("Mot de passe modifié."))
         } else {
-          console.log("ERROR");
-          console.log(data);
-          setError('Désolé, une erreur est survenue.')
+          return(alert.error("Désolé, une erreur est survenue."))
         }
       })
     }
