@@ -1,14 +1,16 @@
 
-.NewRDV{
+.NewRDV {
+    width: 80%;
+    display: flex;
+    padding: 7%;
 
-  width: 80%;
-  display: flex;
-  padding: 7%
+     h1{
+      color: white;
+      margin: 1em;
+    }
 
-
-
-     h1 {
-      color:white;
+     h1{
+      color: black;
       margin: 1em;
     }
 
@@ -17,9 +19,19 @@
       margin: 1em;
     }
 
-    .RDVContent {
-      height: 300px;
+    .eventCard {
+      display: flex;
+      height: 100px;
       font-family: arial;
+      align-items: center;
+      background-color: #AB0DFC;
+      margin: 1em;
+      padding: 1em;
+
+      .rdv {
+        margin: 1em;
+        font-weight:600;
+      }
     }
 
     .RDVLead {

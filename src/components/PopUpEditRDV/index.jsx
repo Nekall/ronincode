@@ -5,8 +5,9 @@ import './style.css'
 
 const PopUpEditRDV = (props) => { 
     const token = Cookies.get('token')
-    console.log(props.title)
-
+    console.log(props.id)
+    console.log("hello")
+    
     const [inputData, setInputData] = useState({
       appointment: {
         date: props.date,
@@ -15,8 +16,7 @@ const PopUpEditRDV = (props) => {
         user_2_id: props.user_2_id,
       }
     })
-
-
+    
     const handleChange = (e) => {
       setInputData({
         ...inputData,
@@ -25,16 +25,16 @@ const PopUpEditRDV = (props) => {
         }
       });
     };
-  
-
-    const url = `https://ronincode.herokuapp.com/appointments/${props.id}`
-
-
+    
+    
     const handleFetch = (e) => {
+     
+      console.log("je suis ici")
+      console.log(props.id)
+      const url = `https://ronincode.herokuapp.com/appointments/${props.id}`
+      
       e.preventDefault();
 
-      console.log(inputData)
-      console.log(props.id)
 
       fetch(url, {
         method : "PUT",
@@ -51,16 +51,16 @@ const PopUpEditRDV = (props) => {
          } else {
             console.log(data)
             props.rdvFetch();
-            props.handleClose();
+            props.close();
           }
         })
       } 
 
     return (
-      <div className="popup-box">
+    <div className="popup-box">
       <div className="box">
-        <span className="close-icon" onClick={props.handleClose}>x</span>
-        <h1>Modifier l'évènement</h1>
+        <span className="close-icon" onClick={props.close}>x</span>
+        <h2>Modifier l'évènement</h2>
         <form className="form" onSubmit={handleFetch}>
             <input type="text" placeholder={props.title} name="title" onChange={handleChange}></input>
             <input type="date" placeholder={props.date} name="date" onChange={handleChange}></input>

@@ -10,12 +10,10 @@ import { Link } from 'react-router-dom';
 
 const IndexAppointment = () => { 
     // const token = Cookies.get('token')
-    const [rdv, setRdv] = useState([]);
+    const [rdvs, setRdv] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+ 
     
-    const togglePopup = () => {
-      setIsOpen(!isOpen);
-    }
     
     const url = "https://ronincode.herokuapp.com/appointments"
     const rdvFetch = () => {
@@ -30,12 +28,10 @@ const IndexAppointment = () => {
       .then((response) => response.json())
       .then(data => {
         if(data === undefined){
-          console.log(data)
           alert("error")
           setRdv(data)
 
          } else {
-            console.log(data)
             setRdv(data)
         }
       })   
@@ -46,39 +42,80 @@ const IndexAppointment = () => {
       }, []
       )
 
+      const closePopup = () => {
+        setIsOpen(false)
+      }
+
+      const openPopup = () => {
+        setIsOpen(true)
+      }
 
 
-      return (
-        <div className = "NewRDV">
-          <CreateAppointment rdvFetch={rdvFetch} />
-          <div className="rddv">
-            <ul>
-              <h1>Mes prochains rendez-vous</h1>
-            {rdv.map((rdv => (
-              <li key={rdv.id}>
-                <div className="dm-container">
-                  <div className="rdv">{rdv.date}</div>
-                  <div className="month">septembre</div>
-                </div>
-                <div className="txt-container">
-                  <div className="title">{rdv.title} <Link to="/">{rdv.user_2_id}</Link></div>
-                  <div className="buttons">
-                    <BtnTechno />
+        if(isOpen){
+          return (
+            <div className = "NewRDV">
+            <CreateAppointment rdvFetch={rdvFetch} />
+            <div className="rddv">
+              <ul>
+                <h1>Mes prochains rendez-vous</h1>
+              {rdvs.map((rdv => (
+                <li key={rdv.id} className="eventCard">
+                  <div className="dm-container">
+                    <div className="rdv">{rdv.date}</div>
+                    <div className="month">septembre</div>
                   </div>
-                </div>
-                <div className="editButton">
-                  <button onClick={togglePopup}>Edit</button>
-                  <DeleteRdv id={rdv.id} rdvFetch={rdvFetch} />
-                </div>
-                  {isOpen && <PopUpEditRDV title={rdv.title} appointment_time={rdv.appointment_time} id={rdv.id} user_2_id={rdv.user_2_id} rdvFetch={rdvFetch}
-                    handleClose={togglePopup}
-                  />}
-              </li>
-            )))}
-            </ul>
+                  <div className="txt-container">
+                    <div className="title">{rdv.title} <Link to="/">{rdv.user_2_id}</Link></div>
+                    <div className="buttons">
+                      <BtnTechno />
+                    </div>
+                  </div>
+                  <div className="editButton">
+                    <DeleteRdv id={rdv.id} rdvFetch={rdvFetch} />
+                  </div>
+                  <div>
+                    <PopUpEditRDV title={rdv.title} appointment_time={rdv.appointment_time} id={rdv.id} user_2_id={rdv.user_2_id} close={closePopup} rdvFetch={rdvFetch}/>
+                    <button onClick={closePopup}>Edit</button>
+                  </div>
+                </li>
+              )))}
+              </ul>
+            </div>
           </div>
-        </div>
-    );
-}
+
+        )} else {
+           return (
+            <div className = "NewRDV">
+              <CreateAppointment rdvFetch={rdvFetch} />
+              <div className="rddv">
+                <ul>
+                  <h1>Mes prochains rendez-vous</h1>
+                {rdvs.map((rdv => (
+                  <li key={rdv.id} className="eventCard">
+                        <BtnTechno />
+                    <div className="dm-container">
+                      <div className="rdv">{rdv.date}</div>
+                    </div>
+                    <div className="txt-container">
+                      <div className="title">{rdv.title} </div>
+                      <div><Link to="/">{rdv.user_2_id}</Link></div>
+                      <div className="buttons">
+                      </div>
+                    </div>
+                    <div className="editButton">
+                      {/* {/* <button onClick={togglePopup}>Edit</button> */}
+                      <DeleteRdv id={rdv.id} rdvFetch={rdvFetch} />
+                    </div>
+                      <button onClick={openPopup}>Edit</button>
+                  </li>
+                )))}
+                </ul>
+              </div>
+            </div>
+          )
+        }
+
+    }
+
 
 export default IndexAppointment
