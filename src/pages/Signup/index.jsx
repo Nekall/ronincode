@@ -1,27 +1,28 @@
-import React, { useState} from 'react'
-import { useHistory, Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { LogFailure, LogSuccess } from 'store/Log/LogActions';
-import '../../style/pages/sign.scss'
+import { useHistory, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useAlert } from "react-alert";
+import React, { useState} from 'react';
+import '../../style/pages/sign.scss';
 
 const Signup = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('')
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const alert = useAlert();
   const inputData = {
     user: {
       email: email,
       password: password
     }
-  }
+  };
 
   const handleFetch = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-        setError('Les mots de passe ne correspondent pas.')
+        return(alert.error("Les mots de passe ne correspondent pas."))
     } else {
       fetch("https://ronincode.herokuapp.com/users", {
         method: 'POST',
@@ -32,11 +33,12 @@ const Signup = () => {
       })
       .then(data => {
         if(data.ok){
-          dispatch(LogSuccess(data, true))
-          history.push("/");
+          dispatch(LogSuccess(data, false))
+          history.push("/se-connecter");
+          return(alert.success("Votre compte a été créé avec succès"))
         } else {
           dispatch(LogFailure(data.error, false))
-          setError('Désolé, une erreur est survenue.')
+          return(alert.error("Désolé, une erreur est survenue."))
         }
       })
     }
@@ -59,7 +61,6 @@ const Signup = () => {
           <div className="user-box">
             <label className="label-form-log">Confirmation du mot de passe</label>
             <input minLength="8" type="password" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)}></input>
-            <div className="error-message">{error}</div>
           </div>
           <Link className="link-sign" to="/se-connecter">Se connecter</Link>
           <button>
@@ -75,4 +76,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Signup;
