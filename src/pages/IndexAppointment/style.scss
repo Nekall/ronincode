@@ -9,14 +9,18 @@
       margin: 1em;
     }
 
-     h1{
-      color: black;
-      margin: 1em;
-    }
-
     .NewRDV input, textarea, button {
       color:black;
       margin: 1em;
+    }
+
+    .invite {
+      display:flex;
+      flex-direction: column;
+    }
+
+    .title {
+      font-size: 25px;
     }
 
     .eventCard {

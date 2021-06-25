@@ -33,7 +33,7 @@ const CreateAppointment = (props) => {
       })
       .then((response) => response.json())
       .then(data => {
-        if(data === undefined){
+        if(data === "undefined"){
           alert("error")
           console.log(data)
 
@@ -44,7 +44,6 @@ const CreateAppointment = (props) => {
         })
       } 
 
-    
     return (
       <div className = "RDV">
         <h1>Créer un RDV</h1>
