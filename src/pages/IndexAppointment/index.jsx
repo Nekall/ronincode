@@ -20,7 +20,7 @@ const IndexAppointment = () => {
  
     
     
-    const url = "https://ronincode.herokuapp.com/appointments"
+    const url = "http://localhost:3000/appointments"
     const rdvFetch = () => {
 
       fetch(url, {
@@ -32,12 +32,13 @@ const IndexAppointment = () => {
       })
       .then((response) => response.json())
       .then(data => {
-        if(data === undefined){
+        if(data === "undefined"){
           alert("error")
           setRdv(data)
 
          } else {
             setRdv(data)
+            console.log(data)
         }
       })   
     }
@@ -64,14 +65,14 @@ const IndexAppointment = () => {
             <div className="rddv">
               <ul>
                 <h1>Mes prochains rendez-vous</h1>
-              {rdvs.map((rdv) => {
+              {rdvs && rdvs.map((rdv) => {
 
                 if(id == rdv.user_1_id){
                   return (
                   <li key={rdv.id} className="eventCard">
                     <div className="dm-container">
                       <div className="rdv">{rdv.date}</div>
-                      <div className="rdv">{rdv.user_2_id.email}</div>
+                      <div className="rdv">{rdv.user_2.email}</div>
                       <div className="month"> Rôle : Mentor </div>
                     </div>
                     <div className="txt-container">
@@ -83,7 +84,7 @@ const IndexAppointment = () => {
                     <div className="editButton">
                       <button onClick={() => openPopup(rdv)}>Edit</button>
                       <DeleteRdv id={rdv.id} rdvFetch={rdvFetch} />
-                      <AcceptButton id={rdv.id} rdvFetch={rdvFetch} />
+                      {/* <AcceptButton id={rdv.id} rdvFetch={rdvFetch} /> */}
                     </div>
                   </li>)
                 } else {
@@ -91,7 +92,7 @@ const IndexAppointment = () => {
                     <li key={rdv.id} className="eventCard">
                     <div className="dm-container">
                       <div className="rdv">{rdv.date}</div>
-                      <div className="rdv">{rdv.user_1_id.email}</div>
+                      <div className="rdv">{rdv.user_1.email}</div>
                       <div className="month">Rôle : Disciple </div>
                     </div>
                     <div className="txt-container">

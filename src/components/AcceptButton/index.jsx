@@ -21,7 +21,7 @@ const AcceptButton = (props) => {
 
   if (window.confirm("êtes vous sûr.sure d'accepter le RDV ?")) {
     
-    const url = `https://ronincode.herokuapp.com/appointments/${props.id}`
+    const url = `http://localhost:3000/appointments/${props.id}`
 
     fetch(url, {
       method : "PUT",
