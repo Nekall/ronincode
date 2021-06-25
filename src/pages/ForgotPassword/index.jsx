@@ -1,4 +1,4 @@
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import React, { useState} from 'react';
 import { useAlert } from "react-alert";
 

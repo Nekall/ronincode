@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import BtnTechno from 'components/BtnTechno';
 
 const ModalDate = (props) => {
-  let name = '';
+  let name = null;
 
   return(
     <div className="meeting-profile">
@@ -43,7 +43,8 @@ const ModalDate = (props) => {
             return false;
           }
         })}
-        {props.dataAppointment.user_1_id !== props.id_user_profile && props.dataAppointment.user_2_id !== props.id_user_profile ? <div>Aucun rendez-vous de prévu</div> : ""}
+        {(props.dataAppointment.user_1_id !== props.id_user_profile && props.dataAppointment.user_2_id !== props.id_user_profile) && name === null ?
+        <div>Aucun rendez-vous de prévu</div> : ""}
       </ul>
     </div>
   );
