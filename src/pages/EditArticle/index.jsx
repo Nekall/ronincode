@@ -60,8 +60,6 @@ console.log(currentArticle);
         resource_id: parseInt(articleSlug),
         technology_id: parseInt(techno1),
       }
-      console.log(techno1);
-      console.log(currentArticle.technologies[0].id);
       if(techno1 === currentArticle.technologies[0].id){
         fetch(`https://ronincode.herokuapp.com/resources_technologies/`, {
           method : "PUT",
