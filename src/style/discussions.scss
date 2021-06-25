@@ -1,0 +1,71 @@
+.discussions-container{
+  width: 1200px;
+  color: $white;
+  margin: 2em auto;
+  border: 2px solid #b3ebffb3;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px #3f617a;
+  background: $dark;
+  font-family: courier;
+  padding: 0 2em;
+
+  h1{
+    padding: 30px 30px 0 30px;
+    font-family: courier;
+    margin-bottom: 0;
+  }
+
+  .refresh{
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: $white;
+    font-family: courier;
+    padding: 6px 8px;
+    text-decoration: none;
+    font-size: .8em;
+    background: none;
+    
+    &:hover{
+      background: $white;
+      color: #000;
+      transition: .3s;
+    }
+  }
+  
+  ul{
+    list-style: none;
+    padding: 30px;
+  }
+
+  ul li a{
+    color: $yellow;
+    font-size: 1.5em;
+    text-decoration: none;
+    padding: 1em;
+    border-bottom: 1px solid yellow;
+    display: block;
+    
+    &:hover{
+      background: $yellow;
+      color: #000;
+      transition: .3s;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .discussions-container{
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .discussions-container ul li a{
+    font-size: 1em;
+  }
+}

@@ -33,9 +33,9 @@ const PrivateMessaging = () => {
 
 
   return(
-    <div>
-      <h1> Conversations </h1>
-      <button onClick={testClick}>LA</button>
+    <div className="discussions-container">
+      <h1>Conversations</h1>
+      <button onClick={testClick} className="refresh">Rafraichir</button>
       {dataUser ?
         <ul>{dataConversation && dataConversation.map((list) => {
           if (id === list.sender_id || id === list.recipient_id) {
@@ -49,7 +49,7 @@ const PrivateMessaging = () => {
               }
               
             }
-            return(<li key={uuidv4()}><Link to={`/conversations/${list.id}/messages`}>Conversation avec {receiver.email}</Link></li>);
+            return(<li key={uuidv4()}><Link to={`/conversations/${list.id}/messages`}>{receiver.email}</Link></li>);
           } else {
             return false;
           }
