@@ -33,7 +33,7 @@ const CreateAppointment = (props) => {
       })
       .then((response) => response.json())
       .then(data => {
-        if(data === undefined){
+        if(data === "undefined"){
           alert("error")
           console.log(data)
 
