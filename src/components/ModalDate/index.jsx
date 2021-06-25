@@ -7,8 +7,8 @@ const ModalDate = (props) => {
   let name = '';
 
   return(
-    <div className="next-meeting">
-      <h2 className="card-title">Prochain rendez-vous</h2>
+    <div className="meeting-profile">
+      <h2 className="card-title">Prochains rendez-vous</h2>
       <ul>
         {props.dataAppointment && props.dataAppointment.map((appointment) => {
           if (appointment.user_1_id === props.id_user_profile) {
@@ -20,8 +20,8 @@ const ModalDate = (props) => {
                   <div className="month">septembre</div>
                 </div>
                 <div className="txt-container">
-                  <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link to={`/profile/${appointment.user_2_id}`}>{name.email}</Link></span>
-                  <div><BtnTechno /></div>
+                  <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link className="mentor-name" to={`/profile/${appointment.user_2_id}`}>{name.email}</Link></span>
+                  <BtnTechno />
                 </div>
               </li>
             );
@@ -34,8 +34,8 @@ const ModalDate = (props) => {
                   <div className="month">septembre</div>
                 </div>
                 <div className="txt-container">
-                  <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link to={`/profile/${appointment.user_1_id}`}>{name.email}</Link></span>
-                  <div><BtnTechno /></div>
+                  <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link className="mentor-name" to={`/profile/${appointment.user_1_id}`}>{name.email}</Link></span>
+                  <BtnTechno />
                 </div>
               </li>
             );
@@ -43,7 +43,7 @@ const ModalDate = (props) => {
             return false;
           }
         })}
-        {props.dataAppointment.user_1_id !== props.id_user_profile && props.dataAppointment.user_2_id !== props.id_user_profile ? <div>pas encore de rendez-vous</div> : ""}
+        {props.dataAppointment.user_1_id !== props.id_user_profile && props.dataAppointment.user_2_id !== props.id_user_profile ? <div>Aucun rendez-vous de prévu</div> : ""}
       </ul>
     </div>
   );
