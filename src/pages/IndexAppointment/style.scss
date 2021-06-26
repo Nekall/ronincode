@@ -1,85 +1,85 @@
 
-.NewRDV {
-    width: 80%;
-    display: flex;
-    padding: 7%;
+// .NewRDV {
+//     width: 80%;
+//     display: flex;
+//     padding: 7%;
 
-     h1{
-      color: white;
-      margin: 1em;
-    }
+//      h1{
+//       color: white;
+//       margin: 1em;
+//     }
 
-    .NewRDV input, textarea, button {
-      color:black;
-      margin: 1em;
-    }
+//     .NewRDV input, textarea, button {
+//       color:black;
+//       margin: 1em;
+//     }
 
-    .invite {
-      display:flex;
-      flex-direction: column;
-    }
+//     .invite {
+//       display:flex;
+//       flex-direction: column;
+//     }
 
-    .title {
-      font-size: 25px;
-    }
+//     .title {
+//       font-size: 25px;
+//     }
 
-    .eventCard {
-      display: flex;
-      height: 100px;
-      font-family: arial;
-      align-items: center;
-      background-color: #AB0DFC;
-      margin: 1em;
-      padding: 1em;
+//     .eventCard {
+//       display: flex;
+//       height: 100px;
+//       font-family: arial;
+//       align-items: center;
+//       background-color: #AB0DFC;
+//       margin: 1em;
+//       padding: 1em;
 
-      .rdv {
-        margin: 1em;
-        font-weight:600;
-      }
-    }
+//       .rdv {
+//         margin: 1em;
+//         font-weight:600;
+//       }
+//     }
 
-    .RDVLead {
-      height: 50px;
-      font-family: arial;
-    }
+//     .RDVLead {
+//       height: 50px;
+//       font-family: arial;
+//     }
 
-    .form{
-      display: flex;
-      flex-direction: column;
-      align-self: normal;
-    }
+//     .form{
+//       display: flex;
+//       flex-direction: column;
+//       align-self: normal;
+//     }
 
-    .FirstColumn{
-      display: flex;
-      flex-direction: column;
-      width: 70%;
-      padding: 1em;
-    }
+//     .FirstColumn{
+//       display: flex;
+//       flex-direction: column;
+//       width: 70%;
+//       padding: 1em;
+//     }
 
-    .SecondColumn{
-      display: flex;
-      flex-direction: column;
-      padding: 1em;
-    }
+//     .SecondColumn{
+//       display: flex;
+//       flex-direction: column;
+//       padding: 1em;
+//     }
 
-    .Technologies {
-      padding: 1em;
-      border:1px;
-    }
+//     .Technologies {
+//       padding: 1em;
+//       border:1px;
+//     }
 
-    .Technologies h2, label {
-      color: white;
-    }
+//     .Technologies h2, label {
+//       color: white;
+//     }
 
-    .Options{
-      display: flex;
-      flex-wrap: wrap;
-    }
+//     .Options{
+//       display: flex;
+//       flex-wrap: wrap;
+//     }
 
-    .editButton {
-      display: flex;
-      justify-content: start;
-      align-items: center;
-    }
+//     .editButton {
+//       display: flex;
+//       justify-content: start;
+//       align-items: center;
+//     }
 
-}
+// }
