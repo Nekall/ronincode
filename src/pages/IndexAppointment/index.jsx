@@ -11,12 +11,10 @@ import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 const IndexAppointment = () => { 
-  // const token = Cookies.get('token')
   const [rdvs, setRdv] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [eventValue, setEventValue ] = useState("");
   const id = Cookies.get('id')
-  console.log(id)
   dayjs.locale('fr')
 
   const url = "https://ronincode.herokuapp.com/appointments"
@@ -36,7 +34,6 @@ const IndexAppointment = () => {
         setRdv(data)
         } else {
           setRdv(data)
-          console.log(data)
       }
     })   
   }
@@ -46,6 +43,7 @@ const IndexAppointment = () => {
   }, []
   )
 
+
   const closePopup = () => {
     setIsOpen(false)
   }
@@ -53,7 +51,6 @@ const IndexAppointment = () => {
   const openPopup = (rdv) => {
     setEventValue(rdv)
     setIsOpen(true)
-    console.log(isOpen)
   }
   return (
     <div className = "appointment-container">

@@ -1,0 +1,56 @@
+.messages-container{
+  color: $white;
+  font-family: courier;
+  margin: 1em auto;
+
+  form{
+    
+    .text{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 170px;
+    }
+
+    .submit{
+      padding: 5px;
+      margin-left: 1em;
+      border-radius: 5px;
+      border: none;
+      background: $violet;
+      color: $white;
+    }
+  }
+
+  .btn-return{
+    color: $white;
+    border: 1px solid $white;
+    border-radius: 5px;
+    padding: 5px 8px;
+    text-decoration: none;
+    margin: 1.5em 0;
+    display: block;
+    width: fit-content;
+  }
+
+  .message-card{
+
+    p{
+      font-size: 1.3em;
+    }
+
+    div{
+      margin: .5em 0;
+
+      .author{
+        font-weight: bold;
+        font-size: 1.2em;
+        
+        .time{
+          font-size: .8em;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
