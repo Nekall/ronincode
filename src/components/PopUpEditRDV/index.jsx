@@ -29,7 +29,6 @@ const PopUpEditRDV = (props) => {
     
     const handleFetch = (e) => {
      
-      console.log("je suis ici")
       console.log(props.id)
       const url = `https://ronincode.herokuapp.com/appointments/${props.id}`
       
