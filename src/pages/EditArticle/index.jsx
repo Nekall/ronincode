@@ -6,17 +6,17 @@ import Cookies from 'js-cookie';
 import './style.css';
 
 const EditArticle = () => {
-    const token = Cookies.get('token');
-    const { articleSlug } = useParams();
-    const [technologies, setTechnologies] = useState([]);
-    const [articleInfo, setarticleInfo] = useState([]);
-    const [currentArticle, setCurrentArticle] = useState()
-    const history = useHistory();
-    const [data, setData] = useState({
-      title: articleInfo.title,
-      lead: articleInfo.lead,
-      content: articleInfo.content,
-    });
+  const [currentArticle, setCurrentArticle] = useState();
+  const [technologies, setTechnologies] = useState([]);
+  const [articleInfo, setarticleInfo] = useState([]);
+  const { articleSlug } = useParams();
+  const token = Cookies.get('token');
+  const history = useHistory();
+  const [data, setData] = useState({
+    title: articleInfo.title,
+    lead: articleInfo.lead,
+    content: articleInfo.content,
+  });
 
     const getCurrentArticle = () => {
       fetch(`https://ronincode.herokuapp.com/resources/${articleSlug}`, {
@@ -125,7 +125,7 @@ console.log(currentArticle);
                 {currentArticle ? <p>{currentArticle.technologies[0].name}</p> : ""}
                   <select name="techno" id="techno1">
                     {technologies && technologies.map(({name, id}, index) =>
-                      <option key={uuidv4()} value ={id}>{name}</option>
+                      <option key={uuidv4()} value={id}>{name}</option>
                     )}
                   </select>
               </div>

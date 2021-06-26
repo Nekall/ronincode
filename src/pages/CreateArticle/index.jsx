@@ -7,19 +7,19 @@ import Cookies from 'js-cookie';
 const CreateArticle = () => {
   const [technologies, setTechnologies] = useState([]);
   const [content, setContent] = useState('');
-    const [title, setTitle] = useState('');
-    const [lead, setLead] = useState('');
-    const token = Cookies.get('token');
-    const history = useHistory();
-    const alert = useAlert();
-    let idArticle;
-    const inputData = {
-      resource: {
-        title: title,
-        lead: lead,
-        content: content,
-      }
-    };
+  const [title, setTitle] = useState('');
+  const [lead, setLead] = useState('');
+  const token = Cookies.get('token');
+  const history = useHistory();
+  const alert = useAlert();
+  let idArticle;
+  const inputData = {
+    resource: {
+      title: title,
+      lead: lead,
+      content: content,
+    }
+  };
 
     const handleFetch = (e) => {
     e.preventDefault();
