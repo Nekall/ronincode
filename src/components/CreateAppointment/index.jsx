@@ -7,6 +7,8 @@ const CreateAppointment = (props) => {
   const [title, setTitle] = useState('')
   const [userTwo, setUserTwo] = useState('')
   const token = Cookies.get('token')
+  const [alert, setAlert] = useState('')
+  const [userAlert, setUserAlert] = useState('')
 
   const inputData = {
     appointment: {
@@ -20,25 +22,41 @@ const CreateAppointment = (props) => {
 
   const handleFetch = (e) => {
     e.preventDefault();
+    console.log(new Date (Date.now()))
 
-    fetch(url, {
-      method : "POST",
-      headers : {
-        "Content-Type" : "application/json",
-        "Authorization": `${token}`
-      },
-      body : JSON.stringify(inputData)
-    })
-    .then((response) => response.json())
-    .then(data => {
-    if(data === "undefined"){
-      alert("error")
-      console.log(data)
+    if (new Date(date) < new Date (Date.now())) {
+      setAlert(true)
+    } else {
+      setAlert(false)
+      
+      if (userTwo === "") {
+        setUserAlert(true)
+        console.log(userTwo)
+
       } else {
-        console.log(data)
-        props.rdvFetch();
+        setUserAlert(false)
+        console.log(inputData)
+
+
+
+        fetch(url, {
+          method : "POST",
+          headers : {
+            "Content-Type" : "application/json",
+            "Authorization": `${token}`
+          },
+          body : JSON.stringify(inputData)
+        })
+        .then((response) => response.json())
+        .then(data => {
+        if(data === "undefined"){
+          alert("error")
+          } else {
+            props.rdvFetch();
+          }
+        })
       }
-    })
+    }
   }
 
   return (
@@ -47,8 +65,10 @@ const CreateAppointment = (props) => {
       <form onSubmit={handleFetch}>
         <input type="text" value={title} placeholder="Ajouter un titre" onChange={(e) => setTitle(e.target.value)} />
         <input type="date" value={date} placeholder="Date du rendez-vous" onChange={(e) => setDate(e.target.value)} />
+        { alert ? <div className="alert">La date ne peut pas être dans le passé</div> : null }
         <input type="time" value={time} placeholder="Heure du rendez-vous" onChange={(e) => setTime(e.target.value)} />
         <input type="text" value={userTwo} placeholder="Ajouter un invité (id)" onChange={(e) => setUserTwo(e.target.value)} />
+        { userAlert ? <div className="alert">Merci de renseigner un utilisateur</div> : null }
         <button>Créer</button>
       </form>
     </div>
