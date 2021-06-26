@@ -8,7 +8,7 @@
 Plateforme web de mise en relation de mentors et d'apprentis en développement informatique proposant à ses membres des contenus et outils pédagogiques.
 
 ## Présentation
-
+Dossier de présentation : [Ronincode](https://docs.google.com/document/d/1k2PfHusfmObjoERmZHC8SMKFmLpvFSF3_yhGYYsf0lo/edit?usp=sharing)
 
 
 RoninCode permet aux développeurs débutants de se rapprocher de développeurs plus expérimentés, souhaitant à leur tour partager leur savoir.  
