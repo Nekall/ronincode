@@ -41,19 +41,20 @@ const Message = () => {
   }, [endFetch]);
   
   return(
-    <div>
-      <h1> Messages </h1>
+    <div className="messages-container">
+      <Link to="/conversations" className="btn-return">Retour</Link>
+      <h1>Messages</h1>
       {dataUser ?
-          <div className="conversation-body">{dataMessage && dataMessage.map((message) => {
+          <div>{dataMessage && dataMessage.map((message) => {
             senderInfo = dataUser.find(({ id }) => id === message.user_id)
             return(
-              <div key={uuidv4()}>
+              <div key={uuidv4()} className="message-card">
                 {(message.body === null || message.body === undefined) ?
                   ""
                 :
                   <div key={uuidv4()}>
-                    <p> Body: {message.body} </p>
-                    <span>Envoyer par: {senderInfo.email} le {new Intl.DateTimeFormat('fr-FR', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(message.created_at))}</span>
+                    <span className="author">{senderInfo.email}<span className="time">, le {new Intl.DateTimeFormat('fr-FR', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(new Date(message.created_at))}</span></span>
+                    <p>{message.body}</p>
                   </div>
                 }
               </div>
@@ -64,14 +65,10 @@ const Message = () => {
       }
       <div>
         <form onSubmit={createMessage}>
-          <div className="user-box">
-            <label className="label-form-message">Vôtre message</label>
-            <input type="text" value={content} required onChange={(e) => setContent(e.target.value)}></input>
-          </div>
-          <input type="submit" value="Envoyer" />
+          <input type="text" value={content} required onChange={(e) => setContent(e.target.value)} className="text"></input>
+          <input type="submit" value="Envoyer" className="submit"/>
         </form>
       </div>
-      <Link to="/conversations" className="btn-message">Mes Conversations</Link>
     </div>
   );
 };

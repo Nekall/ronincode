@@ -24,6 +24,7 @@ import Message from 'pages/Message';
 import { render } from "react-dom";
 import Signup from 'pages/Signup';
 import Signin from 'pages/Signin';
+import Error from 'pages/Error';
 import Blog from 'pages/Blog';
 import Rgpd from 'pages/Rgpd';
 import Team from 'pages/Team';
@@ -107,6 +108,9 @@ const App = () => {
                 </Route>
                 <Route path="/qui-sommes-nous">
                   <WhoAreWe />
+                </Route>
+                <Route path="/erreur">
+                  <Error />
                 </Route>
                 <PrivateRoute />
               </Switch>
