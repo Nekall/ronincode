@@ -3,6 +3,7 @@ import CreateAppointment from 'components/CreateAppointment'
 import PopUpEditRDV from 'components/PopUpEditRDV'
 import DeleteRdv from 'components/DeleteRdv'
 import AcceptButton from 'components/AcceptButton'
+import DeclineButton from 'components/DeclineButton'
 import Cookies from 'js-cookie'
 // import Cookies from 'js-cookie';
 import './style.scss'
@@ -79,24 +80,19 @@ const IndexAppointment = () => {
             } else {
               return (
                 <li key={rdv.id}>
-                <div className="dm-container">
-                  <div className="rdv">{rdv.date}</div>
-                  <div className="rdv">{rdv.user_1.email}</div>
-                  <div className="month">Rôle : Disciple </div>
-                </div>
-                <div className="txt-container">
-                  <div className="title">{rdv.title} <Link to="/">{rdv.user_2_id}</Link></div>
-                </div>
-                  <div className="buttons">
-                    <BtnTechno />
+                  <div className="date">
+                    <div className="day">{ dayjs(rdv.date).format('DD') }</div>
+                    <div className="mounth">{ dayjs(rdv.date).format('MMMM') }</div>
                   </div>
-                <div className="editButton">
-                  <button onClick={() => openPopup(rdv)}>Edit</button>
-                  <DeleteRdv id={rdv.id} rdvFetch={rdvFetch} />
-                  <AcceptButton id={rdv.id} rdvFetch={rdvFetch} />
-                </div>
-              </li>
-              )
+                  <div className="txt-container">
+                    { rdv.appointment_time } : {rdv.title} avec {rdv.user_1.email}
+                  </div>
+                  <BtnTechno />
+                  <div className="edit">
+                    { !rdv.validated ? <AcceptButton id={rdv.id} rdvFetch={rdvFetch} /> : null }
+                    { rdv.validated ? <DeclineButton id={rdv.id} rdvFetch={rdvFetch} /> : null }
+                  </div>
+                </li>)
             }
           })}
         </ul>
