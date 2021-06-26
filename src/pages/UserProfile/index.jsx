@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import ModalSelectedMentoraTechno from 'components/ModalSelectedMentoraTechno';
 import ModalMentoringSection from 'components/ModalMentoringSection';
 import ModalContact from 'components/ModalContact';
 import BtnTechno from 'components/BtnTechno';
@@ -23,10 +24,12 @@ const UserProfile = () => {
   
   const {data: dataAllUser, doFetch: fetchAllUser } = useFetch();
   const {data: dataAppointment, doFetch: fetchAppointment } = useFetch();
+  const {data: allTechno, doFetch: fetchAllTechno } = useFetch();
 
   const FetchDataUser = () => {
-    fetchAllUser(`users`);
+    fetchAllUser('users');
     fetchAppointment('appointments');
+    fetchAllTechno('technologies');
   };
 
 
@@ -51,6 +54,7 @@ const UserProfile = () => {
           <ModalContact logged={logged} id_current={id_current} id_user_profile={id_user_profile} dataAllUser={dataAllUser} />
           <ModalDate id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
           <ModalMentoringSection id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
+          <ModalSelectedMentoraTechno logged={logged} id_user_profile={id_user_profile} allTechno={allTechno} dataAllUser={dataAllUser} />
         </div>
         
         

@@ -9,13 +9,13 @@ const Message = () => {
   const senderId = Cookies.get('id');
   let idSender = parseInt(senderId);
   const { conversationId } = useParams();
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState('');
   let senderInfo = '';
   
   const sendDataMessage = {
     body: content,
     user_id: idSender,
-  }
+  };
   
   const { data: dataMessage, doFetch: findMessage } = useFetch();
   const { data: dataUser, doFetch: findAllUsers } = useFetch();
@@ -38,7 +38,7 @@ const Message = () => {
     allUsers();
     allMessages();
     // eslint-disable-next-line
-  }, [endFetch])
+  }, [endFetch]);
   
   return(
     <div>
@@ -73,8 +73,7 @@ const Message = () => {
       </div>
       <Link to="/conversations" className="btn-message">Mes Conversations</Link>
     </div>
-  )
-
-}
+  );
+};
 
 export default Message;
