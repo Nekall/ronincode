@@ -1,11 +1,9 @@
+.error-section{
+}
+
 .error-page{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-}
-
-.error-section{
-  justify-content: center;
-  display: flex;
 }
 
 .audiotape{
@@ -13,6 +11,7 @@
 }
 
 .error{
+  text-align: center;
   color: $white;
   font-family: 'Belshaw';
   margin: 40px;
@@ -20,9 +19,9 @@
 
 .error-sentence{
   color: $white;
+  text-align: center;
   margin-top: 100px;
   margin-bottom: 100px;
-  margin-left: 85px;
 }
 
 
@@ -39,4 +38,23 @@
     0% { transform: translate(0,  0px); }
     50%  { transform: translate(0, 15px); }
     100%   { transform: translate(0, -0px); }
+}
+
+
+//============Responsive===========
+
+@media only screen and (max-width: 1200px){
+  .audiotape{
+    width: 565px;
+  }
+}
+@media only screen and (max-width: 600px){
+  .audiotape{
+    width: 376px;
+  }
+}
+@media only screen and (max-width: 425px){
+  .audiotape{
+    width: 188px;
+  }
 }
