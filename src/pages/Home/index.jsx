@@ -6,6 +6,7 @@ import CardGroupPostCompact from 'components/CardGroupPostCompact';
 import CallToAction from 'components/CallToAction';
 import NextMeeting from 'components/NextMeeting';
 import MentorList from 'components/MentorList';
+import tokyo from 'assets/images/tokyo-night.jpeg';
 
 const Home = () => {
   const logged = useSelector(state => state.logReducer.logged);
@@ -32,6 +33,9 @@ const Home = () => {
       <main>
         {logged ?
           <>
+            <div className="hero-mini">
+              <img src={tokyo} alt="Dolorean à Tokyo" className="hero-background"/>
+            </div>
             <NextMeeting />
             <div className="mentor-list-home">
               <h1>Trouvez un mentor</h1>
