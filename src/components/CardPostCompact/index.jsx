@@ -24,10 +24,9 @@ const CardPostCompact = (article) => {
 
   }, [article])
 
- 
+
   return(
     <div className="card-postCompact">
-      <BtnTechno />
       <span className="date">{article.data.created_at.substring(0, 10)}</span>
       <div className="card-post-img-container">
         <Link to="/">

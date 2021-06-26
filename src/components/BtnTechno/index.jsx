@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const BtnTechno = () => {
+const BtnTechno = (props) => {
+
   return (
-    <Link to="/" className="btn-techno">CSS</Link>
+    <Link to="/" className="btn-techno">{props.techno}</Link>
   );
 };
 
