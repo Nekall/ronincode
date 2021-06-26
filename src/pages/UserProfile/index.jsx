@@ -41,9 +41,9 @@ const UserProfile = () => {
 
   return(
     <>
-    <div className="hero-mini">
-      <img src={dolorean} alt="Dolorean à Tokyo" className="hero-background"/>
-    </div>
+      <div className="hero-mini">
+        <img src={dolorean} alt="Dolorean à Tokyo" className="hero-background"/>
+      </div>
       {dataAppointment && dataAllUser ?
 
         <div className="profile-container">
