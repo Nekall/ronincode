@@ -1,76 +1,85 @@
 
-.NewRDV {
-    width: 80%;
-    display: flex;
-    padding: 7%;
+// .NewRDV {
+//     width: 80%;
+//     display: flex;
+//     padding: 7%;
 
-     h1{
-      color: white;
-      margin: 1em;
-    }
+//      h1{
+//       color: white;
+//       margin: 1em;
+//     }
 
-    .NewRDV input, textarea, button {
-      color:black;
-      margin: 1em;
-    }
+//     .NewRDV input, textarea, button {
+//       color:black;
+//       margin: 1em;
+//     }
 
-    .eventCard {
-      display: flex;
-      height: 100px;
-      font-family: arial;
-      align-items: center;
-      background-color: #AB0DFC;
-      margin: 1em;
-      padding: 1em;
+//     .invite {
+//       display:flex;
+//       flex-direction: column;
+//     }
 
-      .rdv {
-        margin: 1em;
-        font-weight:600;
-      }
-    }
+//     .title {
+//       font-size: 25px;
+//     }
 
-    .RDVLead {
-      height: 50px;
-      font-family: arial;
-    }
+//     .eventCard {
+//       display: flex;
+//       height: 100px;
+//       font-family: arial;
+//       align-items: center;
+//       background-color: #AB0DFC;
+//       margin: 1em;
+//       padding: 1em;
 
-    .form{
-      display: flex;
-      flex-direction: column;
-      align-self: normal;
-    }
+//       .rdv {
+//         margin: 1em;
+//         font-weight:600;
+//       }
+//     }
 
-    .FirstColumn{
-      display: flex;
-      flex-direction: column;
-      width: 70%;
-      padding: 1em;
-    }
+//     .RDVLead {
+//       height: 50px;
+//       font-family: arial;
+//     }
 
-    .SecondColumn{
-      display: flex;
-      flex-direction: column;
-      padding: 1em;
-    }
+//     .form{
+//       display: flex;
+//       flex-direction: column;
+//       align-self: normal;
+//     }
 
-    .Technologies {
-      padding: 1em;
-      border:1px;
-    }
+//     .FirstColumn{
+//       display: flex;
+//       flex-direction: column;
+//       width: 70%;
+//       padding: 1em;
+//     }
 
-    .Technologies h2, label {
-      color: white;
-    }
+//     .SecondColumn{
+//       display: flex;
+//       flex-direction: column;
+//       padding: 1em;
+//     }
 
-    .Options{
-      display: flex;
-      flex-wrap: wrap;
-    }
+//     .Technologies {
+//       padding: 1em;
+//       border:1px;
+//     }
 
-    .editButton {
-      display: flex;
-      justify-content: start;
-      align-items: center;
-    }
+//     .Technologies h2, label {
+//       color: white;
+//     }
 
-}
+//     .Options{
+//       display: flex;
+//       flex-wrap: wrap;
+//     }
+
+//     .editButton {
+//       display: flex;
+//       justify-content: start;
+//       align-items: center;
+//     }
+
+// }

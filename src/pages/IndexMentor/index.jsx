@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import Cookies from 'js-cookie';
 import BtnLangage from 'components/BtnTechno';
+import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
 import './style.css'
 
@@ -52,7 +53,8 @@ const IndexMentor = () => {
             </div>
             
             <ul className = "mentors">
-            {users.map((user => (
+            {users.map((user => {if (user.is_mentor == true){
+              return(
               <li className="mentor_card">
                 <div className="mentor-container">
                   <img className="avatar_mentor" src={avatar} alt="" />
@@ -73,7 +75,7 @@ const IndexMentor = () => {
                   <button>Contacter</button>
                 </div>
               </li>
-            )))}
+            )}}))}
             </ul>
             
           </div>
