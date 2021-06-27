@@ -69,6 +69,7 @@ const IndexAppointment = () => {
                   </div>
                   <div className="txt-container">
                     { rdv.appointment_time } : {rdv.title} avec {rdv.user_2.email}
+                    { rdv.validated ? <div className="Accepted"> RDV confirmé </div> : <div className="refused"> En attente de confirmation </div> }
                   </div>
                   <BtnTechno />
                   <div className="edit">
@@ -86,6 +87,7 @@ const IndexAppointment = () => {
                   </div>
                   <div className="txt-container">
                     { rdv.appointment_time } : {rdv.title} avec {rdv.user_1.email}
+                    { rdv.validated ? <div className="Accepted"> RDV confirmé </div> : <div className="refused"> En attente de confirmation </div> }
                   </div>
                   <BtnTechno />
                   <div className="edit">
