@@ -19,6 +19,8 @@
       margin-bottom: 1em;
     }
 
+
+
     form{
       display: flex;
       flex-direction: column;
@@ -89,6 +91,18 @@
           grid-column: 2;
           grid-row: 1;
           padding: 1em 0 1em 2em;
+
+
+          .Accepted {
+            margin-top: 20px;
+            color: green;
+          }
+      
+          .refused {
+            margin-top: 20px;
+            color: red;
+          }
+      
         }
 
         .btn-techno{
