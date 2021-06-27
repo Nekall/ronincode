@@ -12,7 +12,6 @@ const CreateArticle = () => {
   const token = Cookies.get('token');
   const history = useHistory();
   const alert = useAlert();
-  let idArticle;
   const inputData = {
     resource: {
       title: title,
@@ -46,7 +45,6 @@ const CreateArticle = () => {
 
     const technoLink = (idArticle) => {
       let techno = parseInt(document.getElementById('techno1').value);
-      console.log(techno);
       const inputTechno = {
         resource_id: idArticle,
         technology_id: techno,
@@ -61,7 +59,6 @@ const CreateArticle = () => {
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
       })
     };
 
@@ -76,7 +73,6 @@ const CreateArticle = () => {
       .then((response) => response.json())
       .then((data) => {
         setTechnologies(data)
-        console.log(technologies);
       })
     };
 
