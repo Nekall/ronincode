@@ -11,9 +11,12 @@ const IndexMentor = () => {
     const [users, setUsers] = useState([]);
     const [techno, setTechno] = useState('');
     
-    
+  
+    useEffect(() => {
+
+      console.log(techno)
+
     const url = "https://ronincode.herokuapp.com/users"
-    const rdvFetch = () => {
 
       fetch(url, {
         method : "GET",
@@ -33,16 +36,10 @@ const IndexMentor = () => {
             setUsers(data)
         }
       })   
-    }
+    },[])
 
-      useEffect(() => {
-        rdvFetch();
-      }, []
-      )
-      const goToProfil = (id) => {
-      }
-      
-      
+ 
+    
       return (
         <div className = "findMentor">
           <div className="date">
@@ -60,13 +57,13 @@ const IndexMentor = () => {
               
               if (user.is_mentor == true || user.technologies !== null){
                 return(
-                  <li className="mentor_card">
+                  <li key={user.id} className="mentor_card">
                 <div className="mentor-container">
                   <img className="avatar_mentor" src={avatar} alt="" />
                   <div className="mentor_text">
                     <div className="day">{user.username}</div>
                    {user.technologies.map((techno) => (
-                     <div key='' className="day"> 
+                     <div key={techno.id} className="day"> 
                         <h3>{techno.name} </h3>
                       </div>
                   ))}
