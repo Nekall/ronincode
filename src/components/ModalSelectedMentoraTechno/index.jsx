@@ -31,12 +31,34 @@ const ModalSelectedMentoraTechno = (props) => {
   
   const {data: sync, doFetch: fetchSendMyTechno } = useFetch('POST', dataSend);
 
-  const [dataMentor, setDataMentor] = useState({
-    user: {
-      is_mentor: true,
-    }
-  });
-  const {doFetch: fetchSendMyBoolean } = useFetch('PUT', dataMentor);
+  const [dataMentor, setDataMentor] = useState();
+
+  const {data: reSync, doFetch: fetchSendMyBoolean } = useFetch('PUT', dataMentor);
+
+  const checkIsMentor = () => {
+    fetch(`https://ronincode.herokuapp.com/users/${props.id_user_profile}`,{
+      method:'GET',
+    })
+    .then((response) => response.json())
+    .then((dataUser) => {
+      //console.log(dataUser.technologies.length);
+      //console.log('dans la function avec la techno charger');
+      let verified = false;
+      if (dataUser.technologies.length !== 0) {
+        //console.log('je suis toujour un mentor');
+        verified = true;
+        setDataMentor({user: {is_mentor: true}});
+      } else {
+        setDataMentor({user: {is_mentor: false}});
+      }
+      if (verified === false) {
+        //console.log('retire is mentor');
+        setDataMentor({user: {is_mentor: false}});
+        fetchSendMyBoolean(`users/${props.id_user_profile}`);
+      };
+    })
+    .catch(err => console.error(err));
+  };
   
   const sendLanguage = (e) => {
     e.preventDefault();
@@ -45,10 +67,13 @@ const ModalSelectedMentoraTechno = (props) => {
       if (technoParse === myContent.technology_id && myContent.user_id === props.id_user_profile) {
         noSpam = true;
       }
-    })
+    });
     if (noSpam === false) {
+      //console.log('jai push ta techno');
       fetchSendMyTechno('users_technologies');
+      setDataMentor({user: {is_mentor: true}});
       fetchSendMyBoolean(`users/${props.id_user_profile}`);
+      checkIsMentor();
     };
   };
 
@@ -61,10 +86,12 @@ const ModalSelectedMentoraTechno = (props) => {
   const deleteThis = (idJoinTable) => {
     setDataForDelete(idJoinTable);
     fetchDelete(`users_technologies/${idJoinTable}`);
+    checkIsMentor();
   };
 
   useEffect(() => {
     Fetch();
+    checkIsMentor();
     // eslint-disable-next-line
   }, [sync, syncDelete]);
 
