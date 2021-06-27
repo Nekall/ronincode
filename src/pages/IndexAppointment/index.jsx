@@ -1,30 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import CreateAppointment from 'components/CreateAppointment'
-import PopUpEditRDV from 'components/PopUpEditRDV'
-import DeleteRdv from 'components/DeleteRdv'
-import AcceptButton from 'components/AcceptButton'
-import DeclineButton from 'components/DeclineButton'
-import Cookies from 'js-cookie'
-// import Cookies from 'js-cookie';
-import './style.scss'
+import CreateAppointment from 'components/CreateAppointment';
+import DeclineButton from 'components/DeclineButton';
+import React, { useState, useEffect } from 'react';
+import PopUpEditRDV from 'components/PopUpEditRDV';
+import AcceptButton from 'components/AcceptButton';
 import BtnTechno from 'components/BtnTechno';
+import DeleteRdv from 'components/DeleteRdv';
+import Cookies from 'js-cookie';
 import dayjs from 'dayjs';
+import './style.scss';
 
-const IndexAppointment = () => { 
-  const [rdvs, setRdv] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+const IndexAppointment = () => {
   const [eventValue, setEventValue ] = useState("");
-  const id = Cookies.get('id')
-  dayjs.locale('fr')
-
-  const url = "https://ronincode.herokuapp.com/appointments"
+  const [isOpen, setIsOpen] = useState(false);
+  const [rdvs, setRdv] = useState([]);
+  const id = Cookies.get('id');
+  dayjs.locale('fr');
   const rdvFetch = () => {
 
-    fetch(url, {
+    fetch("https://ronincode.herokuapp.com/appointments", {
       method : "GET",
       headers : {
         "Content-Type" : "application/json",
-        // "Authorization": `${token}`
       },
     })
     .then((response) => response.json())
@@ -35,14 +31,13 @@ const IndexAppointment = () => {
         } else {
           setRdv(data)
       }
-    })   
+    })
   }
 
   useEffect(() => {
     rdvFetch();
   }, []
   )
-
 
   const closePopup = () => {
     setIsOpen(false)
@@ -52,6 +47,7 @@ const IndexAppointment = () => {
     setEventValue(rdv)
     setIsOpen(true)
   }
+
   return (
     <div className = "appointment-container">
       <CreateAppointment rdvFetch={rdvFetch} />
@@ -103,5 +99,4 @@ const IndexAppointment = () => {
   )
 }
 
-
-export default IndexAppointment
+export default IndexAppointment;
