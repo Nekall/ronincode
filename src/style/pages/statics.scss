@@ -1,0 +1,25 @@
+.legal-pages{
+  color: $white;
+  margin: 120px 200px 120px 200px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.modify{
+  grid-template-columns: 1fr !important;
+  padding: 4.5em !important;
+}
+
+.contact-card {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  margin: 50px;
+  color: $white;
+}
+
+.center-contact{
+  text-align: center;
+}

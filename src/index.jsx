@@ -6,6 +6,7 @@ import IndexAppointment from 'pages/IndexAppointment';
 import ShowAppointment from 'pages/ShowAppointment';
 import PrivateRoute from 'components/PrivateRoute';
 import ForgotPassword from 'pages/ForgotPassword';
+import PrivacyPolicy from 'pages/PrivacyPolicy';
 import CreateArticle from 'pages/CreateArticle';
 import ResetPassword from 'pages/ResetPassword';
 import LegalMention from 'pages/LegalMention';
@@ -24,8 +25,8 @@ import Message from 'pages/Message';
 import { render } from "react-dom";
 import Signup from 'pages/Signup';
 import Signin from 'pages/Signin';
+import Error from 'pages/Error';
 import Blog from 'pages/Blog';
-import Rgpd from 'pages/Rgpd';
 import Team from 'pages/Team';
 import Home from 'pages/Home'
 import "style/main.scss";
@@ -96,8 +97,8 @@ const App = () => {
                 <Route path="/reinitialisation/mot-de-passe">
                   <ForgotPassword />
                 </Route>
-                <Route path="/rgpd">
-                  <Rgpd />
+                <Route path="/politique-de-confidentialite">
+                  <PrivacyPolicy />
                 </Route>
                 <Route path="/contact">
                   <Contact />
@@ -107,6 +108,9 @@ const App = () => {
                 </Route>
                 <Route path="/qui-sommes-nous">
                   <WhoAreWe />
+                </Route>
+                <Route path="/erreur">
+                  <Error />
                 </Route>
                 <PrivateRoute />
               </Switch>

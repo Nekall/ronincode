@@ -1,0 +1,60 @@
+.error-section{
+}
+
+.error-page{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.audiotape{
+  width: 565px;
+}
+
+.error{
+  text-align: center;
+  color: $white;
+  font-family: 'Belshaw';
+  margin: 40px;
+}
+
+.error-sentence{
+  color: $white;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+
+.floating{
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }
+}
+
+
+//============Responsive===========
+
+@media only screen and (max-width: 1200px){
+  .audiotape{
+    width: 565px;
+  }
+}
+@media only screen and (max-width: 600px){
+  .audiotape{
+    width: 376px;
+  }
+}
+@media only screen and (max-width: 425px){
+  .audiotape{
+    width: 188px;
+  }
+}

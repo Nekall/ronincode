@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 
 
-const AcceptButton = (props) => {
+const DeclineButton = (props) => {
   const token = Cookies.get('token');
   const [validate, setValidate] = useState('')
 
@@ -15,12 +15,12 @@ const AcceptButton = (props) => {
   }
 
 useEffect(()=>{
-  setValidate(true)
+  setValidate(false)
 },[])
   
   const fetchConfirm = () => {
 
-  if (window.confirm("êtes vous sûr.sure d'accepter le RDV ?")) {
+  if (window.confirm("êtes vous sûr.sure de décliner le RDV ?")) {
     
     const url = `https://ronincode.herokuapp.com/appointments/${props.id}`
 
@@ -50,11 +50,11 @@ useEffect(()=>{
 
   return (
     <div>
-      <button onClick={fetchConfirm}>Accepter l'invitation</button>  
+      <button onClick={fetchConfirm}>Décliner l'invitation</button>  
     </div>
   );
 };
 
 
 
-export default AcceptButton;
+export default DeclineButton;

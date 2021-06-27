@@ -2,7 +2,12 @@ import React from "react";
 
 const Contact = () => {
   return(
-    <p>Page Contact en construction</p>
+    <div className="contact-card">
+      <div className="card-postCompact modify">
+        <p className="center-contact">Un conseil ? Une remarque ? Une question ?</p><br/>
+        <a className="center-contact" style={{color: "white"}} href="mailto:ronincode.noreply@gmail.com">Contactez nous !</a>
+      </div>
+    </div>
   );
 };
 
