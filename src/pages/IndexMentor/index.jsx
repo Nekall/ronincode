@@ -56,7 +56,6 @@ const IndexMentor = () => {
     }
 
     // const filteredArray = users.map((user)=>technologies
-
     // const filteredArray = users.technologies.filter((tech)=>tech.name.toLowerCase().includes(techno))
       
     
