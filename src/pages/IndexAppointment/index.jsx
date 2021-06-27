@@ -8,7 +8,6 @@ import Cookies from 'js-cookie'
 // import Cookies from 'js-cookie';
 import './style.scss'
 import BtnTechno from 'components/BtnTechno';
-import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 const IndexAppointment = () => { 
