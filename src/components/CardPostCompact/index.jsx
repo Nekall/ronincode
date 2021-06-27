@@ -1,15 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
-
-import BtnTechno from "components/BtnTechno";
 import img_post from 'assets/images/image-test.png';
+import React, {useState, useEffect} from 'react';
 import avatar from 'assets/images/avatar.jpg';
+import { Link } from 'react-router-dom';
 
 
 const CardPostCompact = (article) => {
-
   const [User, setUser] = useState([])
-
   useEffect(() => {
 
     fetch(`https://ronincode.herokuapp.com/users/${article.data.user_id}`,{
@@ -18,12 +14,9 @@ const CardPostCompact = (article) => {
     .then((response) => response.json())
     .then((dataUser) => {
       setUser(dataUser);
-
       })
     .catch(err => console.error(err));
-
   }, [article])
-
 
   return(
     <div className="card-postCompact">

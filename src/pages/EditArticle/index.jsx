@@ -52,7 +52,7 @@ const EditArticle = () => {
         history.push(`/blog/${articleSlug}`)
       })
     }
-console.log(currentArticle);
+
     const updateTechno = (e) => {
       e.preventDefault();
       let techno1 = document.getElementById("techno1").value
@@ -86,7 +86,6 @@ console.log(currentArticle);
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setTechnologies(data)
       })
     }
@@ -122,7 +121,7 @@ console.log(currentArticle);
             <div className="Column2">
               <div className="Technologies">
                 <h2>Technologies</h2>
-                {currentArticle ? <p>{currentArticle.technologies[0].name}</p> : ""}
+                // currrent techno ici
                   <select name="techno" id="techno1">
                     {technologies && technologies.map(({name, id}, index) =>
                       <option key={uuidv4()} value={id}>{name}</option>
@@ -137,3 +136,4 @@ console.log(currentArticle);
 }
 
 export default EditArticle;
+//{currentArticle ? <p>{currentArticle.technologies[0].name}</p> : ""}

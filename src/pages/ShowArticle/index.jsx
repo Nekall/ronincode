@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Cookies from 'js-cookie';
 
 const ShowArticle = () => {
-  const [userId, setUserId] = useState(Cookies.get('id'));
+  const [userId] = useState(Cookies.get('id'));
   const [article, setArticle] = useState("");
   const { articleSlug } = useParams();
   const history = useHistory();
@@ -46,7 +46,7 @@ const ShowArticle = () => {
       <h2>{article.lead}</h2>
       <p>{article.content}</p>
       <div className="author-end">{article.user ? article.user.username : "" }</div>
-      {article.user_id === parseInt(userId) ? <button className="btn-modify" onClick={goEdit}>Modifier</button> : <button className="btn-modify">Modifier</button>}
+      {article.user_id === parseInt(userId) ? <button className="btn-modify" onClick={goEdit}>Modifier</button> : ""}
     </div>
   );
 }
