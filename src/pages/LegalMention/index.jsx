@@ -10,21 +10,21 @@ const LegalMention = () => {
       Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 pour la Confiance dans l'économie numérique, dite L.C.E.N., nous portons à la connaissance des utilisateurs et visiteurs du site : <a href="#" target="_blank">www.ronincode.vercel.app</a> les informations suivantes :
       <li className="bold">Informations légales :</li>
       Statut du propriétaire : particulier<br/>
-      Le Propriétaire est : Prenom Nom<br/>
-      Adresse postale du propriétaire : Adresse 66666 Ville<br/>
+      Le Propriétaire est : TeamRonin<br/>
+      Adresse postale du propriétaire : 1 Boulevard du Cloud<br/>
       <br/>
       Le Créateur du site est : Createur<br/>
-      Le Responsable de la  publication est : Responsable publication<br/>
-      Contacter le responsable de la publication : email@email.fr<br/>
+      Le Responsable de la  publication est : TeamRonin<br/>
+      Contacter le responsable de la publication : <a href="mailto:ronincode.noreply@gmail.com">ronincode@gmail.com</a><br/>
       Le responsable de la publication est une personne physique<br/>
       <br/>
       Le Webmaster est  : Le webmaster<br/>
-      Contacter le Webmaster :  <a href="mailto:email@webmaster.fr?subject=Contact a partir des mentions lÃ©gales via le site www.ronincode.vercel.app">email@webmaster.fr</a><br/>
-      L’hebergeur du site est : Nom de l'hébergeur du site Adresse de l'hébergeur du site Code postal de l'hebergeur Ville de l'hebergeur
+      Contacter le Webmaster :  <a href="mailto:ronincode.noreply@gmail.com">ronincode@gmail.com</a><br/>
+      L’hebergeur du site sont: Vercel & Heroku
       <br/><br/>
       <li className="bold">Présentation et principe :</li>
       <br/><br/>
-      Est désigné ci-après : Utilisateur, tout internaute se connectant et utilisant le site susnommé : <a href="#" target="_blank">www.ronincode.vercel.app</a>.<br/>
+      Est désigné ci-après : Utilisateur, tout internaute se connectant et utilisant le site susnommé : <a href="www.ronincode.vercel.app" target="_blank">www.ronincode.vercel.app</a>.<br/>
       Le site www.ronincode.vercel.app regroupe un ensemble de services, dans l'état,  mis à la disposition des utilisateurs. Il est ici précisé que ces derniers doivent rester courtois et faire preuve de bonne foi tant envers les autres utilisateurs qu'envers le webmaster du site www.ronincode.vercel.app. Le site www.ronincode.vercel.app est mis à jour régulièrement par Le webmaster.<br/>
       Prenom Nom s’efforce de fournir sur le site www.ronincode.vercel.app des informations les plus précises possibles (sous réserve de modifications apportées depuis leur mise en ligne), mais ne saurait garantir l'exactitude, la complétude et l'actualité des informations diffusées sur son site, qu’elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations. En conséquence, l'utilisateur reconnaît utiliser ces informations données (à titre indicatif, non exhaustives et susceptibles d'évoluer) sous sa responsabilité exclusive.
       <br/><br/>
@@ -47,7 +47,7 @@ const LegalMention = () => {
       <br/><br/>
       En France, les données personnelles sont notamment protégées par la loi n° 78-87 du 6 janvier 1978, la loi n° 2004-801 du 6 août 2004, l'article L. 226-13 du Code pénal et la Directive Européenne du 24 octobre 1995.
       Sur le site www.ronincode.vercel.app, Prenom Nom ne collecte des informations personnelles ( suivant l'article 4 loi n°78-17 du 06 janvier 1978) relatives à l'utilisateur que pour le besoin de certains services proposés par le site www.ronincode.vercel.app. L'utilisateur fournit ces informations en toute connaissance de cause, notamment lorsqu'il procède par lui-même à leur saisie. Il est alors précisé à l'utilisateur du site www.ronincode.vercel.app l’obligation ou non de fournir ces informations.<br/>
-      Conformément aux dispositions des articles 38 et suivants de la loi 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, tout utilisateur dispose d’un droit d’accès, de rectification, de suppression et d’opposition aux données personnelles le concernant. Pour l’exercer, adressez votre demande à www.ronincode.vercel.app par email : <a href="#">email@email.fr</a> ou par écrit dûment signée, accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce, en précisant l’adresse à laquelle la réponse doit être envoyée.
+      Conformément aux dispositions des articles 38 et suivants de la loi 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, tout utilisateur dispose d’un droit d’accès, de rectification, de suppression et d’opposition aux données personnelles le concernant. Pour l’exercer, adressez votre demande à www.ronincode.vercel.app par email : <a href="mailto:ronincode.noreply@gmail.com">ronincode@gmail.com</a> ou par écrit dûment signée, accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce, en précisant l’adresse à laquelle la réponse doit être envoyée.
       Aucune information personnelle de l'utilisateur du site www.ronincode.vercel.app n'est publiée à l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers. Seule l'hypothèse du rachat du site www.ronincode.vercel.app et de ses droits autorise Prenom Nom à transmettre les dites informations à l'éventuel acquéreur qui serait à son tour tenu à la même obligation de conservation et de modification des données vis à vis de l'utilisateur du site www.ronincode.vercel.app.<br/>
       Le site www.ronincode.vercel.app est en conformité avec le RGPD voir notre politique RGPD  Le lien vers votre politique RGPD.
       Les bases de données sont protégées par les dispositions de la loi du 1er juillet 1998 transposant la directive 96-9 du 11 mars 1996 relative à la protection juridique des bases de données.
