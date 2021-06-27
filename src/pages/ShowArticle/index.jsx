@@ -33,22 +33,20 @@ const ShowArticle = () => {
     }
 
     return(
-    <div className = "Article">
-    <div className="Techno">{article.technologies && article.technologies.map(({name, img}, index) =>
-    <div key={uuidv4()}  className="Option">
-    {article.technologies? <BtnTechno techno={article.technologies[0].name} /> : ""}
-    </div>
-  )}
-    </div>
-      <div className="ContentArticle" >
-        <div className="Column1">
-          <h1>{article.title}</h1>
-          <h3>{article.lead}</h3>
-          <p>{article.content}</p>
-          {article.user? <p>{article.user.username}</p>:""}
-        </div>
+    <div className = "article">
+      <div className="techno">
+        {article.technologies && article.technologies.map(({name, img}, index) =>
+          <div key={uuidv4()}  className="Option">
+            {article.technologies ? <BtnTechno techno={article.technologies[0].name} /> : ""}
+          </div>
+        )}
       </div>
-      {article.user_id === parseInt(userId) ? <button onClick={goEdit}>Modifier l'article</button> : ""}
+      <h1>{article.title}</h1>
+      <div className="author-head">{article.user ? article.user.username : "" }</div>
+      <h2>{article.lead}</h2>
+      <p>{article.content}</p>
+      <div className="author-end">{article.user ? article.user.username : "" }</div>
+      {article.user_id === parseInt(userId) ? <button className="btn-modify" onClick={goEdit}>Modifier</button> : <button className="btn-modify">Modifier</button>}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import BtnLangage from 'components/BtnTechno';
 import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
+
 import './style.css'
 
 const IndexMentor = () => { 
@@ -38,8 +39,10 @@ const IndexMentor = () => {
         rdvFetch();
       }, []
       )
-  
-
+      const goToProfil = (id) => {
+      }
+      
+      
       return (
         <div className = "findMentor">
           <div className="date">
@@ -53,14 +56,20 @@ const IndexMentor = () => {
             </div>
             
             <ul className = "mentors">
-            {users.map((user => {if (user.is_mentor == true){
-              return(
-              <li className="mentor_card">
+            {users.map((user => {
+              
+              if (user.is_mentor == true || user.technologies !== null){
+                return(
+                  <li className="mentor_card">
                 <div className="mentor-container">
                   <img className="avatar_mentor" src={avatar} alt="" />
                   <div className="mentor_text">
                     <div className="day">{user.username}</div>
-                    <div className="day">{user.email}</div>
+                   {user.technologies.map((techno) => (
+                     <div key='' className="day"> 
+                        <h3>{techno.name} </h3>
+                      </div>
+                  ))}
                   </div>
                 </div>
                 <div className="txt-container">
@@ -70,9 +79,7 @@ const IndexMentor = () => {
                   </div>
                 </div>
                 <div className="editButton">
-                
-                  <button href="https://ronincode.herokuapp.com/users/{user.email}">Profil</button>
-                  <button>Contacter</button>
+                <Link to={`/profile/${user.id}`}>Profil</Link>
                 </div>
               </li>
             )}}))}
