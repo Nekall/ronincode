@@ -1,8 +1,11 @@
 import React from 'react';
+import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 // import img_post from 'assets/images/image-test.png';
 import './style.scss'
 
-const WhoAreWe = () => {
+const HowItWorks = () => {
+  const logged = useSelector(state => state.logReducer.logged);
 
   return(
     <div className="comment">
@@ -78,11 +81,24 @@ const WhoAreWe = () => {
               {/* <AcceptButton id={rdv.id} rdvFetch={rdvFetch} /> */}
             </div>
           </li>
+          {logged ?
+            ""
+            :
+            <li>
+              <div className="date">
+                <div className="day"> 5</div>
+                <div className="mounthh">Étape</div>
+              </div>
+              <div className="lead-paragraph">
+                <Link to="/se-connecter"><button>Se connecter</button></Link>
+              </div>
+            </li>
+          }
         </ul>
       </div>
-    </div>
-        
-  )
+    </div>  
+  );
 };
 
-export default WhoAreWe;
+export default HowItWorks;
+

@@ -15,10 +15,10 @@ import ShowArticle from 'pages/ShowArticle';
 import IndexMentor from 'pages/IndexMentor';
 import EditArticle from 'pages/EditArticle';
 import EditProfile from 'pages/EditProfile';
+import HowItWorks from 'pages/HowItWorks';
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import { Provider } from 'react-redux';
-import WhoAreWe from 'pages/WhoAreWe';
 import { store } from 'store/index';
 import Contact from 'pages/Contact';
 import Message from 'pages/Message';
@@ -107,7 +107,7 @@ const App = () => {
                   <LegalMention />
                 </Route>
                 <Route path="/comment-ca-marche">
-                  <WhoAreWe />
+                  <HowItWorks />
                 </Route>
                 <Route path="/erreur">
                   <Error />

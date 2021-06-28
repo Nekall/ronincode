@@ -34,7 +34,7 @@ const Signup = () => {
       .then(data => {
         if(data.ok){
           dispatch(LogSuccess(data, false))
-          history.push("/se-connecter");
+          history.push("/comment-ca-marche");
           return(alert.success("Votre compte a été créé avec succès"))
         } else {
           dispatch(LogFailure(data.error, false))
