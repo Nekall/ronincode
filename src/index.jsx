@@ -29,8 +29,8 @@ import Error from 'pages/Error';
 import Blog from 'pages/Blog';
 import Team from 'pages/Team';
 import Home from 'pages/Home'
-import "style/main.scss";
 import React from "react";
+import "style/main.scss";
 
 const App = () => {
 
@@ -106,7 +106,7 @@ const App = () => {
                 <Route path="/mentions-legales">
                   <LegalMention />
                 </Route>
-                <Route path="/comment-ça-marche">
+                <Route path="/comment-ca-marche">
                   <WhoAreWe />
                 </Route>
                 <Route path="/erreur">

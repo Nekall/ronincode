@@ -21,7 +21,7 @@ const Footer = () => {
             <Link to="/trouver-un-mentor">
               <h6>Chercher un Mentor</h6>
             </Link>
-            <Link to="/comment-ça-marche?">
+            <Link to="/comment-ca-marche">
               <h6>Comment ça marche ?</h6>
             </Link>
             <Link to="/team">
