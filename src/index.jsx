@@ -106,7 +106,7 @@ const App = () => {
                 <Route path="/mentions-legales">
                   <LegalMention />
                 </Route>
-                <Route path="/qui-sommes-nous">
+                <Route path="/comment-ça-marche">
                   <WhoAreWe />
                 </Route>
                 <Route path="/erreur">
