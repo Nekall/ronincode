@@ -65,10 +65,9 @@ const IndexAppointment = () => {
                     <div className="mounth">{ dayjs(rdv.date).format('MMMM') }</div>
                   </div>
                   <div className="txt-container">
-                    { rdv.appointment_time } : {rdv.title} avec {rdv.user_2.email}
+                    { rdv.appointment_time } : {rdv.title} avec <b>{rdv.user_2.username}</b>
                     { rdv.validated ? <div className="Accepted"> RDV confirmé </div> : <div className="refused"> En attente de confirmation </div> }
                   </div>
-                  <BtnTechno />
                   <div className="edit">
                     <button onClick={() => openPopup(rdv)}>Éditer</button>
                     <DeleteRdv id={rdv.id} rdvFetch={rdvFetch} />
@@ -83,7 +82,7 @@ const IndexAppointment = () => {
                     <div className="mounth">{ dayjs(rdv.date).format('MMMM') }</div>
                   </div>
                   <div className="txt-container">
-                    { rdv.appointment_time } : {rdv.title} avec {rdv.user_1.email}
+                    { rdv.appointment_time } : {rdv.title} avec <span className="user">{rdv.user_1.username}</span>
                     { rdv.validated ? <div className="Accepted"> RDV confirmé </div> : <div className="refused"> En attente de confirmation </div> }
                   </div>
                   <BtnTechno />

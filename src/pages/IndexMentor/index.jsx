@@ -64,9 +64,9 @@ const IndexMentor = () => {
         <div className = "findMentor">
           <div className="date">
             <div className="headerMentor">
-              <h1>Cherche un Mentor ou une techno</h1>
+              <h1>Chercher un Mentor ou une techno</h1>
                 <div className="realForm">
-                  <input type="text" placeholder="Tapez une technologie ou un Mentor" onChange={searchTechnology}></input>
+                  <input type="text" placeholder="Tape une technologie ou un Mentor" onChange={searchTechnology}></input>
                 </div>
             </div>
             <ul className = "mentors">
