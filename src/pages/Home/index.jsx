@@ -42,7 +42,11 @@ const Home = () => {
             <div className="hero-mini">
               <img src={tokyo} alt="Dolorean à Tokyo" className="hero-background"/>
             </div>
-            <ModalDate nameOfClass={"next-meeting"} id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
+            {dataAppointment && dataAllUser ?
+              <ModalDate nameOfClass={"next-meeting"} id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
+              :
+              ""
+            }
             <div className="mentor-list-home">
               <h1>Trouvez un mentor</h1>
               <MentorList />
