@@ -1,38 +1,46 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
-import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
 
 const EditProfile = () => {
-  const id = Cookies.get('id');
   const [userinfo, setUserinfo] = useState('');
+  const cookie = Cookies.get("token");
+  const history = useHistory();
+  const id = Cookies.get('id');
 
   const [dataUser, setDataUser] = useState({
-    user: {
       username: userinfo.username,
       email: userinfo.email,
       firstname: userinfo.firstname,
       lastname: userinfo.lastname,
       password: userinfo.password,
-    }
   });
 
-  const {data: sync, doFetch: updateUser } = useFetch('PUT', dataUser);
+  const updateUser = (payload) => {
+    fetch(`https://ronincode.herokuapp.com/users/${id}`,{
+      method:'PUT',
+      headers: {
+        Authorization: `${cookie}`,
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify({user: payload}),
+    })
+    .then((response) => response.json())
+    .catch(err => console.error(err));
+  };
 
-  const handleChange = (e) => {
+  const handleChanges = (e) => {
+    e.preventDefault();
     setDataUser({
       ...dataUser,
-      user: {
-        [e.target.name]: e.target.value
-      }
+      [e.target.name]: e.target.value
     });
   };
 
   const updateFetch = (e) => {
-    e.preventDefault();
-    updateUser(`users/${id}`);
-    e.target.reset();
+    updateUser(dataUser);
+    history.push(`/profile/${id}`);
   };
 
   useEffect(() => {
@@ -45,7 +53,7 @@ const EditProfile = () => {
       })
     .catch(err => console.error(err));
     // eslint-disable-next-line
-  }, [sync]);
+  }, []);
 
   return (
     <div className="editProfile">
@@ -54,19 +62,19 @@ const EditProfile = () => {
         <div>
           <form onSubmit={updateFetch}>
             <label htmlFor="username"> Pseudo :
-              <input type="text" name="username" placeholder={userinfo.username} onChange={handleChange}/>
+              <input type="text" name="username" placeholder={userinfo.username} onChange={handleChanges}/>
             </label>
             <label htmlFor="email"> Email:
-              <input type="text" name="email" placeholder={userinfo.email} onChange={handleChange}/>
+              <input type="text" name="email" placeholder={userinfo.email} onChange={handleChanges}/>
             </label>
             <label htmlFor="firstname"> Prénom :
-              <input type="text" name="firstname" placeholder={userinfo.firstname} onChange={handleChange}/>
+              <input type="text" name="firstname" placeholder={userinfo.firstname} onChange={handleChanges}/>
             </label>
             <label htmlFor="lastname"> Nom :
-              <input type="text" name="lastname" placeholder={userinfo.lastname} onChange={handleChange}/>
+              <input type="text" name="lastname" placeholder={userinfo.lastname} onChange={handleChanges}/>
             </label>
             <label htmlFor="password"> Mot de passe :
-              <input type="text" name="password" minLength="8" placeholder={"8 caractères minimum"} onChange={handleChange}/>
+              <input type="text" name="password" minLength="8" placeholder={"8 caractères minimum"} onChange={handleChanges}/>
             </label>
             <input type="submit" className="btn-update" value="Mettre à jour" />
             <Link to={`/profile/${id}`} className="btn-update btn-return">Annuler</Link>
