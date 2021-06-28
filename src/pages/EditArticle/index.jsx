@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Cookies from 'js-cookie';
-import './style.css';
 
 const EditArticle = () => {
   const [currentArticle, setCurrentArticle] = useState();
@@ -12,12 +11,9 @@ const EditArticle = () => {
   const { articleSlug } = useParams();
   const token = Cookies.get('token');
   const history = useHistory();
-  const [data, setData] = useState({
-    title: articleInfo.title,
-    lead: articleInfo.lead,
-    content: articleInfo.content,
-  });
+  let data = "";
 
+//recuperation des infos de l'articles actuel
     const getCurrentArticle = () => {
       fetch(`https://ronincode.herokuapp.com/resources/${articleSlug}`, {
         method : "GET",
@@ -31,14 +27,22 @@ const EditArticle = () => {
       })
     }
 
-    const handleChange = (e) => {
-      setData({
-        ...data,
-        [e.target.name]: e.target.value,
-      })
-    };
+    //recupération de toutes les techno existantes
+        const technoFetch = () => {
+          fetch(`https://ronincode.herokuapp.com/technologies/`, {
+            method : "GET",
+            headers : {
+              "Content-Type" : "application/json",
+            },
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            setTechnologies(data)
+          })
+        }
 
-    const handleFetch = (e) => {
+//mise à jour de l'article
+    const updateArticle = (e) => {
       e.preventDefault();
     fetch(`https://ronincode.herokuapp.com/resources/${articleSlug}`, {
       method : "PUT",
@@ -53,6 +57,7 @@ const EditArticle = () => {
       })
     }
 
+//mise à jour des techno
     const updateTechno = (e) => {
       e.preventDefault();
       let techno1 = document.getElementById("techno1").value
@@ -73,23 +78,6 @@ const EditArticle = () => {
       }
       }
 
-      const makeitFetch = (data) => {
-        handleFetch(data);
-      }
-
-    const technoFetch = () => {
-      fetch(`https://ronincode.herokuapp.com/technologies/`, {
-        method : "GET",
-        headers : {
-          "Content-Type" : "application/json",
-        },
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        setTechnologies(data)
-      })
-    }
-
     useEffect(() => {
       getCurrentArticle()
       technoFetch();
@@ -98,31 +86,32 @@ const EditArticle = () => {
     return (
       <div className = "editArticle">
         <h1>Modifier l'Article</h1>
-        <div>
-          <h3>Prévisualisation</h3>
-          <p>_</p>
+        <h3 className="preview-title">Prévisualisation</h3>
+        <div className="preview-content">
           {currentArticle ?
             <>
-            <h4>{currentArticle.lead}</h4>
-            <h5>{currentArticle.content}</h5>
-            <p>{currentArticle.title}</p>
+            <p className="preview-article">{currentArticle.title}</p>
+            <h4 className="preview-article">{currentArticle.lead}</h4>
+            <h5 className="preview-article">{currentArticle.content}</h5>
             </>
             : ""
           }
         </div>
-        <form className="form" onSubmit={makeitFetch}>
+        <form className="form" onSubmit={updateArticle}>
           <div className="ContentArticle" >
             <div className="Column1">
-              <input minLength="10" type="text" className="ArticleTitle" name="title" placeholder="Titre de l'article" onFocus={(e) => e.target.placeholder = ''}  onBlur={(e) => e.target.placeholder = "Titre de l'article"} onChange={handleChange}></input>
-              <textarea minLength="10" maxLength="140"  className="ArticleLead" name="lead" placeholder="Introduction" type="textarea" onChange={handleChange}></textarea>
-              <textarea minLength="100" className="ArticleContent" name="content" placeholder="Contenu de l'article" type="textarea"  onChange={handleChange}></textarea>
-              <input type="submit" value="modifier"/>
+              <input minLength="10" className="ArticleTitle" name="title" placeholder="Titre de l'article" type="text"></input>
+              <textarea minLength="10" maxLength="140"  className="ArticleLead" name="lead" placeholder="Introduction" type="textarea"></textarea>
+              <textarea minLength="100" className="ArticleContent" name="content" placeholder="Contenu de l'article" type="textarea"></textarea>
+              <input className="btn-modify-article" type="submit" value="modifier"/>
             </div>
             <div className="Column2">
               <div className="Technologies">
                 <h2>Technologies</h2>
-                // currrent techno ici
-                  <select name="techno" id="techno1">
+                {currentArticle && currentArticle.technologies.map(techno => {
+                  <p>{techno.name}</p>
+                })}
+                  <select className="select-article" name="techno" id="techno1">
                     {technologies && technologies.map(({name, id}, index) =>
                       <option key={uuidv4()} value={id}>{name}</option>
                     )}
@@ -136,4 +125,3 @@ const EditArticle = () => {
 }
 
 export default EditArticle;
-//{currentArticle ? <p>{currentArticle.technologies[0].name}</p> : ""}
