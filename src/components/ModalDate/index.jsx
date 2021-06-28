@@ -10,7 +10,7 @@ const ModalDate = (props) => {
   dayjs.locale('fr');
 
   return(
-    <div className="meeting-profile">
+    <div className={props.nameOfClass}>
       <h2 className="card-title">Prochains rendez-vous</h2>
       <ul>
         {props.dataAppointment && props.dataAppointment.map((appointment) => {

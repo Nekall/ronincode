@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import ModalSelectedMentoraTechno from 'components/ModalSelectedMentoraTechno';
 import ModalMentoringSection from 'components/ModalMentoringSection';
+import dolorean from 'assets/images/dolorean.jpeg';
 import ModalContact from 'components/ModalContact';
 import BtnTechno from 'components/BtnTechno';
 import Skeleton from 'react-loading-skeleton';
@@ -12,7 +13,6 @@ import avatar from 'assets/images/avatar.jpg';
 import ModalDate from 'components/ModalDate';
 import useFetch from 'Hooks/useFetch';
 import Cookies from 'js-cookie';
-import dolorean from 'assets/images/dolorean.jpeg';
 
 const UserProfile = () => {
   const { id_user } = useParams();
@@ -52,7 +52,7 @@ const UserProfile = () => {
             <div className="retro-filter"></div>
           </div>
           <ModalContact logged={logged} id_current={id_current} id_user_profile={id_user_profile} dataAllUser={dataAllUser} />
-          <ModalDate id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
+          <ModalDate nameOfClass={"meeting-profile"} id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
           <ModalMentoringSection id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
           <ModalSelectedMentoraTechno logged={logged} id_current={id_current} id_user_profile={id_user_profile} allTechno={allTechno} dataAllUser={dataAllUser} />
         </div>
