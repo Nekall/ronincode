@@ -25,7 +25,6 @@ const IndexMentor = () => {
       .then((response) => response.json())
       .then(data => {
         if(data === "undefined"){
-          console.log(data)
           alert("error")
 
          } else {
@@ -46,12 +45,10 @@ const IndexMentor = () => {
         users.forEach((user) => {
           if(user.username.toLowerCase().includes(e.target.value.toLowerCase())){
             arrFinal.push(user);
-            console.log(user)
           } else {
             user.technologies.map((tech) => {
               if(tech.name.toLowerCase().includes(e.target.value.toLowerCase())){
                 arrFinal.push(user);
-                console.log(user)
               }})
             }
           })
