@@ -19,8 +19,8 @@ const ModalDate = (props) => {
             return(
               <li key={uuidv4()} className="date-container">
                 <div className="date">
-                  <div className="day">{appointment.date}</div>
-                  <div className="month">septembre</div>
+                  <div className="day">{ dayjs(appointment.date).format('DD') }</div>
+                  <div className="mounth">{ dayjs(appointment.date).format('MMMM') }</div>
                 </div>
                 <div className="txt-container">
                   <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link className="mentor-name" to={`/profile/${appointment.user_2_id}`}>{name.username}</Link></span>
@@ -33,8 +33,8 @@ const ModalDate = (props) => {
             return(
               <li key={uuidv4()} className="date-container">
                 <div className="date">
-                    <div className="day">{ dayjs(appointment.date).format('DD') }</div>
-                    <div className="mounth">{ dayjs(appointment.date).format('MMMM') }</div>
+                  <div className="day">{ dayjs(appointment.date).format('DD') }</div>
+                  <div className="mounth">{ dayjs(appointment.date).format('MMMM') }</div>
                 </div>
                 <div className="txt-container">
                   <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link className="mentor-name" to={`/profile/${appointment.user_1_id}`}>{name.username}</Link></span>

@@ -11,20 +11,22 @@ import Cookies from 'js-cookie';
 
 const Home = () => {
   const logged = useSelector(state => state.logReducer.logged);
-  const { data: dataResources, doFetch: fetchResources } = useFetch();
+  const {data: dataResources, doFetch: fetchResources } = useFetch();
   const {data: dataAllUser, doFetch: fetchAllUser } = useFetch();
   const {data: dataAppointment, doFetch: fetchAppointment } = useFetch();
-  let id_user_profile = Cookies.get('id');
+  let idCookie = Cookies.get('id');
+  let id_user_profile = parseInt(idCookie);
 
   useEffect(() => {
+    fetchAllUser('users');
+    fetchAppointment('appointments');
     if(dataResources === undefined || dataResources === null){
       fetchResources("resources")
     };
-    fetchAllUser('users');
-    fetchAppointment('appointments');
     // eslint-disable-next-line
-  }, [])
+  }, [logged])
 
+  console.log(id_user_profile);
   return (
     <>
       {logged ?
@@ -42,7 +44,7 @@ const Home = () => {
             <div className="hero-mini">
               <img src={tokyo} alt="Dolorean à Tokyo" className="hero-background"/>
             </div>
-            {dataAppointment && dataAllUser ?
+            {dataAppointment && dataAllUser && id_user_profile ?
               <ModalDate nameOfClass={"next-meeting"} id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
               :
               ""
