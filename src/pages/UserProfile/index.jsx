@@ -54,7 +54,7 @@ const UserProfile = () => {
           <ModalContact logged={logged} id_current={id_current} id_user_profile={id_user_profile} dataAllUser={dataAllUser} />
           <ModalDate id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
           <ModalMentoringSection id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
-          <ModalSelectedMentoraTechno logged={logged} id_user_profile={id_user_profile} allTechno={allTechno} dataAllUser={dataAllUser} />
+          <ModalSelectedMentoraTechno logged={logged} id_current={id_current} id_user_profile={id_user_profile} allTechno={allTechno} dataAllUser={dataAllUser} />
         </div>
         
         

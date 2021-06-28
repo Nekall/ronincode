@@ -101,7 +101,7 @@ const ModalSelectedMentoraTechno = (props) => {
       {myTechno !== undefined  ?
         <div>
           <div>
-            <p>les techno que je veux mentorer</p>
+            {props.logged && (props.id_current === props.id_user_profile) ?
               <div className="user-box">
                 <form onSubmit={sendLanguage}>
                   <label>Choose a Techno:</label>
@@ -113,6 +113,9 @@ const ModalSelectedMentoraTechno = (props) => {
                   <input type="submit" value="Envoyer" />
                 </form>
               </div>
+              :
+              ""
+            }
           </div>
           <div>
             <p>mes techno</p>
@@ -120,7 +123,15 @@ const ModalSelectedMentoraTechno = (props) => {
               {myTechno && myTechno.map((listMyTechno) => {
                 if (listMyTechno.user_id === props.id_user_profile) {
                   nameTechno = props.allTechno.find(({ id }) => id === listMyTechno.technology_id)
-                  return(<li key={uuidv4()}>{nameTechno.name}: <button onClick={()=>deleteThis(listMyTechno.id)}>X</button></li>);
+                  return(
+                    <div key={uuidv4()}>
+                      {props.logged && (props.id_current === props.id_user_profile) ?
+                        <li key={uuidv4()}>{nameTechno.name}: <button onClick={()=>deleteThis(listMyTechno.id)}>X</button></li>
+                        :
+                        <li key={uuidv4()}>{nameTechno.name}</li>
+                      }
+                    </div>
+                  )
                 }
               })}
             </ul>
