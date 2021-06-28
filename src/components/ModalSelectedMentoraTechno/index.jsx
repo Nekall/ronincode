@@ -10,7 +10,7 @@ const ModalSelectedMentoraTechno = (props) => {
   const cookie = Cookies.get("token");
   let technoParse = "";
   let nameTechno = '';
-  
+
   const Fetch = () => {
     fetch('https://ronincode.herokuapp.com/users_technologies',{
       method:'GET',
@@ -21,12 +21,12 @@ const ModalSelectedMentoraTechno = (props) => {
     })
     .catch(err => console.error(err));
   };
-  
+
   const setIdTechno = (e) => {
     e.preventDefault();
     technoParse = (parseInt(document.getElementById('selected-techno').value))
   };
-  
+
   const fetchSendMyTechno = (payload) => {
     fetch('https://ronincode.herokuapp.com/users_technologies',{
       method:'POST',
@@ -70,7 +70,7 @@ const ModalSelectedMentoraTechno = (props) => {
     })
     .catch(err => console.error(err));
   };
-  
+
   const sendLanguage = (e) => {
     e.preventDefault();
     let noSpam = false;
