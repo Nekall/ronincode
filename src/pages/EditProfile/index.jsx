@@ -48,7 +48,7 @@ const EditProfile = () => {
   }, [sync]);
 
   return (
-    <div>
+    <div className="editProfile">
       <h1>Edit Profile</h1>
       {userinfo ?
         <div>
