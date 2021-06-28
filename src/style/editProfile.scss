@@ -1,30 +1,59 @@
 .editProfile{
-  
-  border: 2px solid #ffffb3b3;
+  border: 2px solid #b3ebffb3;
   border-radius: 5px;
-  padding: 1.5em;
+  box-shadow: 0px 0px 20px #3f617a;
+  color:white;
+  display: grid;
+  font-family: courier;
   max-width: 1000px;
   min-width: 200px;
   margin: 2em auto;
-  box-shadow: 0px 0px 20px #008060;
-  display: grid;
+  padding: 1.5em;
   width: 40%;
-  color:white;
 
   form{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr  ;
+    grid-template-columns: 1fr 1fr ;
     
   }
   label{
+    display: flex;
+    flex-direction: column;
     padding-bottom: 1em;
-    grid-column: 2/3;
+    grid-column: 1/3;
+
+    input{
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+    }
   }
   
-  .btn-message{
-    grid-column: 2/3;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+  .btn-update{
+    background: $pink;
+    border: none;
+    border-radius: 5px;
+    color: $white;
+    grid-column: 1;
+    padding: 10px 10px;
+    margin: auto;
+    width: fit-content;
+    cursor: pointer;
+    
+    &:hover{
+      background: $violet;
+    }
+  }
+  .btn-return{
+    grid-column: 2;
+    background: none;
+    border: 1px solid #fff;
+    text-decoration: none;
+    
+    &:hover{
+      background: #fff;
+      color: #000;
+    }
   }
   
   h1 {

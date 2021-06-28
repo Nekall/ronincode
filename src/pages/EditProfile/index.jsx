@@ -49,7 +49,7 @@ const EditProfile = () => {
 
   return (
     <div className="editProfile">
-      <h1>Edit Profile</h1>
+      <h1>Editer le profil</h1>
       {userinfo ?
         <div>
           <form onSubmit={updateFetch}>
@@ -66,11 +66,11 @@ const EditProfile = () => {
               <input type="text" name="lastname" placeholder={userinfo.lastname} onChange={handleChange}/>
             </label>
             <label htmlFor="password"> Mot de passe :
-              <input type="text" name="password" minLength="8" placeholder={"8 caractére minimum"} onChange={handleChange}/>
+              <input type="text" name="password" minLength="8" placeholder={"8 caractères minimum"} onChange={handleChange}/>
             </label>
-            <input type="submit" className="btn-message" value="Mettre à jour mes informations" />
+            <input type="submit" className="btn-update" value="Mettre à jour" />
+            <Link to={`/profile/${id}`} className="btn-update btn-return">Annuler</Link>
           </form>
-          <Link to={`/profile/${id}`} className="btn-message">Mon profile</Link>
         </div>
         :
         <Skeleton count={2}/>
