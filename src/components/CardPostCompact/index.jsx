@@ -19,7 +19,7 @@ const CardPostCompact = (article) => {
   }, [article])
 
   return(
-    <div className="card-postCompact">
+    <Link to={`/blog/${article.data.id}`} className="card-postCompact">
       <span className="date">{article.data.created_at.substring(0, 10)}</span>
       <div className="card-post-img-container">
         <Link to="/">
@@ -40,10 +40,7 @@ const CardPostCompact = (article) => {
           <p className="Lead-paragraph">{article.data.lead}</p>
         </div>
       </div>
-      <div className="read-more-container">
-        <Link to={`/blog/${article.data.id}`} className="read-more">&gt; Lire la suite</Link>
-      </div>
-    </div>
+    </Link>
   )
 };
 
