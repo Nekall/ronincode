@@ -62,7 +62,7 @@ const Signin = () => {
             <input type="password" value={password} required onChange={(e) => setPassword(e.target.value)}></input>
           </div>
           <Link className="link-sign" to="/reinitialisation/mot-de-passe">Mot de passe oublié ?</Link><br/>
-          <Link className="link-sign" to="/inscription">S'inscrire'</Link>
+          <Link className="link-sign" to="/inscription">S'inscrire</Link>
           <button>
             <span></span>
             <span></span>

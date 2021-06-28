@@ -16,7 +16,7 @@ import Cookies from 'js-cookie';
 const Navbar = () => {
   const logged = useSelector(state => state.logReducer.logged);
   const [id, setId] = useState();
-  
+
   useEffect(() => {
     setId(Cookies.get('id'))
   }, [logged])
@@ -27,7 +27,7 @@ const Navbar = () => {
         {logged ?
         <>
           <NavItem linkTo="/creer-un-rendez-vous" icon={<AgendaIcon />} />
-          <NavItem linkTo="/conversations" icon={<MessagesIcon />} /> 
+          <NavItem linkTo="/conversations" icon={<MessagesIcon />} />
           <NavItem linkTo={`/profile/${id}`} icon={<UserIcon />} />
           <NavItem icon={<CaretIcon />}>
             <DropdownMenu></DropdownMenu>
@@ -49,7 +49,11 @@ function NavbarContainer(props) {
   return (
     <nav className="navbar">
       <Logo />
-      <Link to={props.linkTo || "/blog"} className="btn-blog">BLOG</Link>
+      <div className="btns-nav">
+        <Link to={props.linkTo || "/blog"} className="btn-blog">BLOG</Link>
+        <span>│</span>
+        <Link to={props.linkTo || "/trouver-un-mentor"} className="btn-blog find-mentor">TROUVER UN MENTOR</Link>
+      </div>
       <ul className="navbar-nav">{props.children}</ul>
     </nav>
   );
