@@ -5,7 +5,7 @@
   --nav-size: 60px;
   --border: 1px solid #474a4d;
   --border-radius: 8px;
-  --speed: 500ms; 
+  --speed: 500ms;
 }
 
 .navbar {
@@ -28,10 +28,23 @@
     }
   }
 
+  .btns-nav{
+    flex: 1;
+    text-align: center;
+    align-self: center;
+    span{
+      color: $white;
+      margin-right: 25px;
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+  }
+
   .btn-blog{
     align-self: center;
     font-size: 1.6em;
     font-weight: bold;
+    margin-right: 25px;
 
     &:hover{
       text-decoration: underline;
@@ -50,16 +63,16 @@
     text-decoration-line: none;
     margin-top: 12px;
   }
-  
+
   .btn-signin{
     text-shadow:0 0 7px $pink, 0 0 10px $pink, 0 0 21px $pink, 0 0 42px $pink;
     margin-right: 30px;
   }
-  
+
   .btn-signup{
     text-shadow:0 0 7px $violet, 0 0 10px $violet, 0 0 21px $violet, 0 0 42px $violet;
   }
-  
+
   .btn-signin:hover{
     text-shadow:0 0 7px $pink, 0 0 10px $pink, 0 0 21px $pink, 0 0 42px $pink, 0 0 82px $pink, 0 0 92px $pink, 0 0 102px $pink, 0 0 151px $pink;
   }
@@ -81,12 +94,11 @@
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-  
+
   ul {
     list-style: none;
     margin-right: 30px;
     padding: 0;
-    flex: 1;
   }
 
   a {
@@ -138,7 +150,7 @@
   filter: brightness(1.2);
 }
 
-.icon-button svg { 
+.icon-button svg {
   fill: var(--text-color);
   width: 20px;
   height: 20px;
@@ -190,6 +202,10 @@
   margin-left: auto;
 }
 
+.find-mentor{
+  word-spacing: 0.2em;
+}
+
 /* CSSTransition classes  */
 .menu-primary-enter {
   position: absolute;
@@ -223,6 +239,12 @@
   transition: all var(--speed) ease;
 }
 
+@media (max-width: 800px) {
+  .btns-nav span, .find-mentor{
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   .navbar-nav{
     // font-size: .6em;
@@ -240,6 +262,9 @@
     margin-right: 10px;
   }
   .btn-signup{
+    display: none;
+  }
+  .btns-nav span, .find-mentor{
     display: none;
   }
 }
@@ -278,6 +303,9 @@
     .icon-button{
       padding: 2px;
     }
-    
+
+    .btns-nav span, .find-mentor{
+      display: none;
+    }
   }
 }

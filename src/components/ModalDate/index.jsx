@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import BtnTechno from 'components/BtnTechno';
+import dayjs from 'dayjs';
+require('dayjs/locale/fr');
 
 const ModalDate = (props) => {
   let name = null;
+  dayjs.locale('fr');
 
   return(
     <div className="meeting-profile">
@@ -20,7 +23,7 @@ const ModalDate = (props) => {
                   <div className="month">septembre</div>
                 </div>
                 <div className="txt-container">
-                  <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link className="mentor-name" to={`/profile/${appointment.user_2_id}`}>{name.email}</Link></span>
+                  <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link className="mentor-name" to={`/profile/${appointment.user_2_id}`}>{name.username}</Link></span>
                   <BtnTechno />
                 </div>
               </li>
@@ -30,11 +33,11 @@ const ModalDate = (props) => {
             return(
               <li key={uuidv4()} className="date-container">
                 <div className="date">
-                  <div className="day">{appointment.date}</div>
-                  <div className="month">septembre</div>
+                    <div className="day">{ dayjs(appointment.date).format('DD') }</div>
+                    <div className="mounth">{ dayjs(appointment.date).format('MMMM') }</div>
                 </div>
                 <div className="txt-container">
-                  <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link className="mentor-name" to={`/profile/${appointment.user_1_id}`}>{name.email}</Link></span>
+                  <span className="title">{appointment.appointment_time} : {appointment.title} avec <Link className="mentor-name" to={`/profile/${appointment.user_1_id}`}>{name.username}</Link></span>
                   <BtnTechno />
                 </div>
               </li>
