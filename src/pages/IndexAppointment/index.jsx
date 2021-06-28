@@ -6,8 +6,10 @@ import AcceptButton from 'components/AcceptButton';
 import BtnTechno from 'components/BtnTechno';
 import DeleteRdv from 'components/DeleteRdv';
 import Cookies from 'js-cookie';
-import dayjs from 'dayjs';
 import './style.scss';
+
+import dayjs from 'dayjs';
+require('dayjs/locale/fr');
 
 const IndexAppointment = () => {
   const [eventValue, setEventValue ] = useState("");
