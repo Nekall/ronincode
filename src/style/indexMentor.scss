@@ -1,10 +1,33 @@
 .findMentor{
-  
 
+  a {
+    text-decoration: none;
+    font-family: 'Press Start 2P';
+    font-size: 1em;
+    color: #FCEE0D;
+  }
+  a:hover {
+    background-color: blue;
+  }
+  
+  .btn-techno{
+    font-size: 15px;
+    display: block;
+    grid-column: 2;
+    grid-row: 2;
+    height: fit-content;
+    margin: 0 0 0 2em;
+    font-family: 'lazer84'!important
+
+  }
 
   h1{
     color: white;
+    margin:0.5em;
+    font-family: "courier";
+
   }
+
 
   ul{
     list-style-type: none;
@@ -16,9 +39,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr !important;
   }
   .mentor_card{
-  background-color: rgb(118, 32, 158);
-
-  
   border: 2px solid #bbb3ffb3;
   border-radius: 5px;
   padding: 1.5em;
@@ -28,22 +48,46 @@
   
   }
 
+  .headerMentor {
+    text-align: center;
+    align-items: center;
+    margin: 2em;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    max-width: 1200px;
+
+  }
+
+
   .avatar_mentor {
-  height: 50px;
+  height: 60px;
+  margin-right: 1em;
+
+  }
+
+  .profil{
+    display:flex;
+    align-items: center;
+    margin-bottom: 1em;
 
   }
 
   .mentor-container {  
-  display:flex;
-  justify-content: start;
   align-items: center;
+  margin-bottom: 2em;
+
   
   
   }
 
   .mentor-text {  
     max-width: 100px;
-    
   }
 
   @media (max-width: 1400px){
@@ -91,5 +135,16 @@
     }
     
   }
-  
+
 }
+  
+  .dayy{
+    font-size: 2em;
+    color: white;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    font-family: "courier";
+  }

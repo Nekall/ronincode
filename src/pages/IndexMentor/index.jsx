@@ -55,43 +55,44 @@ const IndexMentor = () => {
         }
     }
 
-    // const filteredArray = users.map((user)=>technologies
-    // const filteredArray = users.technologies.filter((tech)=>tech.name.toLowerCase().includes(techno))
-      
     
       return (
         <div className = "findMentor">
           <div className="date">
-          <h1>Trouver un mentor</h1>
-            <form onSubmit={searchTechnology}>
-              <input type="text" value={techno} placeholder="Tapez une technologie" onChange={(e) => setTechno(e.target.value)}></input>
-              <button>Rechercher</button>
-            </form>
-      
+            <div className="headerMentor">
+              <h1>Trouver un mentor</h1>
+                <form onSubmit={searchTechnology}>
+                  <input type="text" value={techno} placeholder="Tapez une technologie" onChange={(e) => setTechno(e.target.value)}></input>
+                  <button>Rechercher</button>
+                </form>
+            </div>
             <ul className = "mentors">
             {users.map((user => {
               if (user.is_mentor === true || user.technologies.length !== 0){
                 return(
                   <li key={user.id} className="mentor_card">
                 <div className="mentor-container">
-                  <img className="avatar_mentor" src={avatar} alt="" />
-                  <div className="mentor_text">
-                    <div className="day">{user.username}</div>
+                  <div className="profil">
+                    <img className="avatar_mentor" src={avatar} alt="" />
+                    <div className="mentor_text"></div>
+                    <div className="dayy">{user.username}</div>
+                  </div>
+                  <div>
+                  
                    {user.technologies.map((techno) => (
-                     <div key={techno.id} className="day"> 
-                        <h3>{techno.name} </h3>
+                     <div key={techno.id} > 
+                        <div className="btn-techno">{techno.name} </div>
                       </div>
                   ))}
                   </div>
-                </div>
+🇳                </div>
                 <div className="txt-container">
                   <div className="title"> </div>
                   <div className="buttons">
-                    <BtnLangage />
                   </div>
+                  <Link to={`/profile/${user.id}`}>Voir son Profil</Link>
                 </div>
                 <div className="editButton">
-                <Link to={`/profile/${user.id}`}>Profil</Link>
                 </div>
               </li>
             )}}))}
