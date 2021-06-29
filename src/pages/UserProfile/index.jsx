@@ -52,9 +52,9 @@ const UserProfile = () => {
             <div className="retro-filter"></div>
           </div>
           <ModalContact logged={logged} id_current={id_current} id_user_profile={id_user_profile} dataAllUser={dataAllUser} />
+          <ModalSelectedMentoraTechno logged={logged} id_current={id_current} id_user_profile={id_user_profile} allTechno={allTechno} dataAllUser={dataAllUser} />
           <ModalDate nameOfClass={"meeting-profile"} id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
           <ModalMentoringSection id_user_profile={id_user_profile} dataAppointment={dataAppointment} dataAllUser={dataAllUser} />
-          <ModalSelectedMentoraTechno logged={logged} id_current={id_current} id_user_profile={id_user_profile} allTechno={allTechno} dataAllUser={dataAllUser} />
         </div>
         
         

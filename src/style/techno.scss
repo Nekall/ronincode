@@ -1,0 +1,56 @@
+.techno-selection-container{
+  color: #fff;
+  display: grid;
+  font-family: courier;
+  grid-template-columns: 300px;
+  margin-bottom: 2em;
+
+  form{
+    display: grid;
+    width: fit-content;
+    margin-top: 1em;
+    grid-row: 10;
+
+    #selected-techno{
+      color: #fff;
+      background: #000;
+      border-radius: 5px;
+      padding: 3px;
+    }
+
+    input{
+      font-family: courier;
+      background: none;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 5px;
+      border-radius: 5px;
+      margin-top: .5em;
+      cursor: pointer;
+
+      &:hover{
+        background: $violet;
+        border: 1px solid $violet;
+      }
+    }
+  }
+
+  .my-tech{
+    grid-row: 1;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: .75em;
+  }
+
+  .btn-group{
+    margin-bottom: 1em;
+
+    button{
+      background: none;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      margin-left: .5em;
+    }
+  }
+}

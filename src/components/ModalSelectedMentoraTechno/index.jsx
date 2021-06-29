@@ -106,46 +106,38 @@ const ModalSelectedMentoraTechno = (props) => {
   }, [refrech, syncDelete]);
 
   return(
-    <div>
-      <p>test list techno</p>
+    <div className="techno-selection-container">
       {myTechno !== undefined  ?
-        <div>
-          <div>
-            {props.logged && (props.id_current === props.id_user_profile) ?
-              <div className="user-box">
-                <form onSubmit={sendLanguage}>
-                  <label>Choose a Techno:</label>
-                  <select id="selected-techno" name="techno" onChange={setIdTechno}>
-                    <option>Choose a Techno</option>
-                    {props.allTechno && props.allTechno.map((listTechno) => {
-                      return(<option key={uuidv4()} value={listTechno.id}>{listTechno.name}</option>)
-                    })}
-                  </select>
-                  <input type="submit" value="Envoyer" />
-                </form>
-              </div>
-              :
-              ""
+        <>
+          {props.logged && (props.id_current === props.id_user_profile) ?
+              <form onSubmit={sendLanguage}>
+                <select id="selected-techno" name="techno" onChange={setIdTechno}>
+                  <option>Choisir une technologie</option>
+                  {props.allTechno && props.allTechno.map((listTechno) => {
+                    return(<option key={uuidv4()} value={listTechno.id}>{listTechno.name}</option>)
+                  })}
+                </select>
+                <input type="submit" value="Ajouter" />
+              </form>
+            :
+            ""
+          }
+          <div className="my-tech">Mes techno's :</div>
+          {myTechno && myTechno.map((listMyTechno) => {
+            if (listMyTechno.user_id === props.id_user_profile) {
+              nameTechno = props.allTechno.find(({ id }) => id === listMyTechno.technology_id)
+              return(
+                <div key={uuidv4()} className="btn-group">
+                  {props.logged && (props.id_current === props.id_user_profile) ?
+                    <span key={uuidv4()}><BtnTechno techno={nameTechno.name} /><button onClick={()=>deleteThis(listMyTechno.id)}>X</button></span>
+                    :
+                    <span key={uuidv4()}><BtnTechno techno={nameTechno.name} /></span>
+                  }
+                </div>
+              )
             }
-          </div>
-          <div>
-            <p>mes techno</p>
-            {myTechno && myTechno.map((listMyTechno) => {
-              if (listMyTechno.user_id === props.id_user_profile) {
-                nameTechno = props.allTechno.find(({ id }) => id === listMyTechno.technology_id)
-                return(
-                  <div key={uuidv4()}>
-                    {props.logged && (props.id_current === props.id_user_profile) ?
-                      <span key={uuidv4()}><BtnTechno techno={nameTechno.name} />: <button onClick={()=>deleteThis(listMyTechno.id)}>X</button></span>
-                      :
-                      <span key={uuidv4()}><BtnTechno techno={nameTechno.name} /></span>
-                    }
-                  </div>
-                )
-              }
-            })}
-          </div>
-        </div>
+          })}
+        </>
       :
         ""
       }
