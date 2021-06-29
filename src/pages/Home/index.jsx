@@ -26,7 +26,6 @@ const Home = () => {
     // eslint-disable-next-line
   }, [logged])
 
-  console.log(id_user_profile);
   return (
     <>
       {logged ?

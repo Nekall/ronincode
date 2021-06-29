@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import BtnTechno from 'components/BtnTechno';
 import useFetch from 'Hooks/useFetch';
 import Cookies from "js-cookie";
 
@@ -129,22 +130,20 @@ const ModalSelectedMentoraTechno = (props) => {
           </div>
           <div>
             <p>mes techno</p>
-            <ul>
-              {myTechno && myTechno.map((listMyTechno) => {
-                if (listMyTechno.user_id === props.id_user_profile) {
-                  nameTechno = props.allTechno.find(({ id }) => id === listMyTechno.technology_id)
-                  return(
-                    <div key={uuidv4()}>
-                      {props.logged && (props.id_current === props.id_user_profile) ?
-                        <li key={uuidv4()}>{nameTechno.name}: <button onClick={()=>deleteThis(listMyTechno.id)}>X</button></li>
-                        :
-                        <li key={uuidv4()}>{nameTechno.name}</li>
-                      }
-                    </div>
-                  )
-                }
-              })}
-            </ul>
+            {myTechno && myTechno.map((listMyTechno) => {
+              if (listMyTechno.user_id === props.id_user_profile) {
+                nameTechno = props.allTechno.find(({ id }) => id === listMyTechno.technology_id)
+                return(
+                  <div key={uuidv4()}>
+                    {props.logged && (props.id_current === props.id_user_profile) ?
+                      <span key={uuidv4()}><BtnTechno techno={nameTechno.name} />: <button onClick={()=>deleteThis(listMyTechno.id)}>X</button></span>
+                      :
+                      <span key={uuidv4()}><BtnTechno techno={nameTechno.name} /></span>
+                    }
+                  </div>
+                )
+              }
+            })}
           </div>
         </div>
       :

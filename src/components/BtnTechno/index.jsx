@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 const BtnTechno = (props) => {
 
   return (
-    <Link to="/" className="btn-techno">{props.techno}</Link>
+    <>
+      {props ?
+        <Link to="/" className="btn-techno">{props.techno}</Link>
+        :
+        <Link to="/" className="btn-techno">Pas de language particulier</Link>
+      }
+    </>
   );
 };
 
