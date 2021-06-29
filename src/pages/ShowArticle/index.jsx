@@ -35,11 +35,7 @@ const ShowArticle = () => {
     return(
     <div className = "article">
       <div className="techno">
-        {article.technologies && article.technologies.map(({name, img}, index) =>
-          <div key={uuidv4()}  className="Option">
-            {article.technologies ? <BtnTechno techno={article.technologies[0].name} /> : ""}
-          </div>
-        )}
+        {article.technologies && article.technologies.map(techno => <BtnTechno techno={techno.name}/>)}
       </div>
       <h1>{article.title}</h1>
       <div className="author-head">{article.user ? article.user.username : "" }</div>
