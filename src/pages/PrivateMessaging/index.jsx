@@ -7,27 +7,19 @@ import Cookies from 'js-cookie';
 const PrivateMessaging = () => {
   const user_id = Cookies.get('id');
   let id = parseInt(user_id);
-  const [test, setTest] = useState(false);
+  const [refreching, setRefreching] = useState(false);
   let receiver = "";
 
   const { data: dataUser, doFetch: findAllUsers } = useFetch();
   const { data: dataConversation, doFetch: FindAllConversations } = useFetch();
 
-  const allUsers = () => {
-    findAllUsers("users");
-  };
-
-  const allConversations = () => {
-    FindAllConversations("privatemessagings");
-  };
-
-  const testClick = () => {
-    setTest(!test);
+  const refrech = () => {
+    setRefreching(!refreching);
   };
 
   useEffect(() => {
-    allUsers();
-    allConversations();
+    findAllUsers("users");
+    FindAllConversations("privatemessagings");
     // eslint-disable-next-line
   }, [test])
 
@@ -35,7 +27,7 @@ const PrivateMessaging = () => {
   return(
     <div className="discussions-container">
       <h1>Conversations</h1>
-      <button onClick={testClick} className="refresh">Rafraichir</button>
+      <button onClick={refrech} className="refresh">Rafraichir</button>
       {dataUser ?
         <ul>{dataConversation && dataConversation.map((list) => {
           if (id === list.sender_id || id === list.recipient_id) {
@@ -47,9 +39,8 @@ const PrivateMessaging = () => {
               if (list.sender_id ) {
                 receiver = dataUser.find(({ id }) => id === list.sender_id);
               }
-              
             }
-            return(<li key={uuidv4()}><Link to={`/conversations/${list.id}/messages`}>{receiver.email}</Link></li>);
+            return(<li key={uuidv4()}><Link to={`/conversations/${list.id}/messages`}>{receiver.username}</Link></li>);
           } else {
             return false;
           }
