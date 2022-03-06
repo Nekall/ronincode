@@ -42,8 +42,8 @@ const App = () => {
   return(
     <>
       <div className="navbar standby">
-        <p>Le back-end est désactivé, la version 2 est en développement.</p>
-        <p>Plusieurs fonctionnalités sont inopérantes.</p>
+        Le back-end est désactivé, la version 2 est en développement.
+        Plusieurs fonctionnalités sont inopérantes.
       </div>
       <Provider store={store}>
         <AlertProvider template={AlertTemplate} {...options}>

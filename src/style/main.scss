@@ -30,11 +30,14 @@
 /*======== StandBy ========*/
 
 .standby{
-  font-weight: bold;
+  font-weight: 700;
   display: grid;
-  align-content: center;
-  color: #ffffff !important;
-  background-color: #000000 !important;
+  color: $yellow !important;
+  text-align: center;
+  z-index: 99;
+  background: none;
+  height: 15px;
+  cursor: default;
 }
 
 /*=========================*/
